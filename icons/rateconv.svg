@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 500 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Rateconv" transform="matrix(1,0,0,0.429519,0,0)">
+        <rect x="0" y="0" width="500" height="250" style="fill:none;"/>
+        <g transform="matrix(0.611363,0,0,1.42337,25.0261,-71.7274)">
+            <g transform="matrix(136.317,0,0,136.317,647.844,162.214)">
+            </g>
+            <text x="76.75px" y="162.214px" style="font-family:'SegoeUI-Semibold', 'Segoe UI', sans-serif;font-weight:600;font-size:136.317px;">Rat<tspan x="281.225px 353.644px " y="162.214px 162.214px ">ec</tspan>onv</text>
+        </g>
+        <g transform="matrix(0.256054,0,0,0.596141,313.364,129.002)">
+            <g transform="matrix(136.317,0,0,136.317,356.04,162.214)">
+            </g>
+            <text x="76.75px" y="162.214px" style="font-family:'SegoeUI-Light', 'Segoe UI', sans-serif;font-weight:300;font-size:136.317px;">.com</text>
+        </g>
+    </g>
+</svg>

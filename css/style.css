@@ -1,0 +1,331 @@
+:root{
+  --White_smoke:#EFF2EF;
+  --Bittersweet:#FF5A5F;
+  --Platium:#f9f9f9;
+  --Persian_green:#1B998B;
+  --Raisin_black:#342E37;
+
+}
+*{
+  transition: all 100ms ease-in;
+}
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--Platium);
+}
+
+/*CABECERA*/
+#nombre{
+  margin: 30px auto;
+  text-align:center;
+}
+#nombre :is(h1,p){
+  margin: 0;
+}
+#pop{
+  opacity: 0;
+  width: 50%;
+  background-color: var(--Raisin_black);
+  color: white;
+  padding: 5px 1rem;
+  border-radius: 0.5rem;
+
+}
+
+body{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: var(--Platium);
+  color: var(--Raisin_black);
+}
+#principal{
+    width: 500px;
+    
+}
+
+/*Campo de ingresar tasa*/
+#busqueda{
+  width: 496px;
+  padding: 2px 5px;
+  font-size: 1.5rem;
+  border: 1px solid var(--Platium);
+  border-radius: 0.5rem;
+  background-color: var(--White_smoke);
+  color: var(--Raisin_black);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+}
+#busqueda:hover{
+  box-shadow: rgba(0, 0, 0, 0.75) 0px 1px 4px;
+}
+#busqueda_cuadro{ /*Este elemento integra los elementos de busqueda con un solo estilo  */
+  /*Grid layout*/
+  display: grid; 
+  grid-template-columns: 3fr 1fr 4fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas:". .";
+  justify-items: center;
+  background-color: var(--White_smoke);
+  border-radius: 0.5rem;
+}
+#busqueda_cuadro:hover{
+  background-color: white;
+}
+#busqueda_cuadro:hover  #limpiar_btn{
+  opacity: 1;
+}
+  
+#campoBusqueda{
+    font-size: 1rem;
+    padding: 10px;
+    width:95%;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+  }
+  :is(#campoBusqueda,#tasas_selecion):focus-visible{
+    outline: none !important;
+    background-color: transparent;
+  }
+  /*Lista desplegable para seleccionar tasa a convertor*/
+  #tasas_selecion{
+    border-radius: 0rem 0.5rem  0.5rem  0rem ;
+    width: 96%;
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+  }
+  #tasas_selecion option{
+    margin: 2px;
+    border: 1px solid var(--Platium);
+    border-radius: 0.5rem;
+    background-color: var(--White_smoke);
+    border-radius: 0.5rem;
+  }
+  #tasas_selecion option:hover{
+    cursor: pointer;
+    background-color: #1B998B;
+  }
+  #limpiar_btn{
+    opacity: 0;
+    background:none;
+    border: none;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    color: var(--Raisin_black);
+    width: 90%;
+  }
+  #limpiar_btn:hover{
+    cursor: pointer;
+    background: var(--Platium);
+    
+  }
+  #anticipada_label{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    left: 360px;
+    top: 10px;
+  }
+  
+
+  /*Cuadro de sugerencias*/
+  #sugerencias {
+    position: absolute;
+    padding: 5px;
+    border: 1px solid var(--Platium);
+    border-radius: 0.5rem;
+    background-color: var(--White_smoke);
+    display: none;
+    width: 498px;
+    border-radius: 0.5rem;
+  }
+    .sugerencia-item {
+      padding: 5px;
+      cursor: pointer;
+    }
+    .sugerencia-item:hover {
+      background-color: var(--Platium);
+      border-radius: 0.5rem;
+    }
+#portapapeles{
+  height: 0px;
+  opacity: 0;
+}
+
+#alerta{
+  position: absolute;
+  top: 10px;
+  background-color: var(--Bittersweet);
+  color: white;
+  border-radius: 0.5rem;
+  padding:0px;
+  font-size: 1rem;
+}
+#alerta.active{
+  padding:2px 10px;
+}
+/*RESULTADOS*/
+#resultado{
+  width: 498px;
+
+}
+.btn_resultado_seccion{
+  text-align: left;
+  height: 2.5rem;
+  background:none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid var(--Raisin_black);
+  font-size: 1.2rem;
+}
+.btn_resultado_seccion:hover{
+  cursor: pointer;
+}
+#resultado ul li{
+  list-style: none;
+  margin: 0.5rem;
+  padding: 2px;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+#resultado ul li:hover{
+  background-color: var(--White_smoke);
+  font-weight: bold; 
+}
+#resultado ul li .btn_copiar_tasa_convertida{
+  display: none; 
+  border: none;
+}
+#resultado ul li:hover .btn_copiar_tasa_convertida{
+  display: inline;
+  font-size: 1rem;
+  
+}
+.btn_copiar_tasa_convertida:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
+#resultado ul li p{
+  flex-grow: 4;
+  margin: 0 !important;
+}
+.btn_valor_tasa_convertida{
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+  border:none;
+  background-color: #cff7f2;
+  border-radius: 0.25rem;
+  width: 15%;
+}
+.btn_valor_tasa_convertida:hover{
+  cursor: pointer;
+  background-color: #9efff4;
+}
+/*Seccion de tasas resultados*/
+.btn_resultado_seccion{
+  width: 100%;
+}
+
+
+/*Footer*/
+
+#app_info{
+  position: fixed;
+  bottom: 10px;
+  background-color: var(--Platium);
+}
+#app_info a{
+  text-decoration: none;
+  margin:0px 10px;
+  color: var(--Raisin_black);
+}
+#app_info a:hover{
+  background-color: var(--White_smoke);
+  border-radius: 0.5rem;
+}
+
+
+
+
+/*CHECKBOX CSS Scan*/
+
+.checkbox-wrapper-2 .ikxBAC {
+  appearance: none;
+  background-color: #dfe1e4;
+  border-radius: 72px;
+  border-style: none;
+  flex-shrink: 0;
+  height: 20px;
+  margin: 0;
+  position: relative;
+  width: 30px;
+}
+
+.checkbox-wrapper-2 .ikxBAC::before {
+  bottom: -6px;
+  content: "";
+  left: -6px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+
+.checkbox-wrapper-2 .ikxBAC,
+.checkbox-wrapper-2 .ikxBAC::after {
+  transition: all 100ms ease-out;
+}
+
+.checkbox-wrapper-2 .ikxBAC::after {
+  background-color: #fff;
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 3px;
+  position: absolute;
+  top: 3px;
+  width: 14px;
+}
+
+.checkbox-wrapper-2 input[type=checkbox] {
+  cursor: default;
+}
+
+.checkbox-wrapper-2 .ikxBAC:hover {
+  background-color: #c9cbcd;
+  transition-duration: 0s;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked {
+  background-color: var(--Bittersweet);
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked::after {
+  background-color: #fff;
+  left: 13px;
+}
+
+.checkbox-wrapper-2 :focus:not(.focus-visible) {
+  outline: 0;
+}
+
+.checkbox-wrapper-2 .ikxBAC:checked:hover {
+  background-color: var(--Bittersweet);
+}

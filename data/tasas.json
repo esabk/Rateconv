@@ -1,0 +1,46 @@
+[
+    {
+      "nombre": "Efectiva anual",
+      "definicion": "La Tasa Anual Equivalente o de Equivalencia es una referencia orientativa del coste o rendimiento efectivo anual de un producto financiero independientemente de su plazo.",
+      "tipo": "efectiva anual",
+      "periodos": 1
+    },
+    {
+      "nombre": "Mes",
+      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "tipo": "nominal",
+      "periodos": 12
+    },
+    {
+      "nombre": "Trimestre",
+      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "tipo": "nominal",
+      "periodos": 4
+    },
+    {
+      "nombre": "Semestre",
+      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "tipo": "nominal",
+      "periodos": 2
+    },
+    {
+      "nombre": "Mensual",
+      "definicion": "Esta tasa mensual es periodica.",
+      "tipo": "periodica",
+      "periodos": 12
+    },
+    {
+      "nombre": "Trimestral",
+      "definicion": "Esta tasa mensual es periodica.",
+      "tipo": "periodica",
+      "periodos": 4
+    },
+    {
+      "nombre": "Semestral",
+      "definicion": "Esta tasa mensual es periodica.",
+      "tipo": "periodica",
+      "periodos": 2
+    }
+   ]
+
+  

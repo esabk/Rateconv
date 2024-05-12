@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RateConv - Conversor de tasas de interes</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<header>
+    <img id="rateconv_logo_page" src="./icons/rateconv.svg" alt="Rateconv" height="30px">
+    <p id="pop">Hola, empieza gratis, rápido y sin anuncios.</p>
+    <p>Conversor</p>
+</header>
+<body>
+    <div  id="nombre">
+        <p>Conversor de tasas de interes</p>
+    </div>
+
+    <section id="principal">
+        <div id="busqueda">
+            <div id="busqueda_cuadro">
+                <input maxlength="8"  type="text" id="campoBusqueda" placeholder="Ingrese tasa a convertir" autocomplete="off">
+                <button id="limpiar_btn" onclick="limpiar()">x</button>
+                <select name="tasas_selecion" id="tasas_selecion">
+                    <option value="ea">Efectiva anual</option>
+                    <option value="mv">Mes</option>
+                    <option value="tv">Trimestre</option>
+                    <option value="sv">Semestre</option>
+                    <option value="mensual">Mensual</option>
+                    <option value="trimestral">Trimestral</option>
+                    <option value="semestral">Semestral</option>
+                </select>
+                <p id="alerta"></p>
+            </div>  
+        </div>
+        <label id="anticipada_label">
+            <div class="checkbox-wrapper-2">
+                <input type="checkbox" class="sc-gJwTLC ikxBAC" id="anticipadaCheck" value="first_checkbox" />
+            </div> Tasa Anticipada</label>
+
+        <div id="sugerencias"></div>
+    </section>
+
+
+    <section id="resultado">
+        <h2 id="resultado_titulo"></h2>
+        <p id="resultado_info"></p>
+        <div id="resultadoTasasConvertidas"> </div>
+        <textarea name="portapapeles" id="portapapeles" ></textarea>
+        
+    </section>
+
+
+    <script type="module" src="/main.js"></script>
+
+
+</body>
+<footer>
+    <div id="app_info">
+    <a href="">Ayuda</a>
+    <a href="">Legal</a>
+    <a href="">Acerca de</a>
+    </div>
+</footer>
+</html>
