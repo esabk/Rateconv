@@ -4,10 +4,10 @@ console.log("RateConv");
 
 //Palabras Claves:
 let ea = "efectiva anual";
-let pv ="periodica";
-let pa = "periodica anticipada";
-let nv = "nominal";
-let na = "nominal anticipada";
+let pv ="periodicas";
+let pa = "periodicas anticipadas";
+let nv = "nominales";
+let na = "nominales anticipadas";
 
 const FLOAT_PRECISION = 10;
 
@@ -136,7 +136,7 @@ export function rateConverter(value,fromTasa,toTasa,fromPeriods,toPeriods,noDeci
     noDecimales == null ? noDecimales = FLOAT_PRECISION: noDecimales;  //cantidad de decimales del resultado
 
     //console.warn(`Covertir ${value}% ${fromTasa} (${fromPeriods}) a ${toTasa} (${toPeriods})`)
-    console.log(value+"% Tasa convertida")
+    // console.log(value+"% Tasa convertida")
 
     //Convierte la tasa ingresada en EA con una precisión de 5 decimales
 
