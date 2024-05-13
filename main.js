@@ -26,17 +26,13 @@ let tasasJSON = await ratesFromJSON();
 //Expresion regular para solo dejar numeros y puntos en el campo de busqueda
 const EXPRESION_REGULAR = /[^0-9.]/g;
 
-
 //Funciones  ejecutadas desde botones
 window.limpiar = limpiar;
 window.showHideSectionResultados = showHideSectionResultados;
 
 //Portapapeles
   const Portapapeles=document.getElementById("portapapeles");
-
-
   let tasas = [];           // Tus sugerencias
-
 
 //Inicia el prototipo para la TASA INGRESADA (id,value,type,periods,anticipated)
 const TASA_INPUT = new Tasa(0,0,"efectiva",1,false);
@@ -53,7 +49,6 @@ for (var i = 0; i < tasas_seleccion.options.length; i++){
     tasas_seleccion.options[i].value=tasas_seleccion.options[i].text;
 }
 
-
 //Muestra sugerencia cuando se escribe en el campo de busqueda
 campoBusqueda.oninput= function() {
   let campoBusquedaOnlyNumber= campoBusqueda.value.replace(EXPRESION_REGULAR,"");
@@ -68,7 +63,7 @@ campoBusqueda.oninput= function() {
 }
 
 //Refresca resultados al hacer click 
-document.onclick = function(e) {
+principal.onclick = function(e) {
 
   //Evita que haya una tasa"Efectiva anual anticipada" porque esto no existe
   if (tasas_seleccion.value=="Efectiva anual") {   anticipadaCheck.checked = false;  }
@@ -82,19 +77,18 @@ document.onclick = function(e) {
 
 //Funcion para ejecutar la conversion de tasas y mouestra los resultados
 function mostrarResultados(){
-  //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
-  if (Number(campoBusqueda.value.replace(EXPRESION_REGULAR,""))>0) {
-    resultado.style.display="block";
-  }else{
-    resultado.style.display="none";
-    }
-
   
   const VALUE_CAMPO_BUSQUEDA = campoBusqueda.value.replace(EXPRESION_REGULAR,"");
-  campoBusqueda.value = VALUE_CAMPO_BUSQUEDA + "%";
   const TASA_CAMPO_BUSQUEDA  = tasas_seleccion.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
 
+  //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
+  if (Number(campoBusqueda.value.replace(EXPRESION_REGULAR,""))>0) {
+    resultado.style.display="block";
+    campoBusqueda.value = VALUE_CAMPO_BUSQUEDA + "%";
+  }else{
+    resultado.style.display="none";
+  }
   //ID del boton (titulo) y ul (resultados) de cada seccion sin el ultimo numero
   const TITULO_SeccionesResultados_id ="titulo_seccion_resultadoTasasConvertidas_";
   const RESULTADO_SeccionesResultados_id ="resultados_seccion_resultadoTasasConvertidas_";
@@ -168,7 +162,7 @@ function mostrarResultados(){
           li_Resultado.appendChild(copy_Resultado);
 
           document.getElementById(RESULTADO_SeccionesResultados_id+i).appendChild(li_Resultado);
-        
+          
       }
     }); 
     
@@ -210,8 +204,6 @@ function copyToClipboard(value) {
 document.addEventListener("keyup", ({key}) => {
   //Escribe la linea al presionar enter (O aceptar en moviles).
   if (key === "Enter") {
-    campoBusqueda.value=campoBusqueda.value.replace(EXPRESION_REGULAR,"");
-    campoBusqueda.value+="%";
     sugerenciasBox.style.display = 'none';
     mostrarResultados();
   }
