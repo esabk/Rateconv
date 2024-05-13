@@ -206,7 +206,12 @@ document.addEventListener("keyup", ({key}) => {
   if (key === "Enter") {
     sugerenciasBox.style.display = 'none';
     mostrarResultados();
-    principal.click();
+
+    //Verifica si es una pantalla tactil para desnfocar campobusqueta y quitar el teclado virtual.
+    let esPantallaTactil = 'ontouchstart' in document.documentElement;
+    if(esPantallaTactil){
+      campoBusqueda.blur();
+    }
   }
 })
 
