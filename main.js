@@ -198,6 +198,8 @@ function copyToClipboard(value) {
   Portapapeles.value=value;
   Portapapeles.select();
   document.execCommand('copy'); //Copiar
+  Portapapeles.disabled = true;
+  Portapapeles.disabled = false;
 
   popAlerta(pop,value + " Se ha copiado",1000,"#1B998B");
 
@@ -212,6 +214,7 @@ document.addEventListener("keyup", function(event) {
     sugerenciasBox.style.display = 'none';
     mostrarResultados();
   }
+  popAlerta(pop,event.code,1000,"#1B998B");
 });
 
 

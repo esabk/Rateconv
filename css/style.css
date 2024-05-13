@@ -10,16 +10,18 @@
   transition: all 100ms ease-in;
 }
 header{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   position: fixed;
   top:0;
   left:0;
   width: 100%;
   padding-top: 1.5rem;
-  height: 2rem;
   background-color: var(--Platium);
+}
+#header_tittle{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 2rem;
 }
 
 /*CABECERA*/
@@ -33,15 +35,14 @@ header{
   border-radius: 1rem;
 }
 #pop{
+  text-align: center;
   opacity: 0;
   position: relative;
   left: 0;
   width: auto;
   background-color: var(--Raisin_black);
   color: white;
-  padding: 5px 1rem;
-  border-radius: 0.5rem;
-
+  padding: 0.2rem 0;
 }
 
 body{
@@ -263,15 +264,18 @@ body{
 
 
 /*Footer*/
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--Platium);
+
+}
 
 #app_info{
-  position: fixed;
   height: 1.5rem;
-  left: 0;
-  bottom: 0px;
   padding-bottom: 0.5rem;
-  background-color: var(--Platium);
-  width: 100%;
 }
 #app_info a{
   text-decoration: none;

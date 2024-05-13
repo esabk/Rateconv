@@ -11,7 +11,7 @@ export function newElement(type,txtContent,className,idName){
 //Con esta función se activa la "Alerta pop", permite personalizar el contenido y color de fondo
 export function popAlerta(element,txtContent,duration,color){
   const __MIN_OPACITY = 0;
-  const __MAX_OPACITY = 0.7;
+  const __MAX_OPACITY = 1;
   const __ANIMATE_DURATION = 200;
   let popDuration;
 
