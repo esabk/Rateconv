@@ -106,8 +106,6 @@ function mostrarResultados(){
     //Estructura para mostrar cada resultado
     let value;
     let li_Resultado;
-    let button_Resultado;
-    let p_Resultado;
     let copy_Resultado;
 
     //periodos para conversion de tasas
@@ -145,6 +143,10 @@ function mostrarResultados(){
         }
 
         value = rateConverter(VALUE_CAMPO_BUSQUEDA,fromTasa,toTasa,periodsInput,periodsOutput,2);
+
+         //Crea cada bonton con el resultado y su nombre
+         let button_Resultado;
+         let p_Resultado;
 
           //Se muestra en el DOM el resultado de cada conversion
           button_Resultado = newElement("button",`${value}%`,"value_reultado");
