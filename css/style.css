@@ -217,6 +217,9 @@ body{
   justify-content: center;
   height: fit-content;
 }
+.resultados_resultadoTasasConvertidas{
+  padding-inline-start: 0px;
+}
 #resultado section ul li:hover{
   background-color: var(--White_smoke);
   font-weight: bold; 
@@ -224,6 +227,7 @@ body{
 #resultado ul li .btn_copiar_tasa_convertida{
   display: none; 
   border: none;
+  background-color: none;
 }
 #resultado ul li:hover .btn_copiar_tasa_convertida{
   display: inline;
