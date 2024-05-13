@@ -206,6 +206,7 @@ document.addEventListener("keyup", ({key}) => {
   if (key === "Enter") {
     sugerenciasBox.style.display = 'none';
     mostrarResultados();
+    principal.click();
   }
 })
 
