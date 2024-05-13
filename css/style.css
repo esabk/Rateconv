@@ -193,6 +193,7 @@ body{
   width: 90%;
   max-width: 500px;
   min-width: 128px;
+  margin-bottom: 2rem;
 }
 .titulo_resultadoTasasConvertidas{
   text-align: left;
