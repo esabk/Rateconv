@@ -122,10 +122,13 @@ function mostrarResultados(){
     
     for (let i = 0; i < titulosSeccionesResultados.length; i++) {
     //Limpia todos los resultados anteriores
-    document.getElementById(RESULTADO_SeccionesResultados_id+i).innerHTML = "";
-
+    const TITULO_SECCION_RESULTADO = document.getElementById(TITULO_SeccionesResultados_id+i);
+    const SECCION_RESULTADOS = document.getElementById(RESULTADO_SeccionesResultados_id+i);
+    SECCION_RESULTADOS.innerHTML = "";
+    
     //Asigna titulos a la pagina
-    document.getElementById(TITULO_SeccionesResultados_id+i).textContent=titulosSeccionesResultados[i];   //Titulo de esta seccion
+    TITULO_SECCION_RESULTADO.textContent=titulosSeccionesResultados[i];   //Titulo de esta seccion
+    TITULO_SECCION_RESULTADO.onclick = function() {showHideSectionResultados(SECCION_RESULTADOS)};
 
     sectionRateOutput = titulosSeccionesResultados[i].toLowerCase();
     sectionRateOutputAncicipated = sectionRateOutput.includes(ANTICIPATED);
@@ -149,12 +152,19 @@ function mostrarResultados(){
         value = rateConverter(VALUE_CAMPO_BUSQUEDA,fromTasa,toTasa,periodsInput,periodsOutput,2);
 
           //Se muestra en el DOM el resultado de cada conversion
-          button_Resultado = newElement("button",`${value}%`)
+          button_Resultado = newElement("button",`${value}%`,"value_reultado");
+          copy_Resultado =newElement("button","copiar","btn_copiar_tasa_convertida")
+
+          //Agrega las funciones de copiado
+          button_Resultado.onclick = function() {copyToClipboard(button_Resultado.textContent)};
+          copy_Resultado.onclick =function() {copyToClipboard(`${button_Resultado.textContent} ${p_Resultado.textContent}`)};
+
           sectionRateOutputAncicipated ? p_Resultado = newElement("p",`${element.nombre} ${ANTICIPATED}`) : p_Resultado = newElement("p",`${element.nombre}`);
 
           li_Resultado = newElement("li","");
           li_Resultado.appendChild(button_Resultado);
           li_Resultado.appendChild(p_Resultado);
+          li_Resultado.appendChild(copy_Resultado);
 
           document.getElementById(RESULTADO_SeccionesResultados_id+i).appendChild(li_Resultado);
         
@@ -183,12 +193,15 @@ function infoRateInput(value,tasa,anticipated) {
   
 }
 
-setInterval(() => {
-  if ( Number(campoBusqueda.value.replace(EXPRESION_REGULAR,"")) >= 0) {
-  }else{
-    popAlerta(pop,"Ingresa solo números o porcentajes",2000,"red");
-  }
-}, 3000);
+function copyToClipboard(value) {
+  //Copia value en textbox (Portapapeles) 
+  Portapapeles.value=value;
+  Portapapeles.select();
+  document.execCommand('copy'); //Copiar
+
+  popAlerta(pop,value + " Se ha copiado",1000,"#1B998B");
+
+}
 
 //ATAJOS
 document.addEventListener("keyup", function(event) {
@@ -206,5 +219,3 @@ document.addEventListener("keyup", function(event) {
 
 //EJECUCION INICIAL
 popAlerta(pop,"Hola, 👋.",5000,"#0075C4");
-
-//TODO Repara el copiado

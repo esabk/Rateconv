@@ -7,38 +7,38 @@
     },
     {
       "nombre": "Mes",
-      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "definicion": "Una tasa NOMINAL VENCIDA se refiere a los intereses que se generan al final de cada período de capitalización. Es comúnmente utilizada en operaciones financieras como préstamos, mientras que la tasa ANTICIPADA se calcula al inicio de cada período de capitalización.",
       "tipo": "nominales",
       "periodos": 12
     },
     {
       "nombre": "Trimestre",
-      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "definicion": "Una tasa NOMINAL VENCIDA se refiere a los intereses que se generan al final de cada período de capitalización. Es comúnmente utilizada en operaciones financieras como préstamos, mientras que la tasa ANTICIPADA se calcula al inicio de cada período de capitalización.",
       "tipo": "nominales",
       "periodos": 4
     },
     {
       "nombre": "Semestre",
-      "definicion": "La tasa nominal es un t�rmino financiero que se refiere a la tasa de inter�s anunciada o estipulada en un pr�stamo o producto de inversi�n. No tiene en cuenta la capitalizaci�n de intereses dentro del per�odo de tiempo especificado, lo que significa que no refleja la tasa de inter�s real que se pagar� si los intereses se capitalizan m�s de una vez al a�o",
+      "definicion": "Una tasa NOMINAL VENCIDA se refiere a los intereses que se generan al final de cada período de capitalización. Es comúnmente utilizada en operaciones financieras como préstamos, mientras que la tasa ANTICIPADA se calcula al inicio de cada período de capitalización.",
       "tipo": "nominales",
       "periodos": 2
     },
     {
       "nombre": "Mensual",
-      "definicion": "Esta tasa mensual es periodica.",
+      "definicion": "Se refiere al porcentaje de dinero que se debe pagar sobre el monto total de un préstamo solicitado y recibido. Esta tasa es comúnmente utilizada en operaciones financieras como préstamos y rige para los depósitos que las personas hacen en instituciones financieras como los bancos.",
       "tipo": "periodicas",
       "periodos": 12
     },
     {
       "nombre": "Trimestral",
-      "definicion": "Esta tasa mensual es periodica.",
+      "definicion": "Se refiere al porcentaje de dinero que se debe pagar sobre el monto total de un préstamo solicitado y recibido. Esta tasa es comúnmente utilizada en operaciones financieras como préstamos y rige para los depósitos que las personas hacen en instituciones financieras como los bancos.",
       "tipo": "periodicas",
       "periodos": 4
     },
     {
       "nombre": "Semestral",
       "definicion": "Esta tasa mensual es periodica.",
-      "tipo": "periodicas",
+      "tipo": "Se refiere al porcentaje de dinero que se debe pagar sobre el monto total de un préstamo solicitado y recibido. Esta tasa es comúnmente utilizada en operaciones financieras como préstamos y rige para los depósitos que las personas hacen en instituciones financieras como los bancos.",
       "periodos": 2
     }
    ]

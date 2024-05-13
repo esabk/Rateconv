@@ -4,12 +4,11 @@ export function limpiar(){
     campoBusqueda.focus();
     }
     
-export function showHideSectionResultados(i) {
-    let secccionResultado = document.getElementById(`ulResultados${i}`);
-    
-    if (secccionResultado.style.display=="none") {
-        secccionResultado.style.display="block";
+export function showHideSectionResultados(DOMElement) {
+    console.log(DOMElement)
+    if (DOMElement.style.display=="none") {
+        DOMElement.style.display="block";
     } else {
-        secccionResultado.style.display="none";
+        DOMElement.style.display="none";
     }
 }

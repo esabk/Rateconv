@@ -17,21 +17,26 @@ header{
   top:0;
   left:0;
   width: 100%;
-  padding: 10px;
+  padding-top: 1.5rem;
+  height: 2rem;
   background-color: var(--Platium);
 }
 
 /*CABECERA*/
 #nombre{
-  margin: 30px auto;
   text-align:center;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
 }
-#nombre :is(h1,p){
-  margin: 0;
+#main_logo{
+  min-height: 150px;
+  border-radius: 1rem;
 }
 #pop{
   opacity: 0;
-  width: 50%;
+  position: relative;
+  left: 0;
+  width: auto;
   background-color: var(--Raisin_black);
   color: white;
   padding: 5px 1rem;
@@ -41,52 +46,50 @@ header{
 
 body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding-top: 10%;
-  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content:center;
   align-items: center;
-  margin: 0 auto;
   background-color: var(--Platium);
   color: var(--Raisin_black);
 }
-#principal{
-    width: 500px;
-    
-}
+
 
 /*Campo de ingresar tasa*/
-#busqueda{
-  width: 496px;
-  padding: 2px 5px;
-  font-size: 1.5rem;
-  border: 1px solid var(--Platium);
-  border-radius: 0.5rem;
-  background-color: var(--White_smoke);
-  color: var(--Raisin_black);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
-}
-#busqueda:hover{
-  box-shadow: rgba(0, 0, 0, 0.75) 0px 1px 4px;
-}
-#busqueda_cuadro{ /*Este elemento integra los elementos de busqueda con un solo estilo  */
-  /*Grid layout*/
-  display: grid; 
-  grid-template-columns: 3fr 1fr 4fr; 
-  grid-template-rows: 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas:". .";
-  justify-items: center;
-  background-color: var(--White_smoke);
-  border-radius: 0.5rem;
-}
-#busqueda_cuadro:hover{
-  background-color: white;
-}
-#busqueda_cuadro:hover  #limpiar_btn{
-  opacity: 1;
-}
+  #principal{
+    width: 90%;
+    max-width: 500px;
+    min-width: 128px;   
+  }
+  #busqueda{
+    padding: 2px 5px;
+    font-size: 1.5rem;
+    border: 1px solid var(--Platium);
+    border-radius: 0.5rem;
+    background-color: var(--White_smoke);
+    color: var(--Raisin_black);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+  }
+  #busqueda:hover{
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 1px 4px;
+  }
+  /*Este elemento integra los elementos de busqueda con un solo estilo  */
+  #busqueda_cuadro{ 
+    /*Grid layout*/
+    display: grid; 
+    grid-template-columns: 3fr 1fr 4fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas:". .";
+    justify-items: center;
+    background-color: var(--White_smoke);
+    border-radius: 0.5rem;
+  }
+  #busqueda_cuadro:hover{
+    background-color: white;
+  }
+  #busqueda_cuadro:hover  #limpiar_btn{
+    opacity: 1;
+  }
   
 #campoBusqueda{
     font-size: 1rem;
@@ -137,21 +140,27 @@ body{
     position: relative;
     display: flex;
     gap: 10px;
-    left: 360px;
+    left: 0;
     top: 10px;
+    width: 100%;
+    justify-content: right;
   }
   
 
   /*Cuadro de sugerencias*/
   #sugerencias {
-    position: absolute;
+    position: relative;
+    left: 0;
+    top: -1rem;
     padding: 5px;
     border: 1px solid var(--Platium);
     border-radius: 0.5rem;
     background-color: var(--White_smoke);
     display: none;
-    width: 498px;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
+    width: 98%;
+    max-width: 500px;
+    min-width: 128px; 
   }
     .sugerencia-item {
       padding: 5px;
@@ -198,6 +207,7 @@ body{
 .titulo_resultadoTasasConvertidas:hover{
   cursor: pointer;
 }
+
 #resultado section ul li{
   list-style: none;
   margin: 0.5rem;
@@ -251,8 +261,12 @@ body{
 
 #app_info{
   position: fixed;
-  bottom: 10px;
+  height: 1.5rem;
+  left: 0;
+  bottom: 0px;
+  padding-bottom: 0.5rem;
   background-color: var(--Platium);
+  width: 100%;
 }
 #app_info a{
   text-decoration: none;
