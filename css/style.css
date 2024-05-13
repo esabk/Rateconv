@@ -56,7 +56,11 @@ body{
   background-color: var(--Platium);
   color: var(--Raisin_black);
 }
-
+article{
+  margin-top: 5rem;
+  width: 90%;
+  max-width: 500px;
+}
 
 /*Campo de ingresar tasa*/
   #principal{
@@ -202,12 +206,13 @@ body{
 .titulo_resultadoTasasConvertidas{
   text-align: left;
   height: 2.5rem;
-  background:none;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid var(--Raisin_black);
+  background:var(--White_smoke);
+  color: var(--Raisin_black);
+  border: none;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 .titulo_resultadoTasasConvertidas:hover{
   cursor: pointer;
@@ -221,6 +226,7 @@ body{
   display: flex;
   justify-content: center;
   height: fit-content;
+  padding: 0.2rem 0;
 }
 .resultados_resultadoTasasConvertidas{
   padding-inline-start: 0px;
@@ -278,7 +284,7 @@ footer{
 #app_info{
   background-color: var(--Platium);
   height: 1.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
 }
 #app_info a{
   text-decoration: none;

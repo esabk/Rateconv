@@ -68,7 +68,7 @@ campoBusqueda.oninput= function() {
 }
 
 //Refresca resultados al hacer click 
-principal.onclick = function(e) {
+document.onclick = function(e) {
 
   //Evita que haya una tasa"Efectiva anual anticipada" porque esto no existe
   if (tasas_seleccion.value=="Efectiva anual") {   anticipadaCheck.checked = false;  }
@@ -91,6 +91,7 @@ function mostrarResultados(){
 
   
   const VALUE_CAMPO_BUSQUEDA = campoBusqueda.value.replace(EXPRESION_REGULAR,"");
+  campoBusqueda.value = VALUE_CAMPO_BUSQUEDA + "%";
   const TASA_CAMPO_BUSQUEDA  = tasas_seleccion.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
 
