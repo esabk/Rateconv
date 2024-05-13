@@ -16,6 +16,7 @@ header{
   width: 100%;
   padding-top: 1.5rem;
   background-color: var(--Platium);
+  z-index: 20;
 }
 #header_tittle{
   display: flex;
@@ -43,7 +44,9 @@ header{
   background-color: var(--Raisin_black);
   color: white;
   padding: 0.2rem 0;
+  margin-block:0;
 }
+
 
 body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -269,11 +272,11 @@ footer{
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: var(--Platium);
-
+  height: fit-content;
 }
 
 #app_info{
+  background-color: var(--Platium);
   height: 1.5rem;
   padding-bottom: 0.5rem;
 }

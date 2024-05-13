@@ -18,26 +18,39 @@ export function popAlerta(element,txtContent,duration,color){
   duration ? popDuration = duration : popDuration = 3000; //Permite personalizar duracion de la alerta 
   
   element.textContent=txtContent;
+  color ? element.style.backgroundColor=color : element.style.backgroundColor="#342E37";
 
-    element.animate([
-        { opacity: __MIN_OPACITY, offset: 0 }, // El elemento está completamente transparente al inicio
-        { opacity: __MAX_OPACITY, offset: 1 }  // El elemento es completamente opaco al final
-      ], {
-        duration: __ANIMATE_DURATION, // Duración de 1000 milisegundos
-        fill: 'forwards' // Mantiene el estado final de la animación
-      })
-    color ? element.style.backgroundColor=color : element.style.backgroundColor="#342E37";
+    // Define los fotogramas clave para la animación de entrada
+    const keyframesIn = [
+      { opacity: __MIN_OPACITY, display: "none" }, // Estado inicial (transparente y oculto)
+      { opacity: __MAX_OPACITY, display: "block" } // Estado final (opaco y visible)
+    ];
+
+    // Define los fotogramas clave para la animación de salida
+    const keyframesOut = [
+      { opacity: __MAX_OPACITY, display: "block" }, // Estado inicial (transparente y oculto)
+      { opacity: __MIN_OPACITY, display: "none" } // Estado final (opaco y visible)
+    ];
+
+    // Opciones de la animación (duración, iteraciones, etc.)
+    const options = {
+      duration: __ANIMATE_DURATION, // Duración en milisegundos
+      iterations: 1, // Número de repeticiones (1 para una sola vez)
+      easing: "ease-in-out", // Función de aceleración (puedes ajustarla según tus necesidades)
+      fill: 'forwards'
+    };
+
+    //Reproduce animación
+    const animacionIn = element.animate(keyframesIn, options);
+
     
     setTimeout(function() {
-      element.animate([
-        { opacity: __MAX_OPACITY, offset: 0 }, // El elemento está completamente transparente al inicio
-        { opacity: __MIN_OPACITY, offset: 1 }  // El elemento es completamente opaco al final
-      ], {
-        duration: __ANIMATE_DURATION, // Duración de 1000 milisegundos
-        fill: 'forwards' // Mantiene el estado final de la animación
-      })
+      const animacionOut = element.animate(keyframesOut, options);
+      
     }, popDuration);
-}
+
+    
+  }
 
 //Cuadro de sugerencias
 

@@ -206,16 +206,15 @@ function copyToClipboard(value) {
 }
 
 //ATAJOS
-document.addEventListener("keyup", function(event) {
-  if (event.code === 'Enter') {                           //Presionar enter
-
+document.addEventListener("keyup", ({key}) => {
+  //Escribe la linea al presionar enter (O aceptar en moviles).
+  if (key === "Enter") {
     campoBusqueda.value=campoBusqueda.value.replace(EXPRESION_REGULAR,"");
     campoBusqueda.value+="%";
     sugerenciasBox.style.display = 'none';
     mostrarResultados();
   }
-  popAlerta(pop,event.code,1000,"#1B998B");
-});
+})
 
 
 
