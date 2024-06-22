@@ -10,22 +10,32 @@
 <header>
 
     <div id="header_tittle">
-        <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/rateconv.svg" alt="Rateconv" height="30px"></a>        <p>Conversor</p>
+        <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/Logo_with_name.svg" alt="Rateconv" height="30px"></a>
+        <div class="button_container">
+            <button class="button_selected">Conversor</button>
+            <button class="button_disabled">Tablas</button>
+            <button >Guardado</button>
+            <button >Historial</button>
+        </div>
+
     </div>
     
 </header>
 
 <body>
     <section  id="nombre">
-        <img id="main_logo" src="./icons/rateconv_main.png" alt="Rateconv" height="150px" width="375px">
-        <p>Conversor de tasas de interes</p>
+        <img id="main_logo" src="./icons/Logo.svg" alt="Rateconv" height="150px" width="375px">
+        <p>Convierte tasas de interes con facilidad</p>
     </section>
 
     <section id="principal">
         <div id="busqueda">
             <div id="busqueda_cuadro">
-                <input maxlength="8"  type="text" id="campoBusqueda" placeholder="Ingrese tasa a convertir" autocomplete="off">
+                <input maxlength="16"  type="text" id="campoBusqueda" placeholder="Ingrese tasa a convertir" autocomplete="off">
                 <button id="limpiar_btn" onclick="limpiar()">x</button>
+            </div>
+            
+            <div class="elements_container">
                 <select name="tasas_selecion" id="tasas_selecion">
                     <option value="ea">Efectiva anual</option>
                     <option value="mv">Mes</option>
@@ -35,15 +45,19 @@
                     <option value="trimestral">Trimestral</option>
                     <option value="semestral">Semestral</option>
                 </select>
-                <p id="alerta"></p>
+                <div>
+                    <label id="anticipada_label">
+                        <div class="checkbox-wrapper-2">
+                            <input type="checkbox" class="sc-gJwTLC ikxBAC" id="anticipadaCheck" value="first_checkbox" />
+                        </div>
+                        Tasa Anticipada
+                    </label>
+                </div>
             </div>  
+            
+            <p id="alerta"></p>
         </div>
-        <label id="anticipada_label">
-            <div class="checkbox-wrapper-2">
-                <input type="checkbox" class="sc-gJwTLC ikxBAC" id="anticipadaCheck" value="first_checkbox" />
-            </div> 
-            Tasa Anticipada
-        </label>
+        
 
         <div id="sugerencias"></div>
     </section>
@@ -53,6 +67,17 @@
         
         <h2 id="resultado_titulo"></h2>
         <p id="resultado_info"></p>
+        
+        <br>
+        <div class="elements_container">
+            <button >Filtrar</button>
+            <div class="config_container">
+                <a>Decimales  </a>
+                <input type="number" id="decimal_config" min="0" max="10" value="2"></input>
+            </div>
+            <button id="resultado_config_apply" class="button_primary" >Aplicar</button>
+        </div>
+        <br>
 
         <div id="resultadoTasasConvertidas"> 
             <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_0">
@@ -91,10 +116,13 @@
 </body>
 <footer>
     <p id="pop">Hola, empieza gratis, rápido y sin anuncios.</p>
-    <div id="app_info">
-        <a href="./pages/ayuda.html">Ayuda</a>
-        <a href="">Legal</a>
-        <a href="./pages/Acerca_de.html">Acerca de</a>
+    <div class="footer_links">
+        <div>
+            <button href="./pages/ayuda.html">Ayuda</button>
+            <button href="">Legal</button>
+            <button href="./pages/Acerca_de.html">Acerca de</button>
+        </div>
+        <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
     </div>
 </footer>
 </html>

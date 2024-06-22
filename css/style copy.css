@@ -1,28 +1,20 @@
 :root{
-  --Focus_color:#ff8c69 ;
   --White_smoke:#EFF2EF;
   --Bittersweet:#FF5A5F;
   --Platium:#f9f9f9;
   --Persian_green:#1B998B;
   --Raisin_black:#342E37;
-  --Standard-padding:16px;
-  --Mid-padding:8px;
-  --Standard_border_radius:16px;
-  --Mid-border_radius:8px;
 
 }
 *{
   transition: all 100ms ease-in;
 }
-
-
-/* Header */
 header{
   position: fixed;
   top:0;
   left:0;
   width: 100%;
-  padding: var(--Standard-padding);
+  padding-top: 1.5rem;
   background-color: var(--Platium);
   z-index: 20;
 }
@@ -33,7 +25,7 @@ header{
   height: 2rem;
 }
 
-/*Principal */
+/*CABECERA*/
 #nombre{
   text-align:center;
   margin-top: 5rem;
@@ -55,7 +47,7 @@ header{
   margin-block:0;
 }
 
-/*General tags */
+
 body{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -69,83 +61,6 @@ article{
   width: 90%;
   max-width: 500px;
 }
-.config_container{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.elements_container{
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--White_smoke);
-  padding:var(--Mid-padding) var(--Standard-padding);
-  border-radius:var(--Mid-border_radius);
-}
-.elements_container a{
-  padding-left: var(--Standard-padding);
-  padding-right: var(--Mid-padding);
-}
-.elements_container input{
-  padding: var(--Mid-padding);
-  border: none;
-  border-radius: var(--Mid-border_radius);
-  width: 48px !important;
-  margin-right: var(--Standard-padding);
-}
-/*Buttons design  */
-.button_container{
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--White_smoke);
-  width: fit-content;
-  padding:var(--Mid-padding) var(--Standard-padding);
-  border-radius:var(--Mid-border_radius);
-}
-
-button{
-  border:none;
-  border-radius: var(--Mid-border_radius);
-  padding: var(--Mid-padding);
-  width: fit-content;
-}
-button:hover{
-  background-color: var(--Raisin_black);
-  color:var(--Platium);
-  cursor: pointer;
-}
-
-.button_disabled{
-  background-color: var(--White_smoke);
-  color:gray;
-}
-.button_disabled:hover{
-  background-color: var(--White_smoke);
-  color:gray;
-  cursor:default;
-}
-
-.button_selected,.button_selected:hover{
-  background-color: var(--Focus_color);
-  color:var(--Raisin_black);
-  cursor: auto;
-}
-
-.button_primary{
-  background-color: var(--Raisin_black);
-  color:var(--Platium);
-}
-.button_primary:hover{
-  background-color: var(--Focus_color);
-  color:var(--Raisin_black);
-  cursor: pointer;
-}
-
-.button_color{
-  background-color: var(--Focus_color);
-  color: var(--Raisin_black);
-}
-
-
 
 /*Campo de ingresar tasa*/
   #principal{
@@ -163,25 +78,22 @@ button:hover{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
   }
   #busqueda:hover{
-    box-shadow: rgba(0, 0, 0, 0.50) 0px 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 1px 4px;
   }
   /*Este elemento integra los elementos de busqueda con un solo estilo  */
   #busqueda_cuadro{ 
     /*Grid layout*/
     display: grid; 
-    grid-template-columns: 9fr 1fr; 
+    grid-template-columns: 3fr 1fr 4fr; 
     grid-template-rows: 1fr; 
     gap: 0px 0px; 
     grid-template-areas:". .";
     justify-items: center;
-    background-color: white;
+    background-color: var(--White_smoke);
     border-radius: 0.5rem;
-    padding: 2px;
-    transition: all 0ms;
   }
   #busqueda_cuadro:hover{
-    border: 1px solid var(--Focus_color);
-    padding: 1px;
+    background-color: white;
   }
   #busqueda_cuadro:hover  #limpiar_btn{
     opacity: 1;
@@ -199,37 +111,47 @@ button:hover{
     outline: none !important;
     background-color: transparent;
   }
-
   /*Lista desplegable para seleccionar tasa a convertor*/
   #tasas_selecion{
     border-radius: 0rem 0.5rem  0.5rem  0rem ;
+    width: 96%;
     border: none;
     background-color: transparent;
     font-size: 1rem;
-    width: 50%;
+  }
+  #tasas_selecion option{
+    margin: 2px;
+    border: 1px solid var(--Platium);
+    border-radius: 0.5rem;
+    background-color: var(--White_smoke);
+    border-radius: 0.5rem;
+  }
+  #tasas_selecion option:hover{
+    cursor: pointer;
+    background-color: #1B998B;
   }
   #limpiar_btn{
     opacity: 0;
     background:none;
     border: none;
     font-size: 1rem;
-    border-radius:50%;
+    border-radius: 0.5rem;
     color: var(--Raisin_black);
     width: 90%;
   }
   #limpiar_btn:hover{
     cursor: pointer;
     background: var(--Platium);
+    
   }
   #anticipada_label{
-    padding-left: var(--Standard-padding);
-    display: flex; 
-    gap: var(--Mid-padding); 
-    grid-template-areas:". .";
-    font-size: 1rem;
-  }
-  .checkbox{
-    width: 40px;
+    position: relative;
+    display: flex;
+    gap: 10px;
+    left: 0;
+    top: 10px;
+    width: 100%;
+    justify-content: right;
   }
   
 
@@ -237,7 +159,7 @@ button:hover{
   #sugerencias {
     position: relative;
     left: 0;
-    top: 0.5rem;
+    top: -1rem;
     padding: 5px;
     border: 1px solid var(--Platium);
     border-radius: 0.5rem;
@@ -273,10 +195,7 @@ button:hover{
 #alerta.active{
   padding:2px 10px;
 }
-
-
-
-/*Resultados*/
+/*RESULTADOS*/
 #resultado{
   display: none;
   width: 90%;
@@ -284,37 +203,69 @@ button:hover{
   min-width: 128px;
   margin-bottom: 2rem;
 }
-#resultado_info{
-  text-align: justify;
-}
-.titulo_resultadoTasasConvertidas,.titulo_resultadoTasasConvertidas:hover{
-  background-color: var(--Platium);
-  color: var(--Raisin_black);
-  font-size: 1.2rem;
+.titulo_resultadoTasasConvertidas{
   text-align: left;
-  border-bottom: 1px solid gray;
-  border-radius: 0;
+  height: 2.5rem;
+  background:var(--White_smoke);
+  color: var(--Raisin_black);
+  border: none;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }
-.li_resultado{
+.titulo_resultadoTasasConvertidas:hover{
+  cursor: pointer;
+}
+
+#resultado section ul li{
+  list-style: none;
+  margin: 0.5rem;
+  padding: 2px;
+  border-radius: 0.5rem;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-bottom: var(--Standard-padding);
+  justify-content: center;
+  height: fit-content;
+  padding: 0.2rem 0;
 }
-.li_resultado p{
-  width: 80%;
-  padding: 0 var(--Standard-padding);
-  margin: 0;
+.resultados_resultadoTasasConvertidas{
+  padding-inline-start: 0px;
 }
-.value_resultado{
-  width: fit-content !important;
-  padding: 8px var(--Mid-padding);
+#resultado section ul li:hover{
+  background-color: var(--White_smoke);
+  font-weight: bold; 
 }
-.btn_copiar_tasa_convertida{
-  width: fit-content !important;
+#resultado ul li .btn_copiar_tasa_convertida{
+  display: none; 
+  border: none;
+  background-color: none;
 }
-
-
+#resultado ul li:hover .btn_copiar_tasa_convertida{
+  display: inline;
+  font-size: 1rem;
+  
+}
+.btn_copiar_tasa_convertida:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
+#resultado section ul li p{
+  flex-grow: 4;
+  margin: 0 !important;
+}
+#resultado section ul li button{
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+  border:none;
+  background-color: #cff7f2;
+  border-radius: 0.25rem;
+  width: 15%;
+}
+#resultado section ul li button:hover{
+  cursor: pointer;
+  background-color: #9efff4;
+}
 /*Seccion de tasas resultados*/
 #resultado section button{
   width: 100%;
@@ -328,17 +279,25 @@ footer{
   bottom: 0;
   width: 100%;
   height: fit-content;
-  padding: var(--Mid-padding) 0;
+}
+
+#app_info{
+  background-color: var(--Platium);
+  height: 1.5rem;
+  padding: 0.5rem 0;
+}
+#app_info a{
+  text-decoration: none;
+  margin:0px 10px;
+  color: var(--Raisin_black);
+}
+#app_info a:hover{
   background-color: var(--White_smoke);
+  border-radius: 0.5rem;
 }
-.footer_links{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.footer_links p{
-  margin:0;
-}
+
+
+
 
 /*CHECKBOX CSS Scan*/
 
@@ -389,7 +348,7 @@ footer{
 }
 
 .checkbox-wrapper-2 .ikxBAC:checked {
-  background-color: var(--Focus_color);
+  background-color: var(--Bittersweet);
 }
 
 .checkbox-wrapper-2 .ikxBAC:checked::after {
@@ -402,6 +361,5 @@ footer{
 }
 
 .checkbox-wrapper-2 .ikxBAC:checked:hover {
-  background-color: var(--Focus_color);
-  opacity: 0.7;
+  background-color: var(--Bittersweet);
 }

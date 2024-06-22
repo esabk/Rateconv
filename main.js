@@ -117,6 +117,7 @@ function mostrarResultados(){
     //Limpia todos los resultados anteriores
     const TITULO_SECCION_RESULTADO = document.getElementById(TITULO_SeccionesResultados_id+i);
     const SECCION_RESULTADOS = document.getElementById(RESULTADO_SeccionesResultados_id+i);
+    const DECIMALS_CONFIG = document.getElementById("decimal_config").value;
     SECCION_RESULTADOS.innerHTML = "";
     
     //Asigna titulos a la pagina
@@ -142,14 +143,14 @@ function mostrarResultados(){
           fromTasa = `${fromTasa} ${ANTICIPATED}s`
         }
 
-        value = rateConverter(VALUE_CAMPO_BUSQUEDA,fromTasa,toTasa,periodsInput,periodsOutput,2);
+        value = rateConverter(VALUE_CAMPO_BUSQUEDA,fromTasa,toTasa,periodsInput,periodsOutput,DECIMALS_CONFIG);
 
          //Crea cada bonton con el resultado y su nombre
          let button_Resultado;
          let p_Resultado;
 
           //Se muestra en el DOM el resultado de cada conversion
-          button_Resultado = newElement("button",`${value}%`,"value_reultado");
+          button_Resultado = newElement("button",`${value}%`,"value_resultado button_color");
           copy_Resultado =newElement("button","copiar","btn_copiar_tasa_convertida")
 
           //Agrega las funciones de copiado
@@ -158,7 +159,7 @@ function mostrarResultados(){
 
           sectionRateOutputAncicipated ? p_Resultado = newElement("p",`${element.nombre} ${ANTICIPATED}`) : p_Resultado = newElement("p",`${element.nombre}`);
 
-          li_Resultado = newElement("li","");
+          li_Resultado = newElement("li","","li_resultado");
           li_Resultado.appendChild(button_Resultado);
           li_Resultado.appendChild(p_Resultado);
           li_Resultado.appendChild(copy_Resultado);
@@ -217,8 +218,9 @@ document.addEventListener("keyup", ({key}) => {
   }
 })
 
+document.getElementById("resultado_config_apply").onclick=function() {mostrarResultados()};
 
 
 
 //EJECUCION INICIAL
-popAlerta(pop,"Hola, 👋.",5000,"#0075C4");
+popAlerta(pop,"Rateconv 1.1 : Nueva Ui, nuevas funciones",10000,"#342E37");
