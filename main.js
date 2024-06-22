@@ -150,7 +150,7 @@ function mostrarResultados(){
          let p_Resultado;
 
           //Se muestra en el DOM el resultado de cada conversion
-          button_Resultado = newElement("button",`${value}%`,"value_resultado button_color");
+          button_Resultado = newElement("button",`${value}%`,"value_resultado button_primary");
           copy_Resultado =newElement("button","copiar","btn_copiar_tasa_convertida")
 
           //Agrega las funciones de copiado
