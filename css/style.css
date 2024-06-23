@@ -53,6 +53,7 @@ header{
   color: white;
   padding: var(--Mid-padding) var(--Standard-padding);
   margin-block:0;
+  margin-bottom: var(--Mid-padding);
 }
 
 /*General tags */
@@ -224,11 +225,17 @@ button:hover{
 
   /*Lista desplegable para seleccionar tasa a convertor*/
   #tasas_selecion{
-    border-radius: 0rem 0.5rem  0.5rem  0rem ;
+    border-radius: var(--Mid-border_radius) ;
+    padding: 2px;
     border: none;
     background-color: transparent;
     font-size: 1rem;
     width: 50%;
+  }
+  #tasas_selecion:hover{
+    background-color: var(--Raisin_black);
+    color: var(--Platium);
+    cursor: pointer;
   }
   #limpiar_btn{
     opacity: 0;
@@ -332,6 +339,7 @@ button:hover{
 .value_resultado{
   width: fit-content !important;
   padding: 8px var(--Mid-padding);
+  letter-spacing: 0.5px;
 }
 .btn_copiar_tasa_convertida{
   width: fit-content !important;
