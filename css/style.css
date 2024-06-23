@@ -51,7 +51,7 @@ header{
   width: auto;
   background-color: var(--Raisin_black);
   color: white;
-  padding: 0.2rem 0;
+  padding: var(--Mid-padding) var(--Standard-padding);
   margin-block:0;
 }
 
@@ -69,6 +69,13 @@ article{
   width: 90%;
   max-width: 500px;
 }
+em{
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 1px var(--Standard-padding);
+  border-radius: var(--Mid-border_radius);
+  font-style: normal;
+}
+
 .config_container{
   display: flex;
   justify-content: space-around;
@@ -341,9 +348,6 @@ footer{
 }
 
 /*CHECKBOX Anticpada*/
-.checkbox-wrapper{
-
-}
 .cw_check{
   display: none;
 }

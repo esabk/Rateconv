@@ -17,7 +17,7 @@ export function popAlerta(element,txtContent,duration,color){
 
   duration ? popDuration = duration : popDuration = 3000; //Permite personalizar duracion de la alerta 
   
-  element.textContent=txtContent;
+  element.innerHTML=txtContent;
   color ? element.style.backgroundColor=color : element.style.backgroundColor="#342E37";
 
     // Define los fotogramas clave para la animación de entrada

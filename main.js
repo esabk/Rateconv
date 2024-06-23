@@ -199,7 +199,7 @@ function copyToClipboard(value) {
   Portapapeles.disabled = true;
   Portapapeles.disabled = false;
 
-  popAlerta(pop,value + " Se ha copiado",1000,"#1B998B");
+  popAlerta(pop,`<em>${value}</em>`+ " Se ha copiado",1000,"#1B998B");
 
 }
 
@@ -223,4 +223,4 @@ document.getElementById("resultado_config_apply").onclick=function() {mostrarRes
 
 
 //EJECUCION INICIAL
-popAlerta(pop,"Rateconv 1.1 : Nueva Ui, nuevas funciones",10000,"#342E37");
+popAlerta(pop,`Rateconv 1.1 : Nueva Ui, nuevas funciones <button> Ver novedades</button>`,10000,"#342E37");
