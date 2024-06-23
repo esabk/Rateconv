@@ -63,31 +63,52 @@ body{
   align-items: center;
   background-color: var(--Platium);
   color: var(--Raisin_black);
+  min-height: 500px;
 }
 article{
   margin-top: 5rem;
   width: 90%;
   max-width: 500px;
 }
-em{
+
+/* Enfasis*/
+#pop em{
   background-color: rgba(0, 0, 0, 0.25);
   padding: 1px var(--Standard-padding);
   border-radius: var(--Mid-border_radius);
   font-style: normal;
 }
+#resultado_titulo{
+  margin: 0;
+}
+#resultado_titulo em{
+  color: var(--Focus_color);
+  font-style: normal;
+}
 
-.config_container{
+.button_container{
   display: flex;
   justify-content: space-around;
+  background-color: var(--White_smoke);
+  width: fit-content;
+  padding:var(--Mid-padding) var(--Standard-padding);
+  border-radius:var(--Mid-border_radius);
+}
+.config_container{
+  display: flex;
+  gap: 8px;
+  justify-content:space-between;
   align-items: center;
 }
 .elements_container{
   display: flex;
   justify-content: space-around;
+  gap: 8px;
   background-color: var(--White_smoke);
   padding:var(--Mid-padding) var(--Standard-padding);
   border-radius:var(--Mid-border_radius);
 }
+.elements_container:nth-child()
 .elements_container a{
   padding-left: var(--Standard-padding);
   padding-right: var(--Mid-padding);
@@ -100,20 +121,14 @@ em{
   margin-right: var(--Standard-padding);
 }
 /*Buttons design  */
-.button_container{
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--White_smoke);
-  width: fit-content;
-  padding:var(--Mid-padding) var(--Standard-padding);
-  border-radius:var(--Mid-border_radius);
-}
+
 
 button{
   border:none;
   border-radius: var(--Mid-border_radius);
   padding: var(--Mid-padding);
   width: fit-content;
+  height: fit-content;
 }
 button:hover{
   background-color: var(--Raisin_black);
@@ -301,6 +316,7 @@ button:hover{
   text-align: left;
   border-bottom: 1px solid gray;
   border-radius: 0;
+  
 }
 .li_resultado{
   display: flex;
