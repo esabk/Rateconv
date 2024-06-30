@@ -2,9 +2,9 @@
 import { ratesFromJSON } from "/modules/getData.js";  //Procesa la petición para obtener las tasas
 import { newElement,popAlerta,sugerencias} from "/modules/DOMControler.js";
 import { rateConverter} from "/modules/rateConverter.js";
-import { limpiar,showHideSectionResultados } from "/modules/DOMButtons.js";
+import { limpiar,showHideDOMElement } from "/modules/DOMButtons.js";
 import { Tasa } from "/class/Tasa.js";
-import {getVariableFromURL} from "/modules/shareURL.js";
+import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.js";
 
 //Registrar Service Worker
 navigator.serviceWorker.register('sw.js');
@@ -14,11 +14,16 @@ navigator.serviceWorker.register('sw.js');
   });
 
 // DOM elementos cuadro de busqueda
-  const principal = document.getElementById('principal');
-  const campoBusqueda = document.getElementById('campoBusqueda');
-  const sugerenciasBox = document.getElementById('sugerencias');
-  const tasas_seleccion=document.getElementById("tasas_selecion");
+  const PRINCIPAL = document.getElementById('principal');
+  const CAMPO_BUSQUEDA = document.getElementById('campoBusqueda');
+  const SUGERENCIAS_BOX = document.getElementById('sugerencias');
+  const TASAS_SELECCION=document.getElementById("tasas_selecion");
   const alerta=document.getElementById("alerta");
+
+//DOM Ventana flotante
+ const FLOAT_WINDOWS = document.getElementById("float_windows");
+ const FLOAT_WINDOWS_TITLE = document.getElementById("float_windows_title");
+ const FLOAT_WINDOWS_CONTENT = document.getElementById("float_windows_content");
 
 //DOM Elementos resultado
   const resultado = document.getElementById("resultado");
@@ -35,7 +40,7 @@ const EXPRESION_REGULAR = /[^0-9.]/g;
 
 //Funciones  ejecutadas desde botones
 window.limpiar = limpiar;
-window.showHideSectionResultados = showHideSectionResultados;
+window.showHideDOMElement = showHideDOMElement;
 
 //Portapapeles
   const Portapapeles=document.getElementById("portapapeles");
@@ -51,33 +56,33 @@ const TASA_OUTPUT = new Tasa(0,0,"efectiva",1,false);
 let titulosSeccionesResultados = ["Efectiva anual","Tasas periodicas","Tasas periodicas anticipadas","Tasas nominales","Tasas nominales anticipadas"];
 
 //Proporciona sugerencias basadas en las opciones en html
-for (var i = 0; i < tasas_seleccion.options.length; i++){
-    tasas.push(tasas_seleccion.options[i].text);
-    tasas_seleccion.options[i].value=tasas_seleccion.options[i].text;
+for (var i = 0; i < TASAS_SELECCION.options.length; i++){
+    tasas.push(TASAS_SELECCION.options[i].text);
+    TASAS_SELECCION.options[i].value=TASAS_SELECCION.options[i].text;
 }
 
 //Muestra sugerencia cuando se escribe en el campo de busqueda
-campoBusqueda.oninput= function() {
-  let campoBusquedaOnlyNumber= campoBusqueda.value.replace(EXPRESION_REGULAR,"");
+CAMPO_BUSQUEDA.oninput= function() {
+  let campoBusquedaOnlyNumber= CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
 
   if((campoBusquedaOnlyNumber/1) >0 ){
     //Reinicia las sugerencias
-    sugerenciasBox.innerHTML = '';
+    SUGERENCIAS_BOX.innerHTML = '';
 
     //Verifica si se esta escribiendo en el campo de busqueda
-    sugerencias(sugerenciasBox,campoBusqueda,campoBusquedaOnlyNumber,tasas,"",tasas_seleccion);
+    sugerencias(SUGERENCIAS_BOX,CAMPO_BUSQUEDA,campoBusquedaOnlyNumber,tasas,"",TASAS_SELECCION);
 }
 }
 
 //Refresca resultados al hacer click 
-principal.onclick = function(e) {
+PRINCIPAL.onclick = function(e) {
 
   //Evita que haya una tasa"Efectiva anual anticipada" porque esto no existe
-  if (tasas_seleccion.value=="Efectiva anual") {   anticipadaCheck.checked = false;  }
+  if (TASAS_SELECCION.value=="Efectiva anual") {   anticipadaCheck.checked = false;  }
 
     //Muestra sugerencias solo si el campo de busqueda es el target
-    if (e.target !== campoBusqueda || e.target !== tasas_seleccion) { 
-      sugerenciasBox.style.display = 'none';
+    if (e.target !== CAMPO_BUSQUEDA || e.target !== TASAS_SELECCION) { 
+      SUGERENCIAS_BOX.style.display = 'none';
     }
     mostrarResultados();
   };
@@ -85,14 +90,14 @@ principal.onclick = function(e) {
 //Funcion para ejecutar la conversion de tasas y mouestra los resultados
 function mostrarResultados(){
   
-  const VALUE_CAMPO_BUSQUEDA = campoBusqueda.value.replace(EXPRESION_REGULAR,"");
-  const TASA_CAMPO_BUSQUEDA  = tasas_seleccion.value;
+  const VALUE_CAMPO_BUSQUEDA = CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
+  const TASA_CAMPO_BUSQUEDA  = TASAS_SELECCION.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
 
   //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
-  if (Number(campoBusqueda.value.replace(EXPRESION_REGULAR,""))>0) {
+  if (Number(CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,""))>0) {
     resultado.style.display="block";
-    campoBusqueda.value = VALUE_CAMPO_BUSQUEDA + "%";
+    CAMPO_BUSQUEDA.value = VALUE_CAMPO_BUSQUEDA + "%";
   }else{
     resultado.style.display="none";
   }
@@ -129,7 +134,7 @@ function mostrarResultados(){
     
     //Asigna titulos a la pagina
     TITULO_SECCION_RESULTADO.textContent=titulosSeccionesResultados[i];   //Titulo de esta seccion
-    TITULO_SECCION_RESULTADO.onclick = function() {showHideSectionResultados(SECCION_RESULTADOS)};
+    TITULO_SECCION_RESULTADO.onclick = function() {showHideDOMElement(SECCION_RESULTADOS)};
 
     sectionRateOutput = titulosSeccionesResultados[i].toLowerCase();
     sectionRateOutputAncicipated = sectionRateOutput.includes(ANTICIPATED);
@@ -198,7 +203,7 @@ function infoRateInput(value,tasa,anticipated) {
   
 }
 
-function copyToClipboard(value) {
+function copyToClipboard(value,valueCustom,message) {
   //Copia value en textbox (Portapapeles) 
   Portapapeles.value=value;
   Portapapeles.select();
@@ -206,7 +211,13 @@ function copyToClipboard(value) {
   Portapapeles.disabled = true;
   Portapapeles.disabled = false;
 
-  popAlerta(pop,`<em>${value}</em>`+ " Se ha copiado",1000,"#1B998B");
+  //Verifica si se personaliza o no el valor a mostrar
+  valueCustom ? value=valueCustom : value=value;
+
+  //Si hay mensaje se muestra, de lo contrario se pone el por defecto
+  message? message : message = "Se ha copiado";
+
+  popAlerta(pop,`<em>${value}</em>`+ ` ${message}`,1000,"#1B998B");
 
 }
 
@@ -214,25 +225,64 @@ function copyToClipboard(value) {
 document.addEventListener("keyup", ({key}) => {
   //Escribe la linea al presionar enter (O aceptar en moviles).
   if (key === "Enter") {
-    sugerenciasBox.style.display = 'none';
+    SUGERENCIAS_BOX.style.display = 'none';
     mostrarResultados();
 
     //Verifica si es una pantalla tactil para desnfocar campobusqueta y quitar el teclado virtual.
     let esPantallaTactil = 'ontouchstart' in document.documentElement;
     if(esPantallaTactil){
-      campoBusqueda.blur();
+      CAMPO_BUSQUEDA.blur();
     }
   }
 })
 
-//
+//Compartir URL
+window.share = function share(){
+  //Comparte valor de la tasa ingesada, tipo y si es anticipada.
+  let shareUrl  = shareRateConvertion(CAMPO_BUSQUEDA.value,TASAS_SELECCION.value,anticipadaCheck.checked);
+  copyToClipboard(shareUrl,"Enlace copiado"," ");
+}
+
+//Guardado
+window.showSaved = function showSaved() {
+  FLOAT_WINDOWS_TITLE.textContent = "Guardado";
+  FLOAT_WINDOWS_CONTENT.innerHTML = "No se ha guardado conversiones";
+  showHideDOMElement(FLOAT_WINDOWS);
+}
+//Historial
+window.showHistory = function showHistory() {
+  FLOAT_WINDOWS_TITLE.textContent = "Historial";
+  FLOAT_WINDOWS_CONTENT.innerHTML = "No hay historial";
+  showHideDOMElement(FLOAT_WINDOWS);
+}
+
+//Configuración
+window.showPreferences = function showPreferences() {
+  FLOAT_WINDOWS_TITLE.textContent = "Configuración";
+  FLOAT_WINDOWS_CONTENT.innerHTML = "No hay opciones disponibles";
+  showHideDOMElement(FLOAT_WINDOWS);
+}
+
+//Filtro de resultados
+const FILTER_RESULT = document.getElementById("filter_results");
+
+window.showFilter = function showFilter() {
+  showHideDOMElement(FILTER_RESULT);
+}
+showFilter();    //Oculta el filtro de resulatados al iniciar la app
+
+//Agregar funcionalidad a botones del DOM
 document.getElementById("resultado_config_apply").onclick=function() {mostrarResultados()};
+document.getElementById("close_float_windows").onclick=function() {showHideDOMElement(FLOAT_WINDOWS)};
 
 
 
 
 //EJECUCION INICIAL
+  //Muestra una pop Alerta al iniciar.
 popAlerta(pop,`Rateconv 1.1 : Nueva Ui, nuevas funciones <button> Ver novedades</button>`,10000,"#342E37");
+  //Oculta la ventan flotante por defecto.
+showHideDOMElement(FLOAT_WINDOWS);
 
 /*Verifica si hay valores en la URL
 Obtener valores de variables en la Url " ?rateValue=1.2%&rateType=Mensual&rateAnticipated=true " */
@@ -241,11 +291,12 @@ let URL_rateType = getVariableFromURL('rateType');
 let URL_rateAnticipated = getVariableFromURL('rateAnticipated')
 
 if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) {
-  campoBusqueda.value = URL_rateValue;
-  tasas_seleccion.value = URL_rateType;
+  CAMPO_BUSQUEDA.value = URL_rateValue;
+  TASAS_SELECCION.value = URL_rateType;
   URL_rateAnticipated=="true" ? anticipadaCheck.checked = true : anticipadaCheck.checked =false;
   mostrarResultados();
   console.log(`Se han cargado los valores de la URL ... ${URL_rateValue} ... ${URL_rateType}  ...  ${URL_rateAnticipated}`)
 }else(
   console.log("Sin valores en URL")
 )
+

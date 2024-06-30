@@ -17,15 +17,16 @@ if ('serviceWorker' in navigator) {
           return cache.addAll([
             '/',
             '/css/style.css',                //Cs
-            'main.js',                       //Js
-            'class/Tasa.js',
-            'modules/DOMButtons.js',
-            'modules/DOMControler.js',
-            'modules/getData.js',
-            'modules/rateConverter.js',
+            '/main.js',                       //Js
+            '/class/Tasa.js',
+            '/modules/DOMButtons.js',
+            '/modules/DOMControler.js',
+            '/modules/getData.js',
+            '/modules/rateConverter.js',
             '/data/tasas.json',              //Data
-            'icons/Logo_with_name.svg',      //Icons
-            'icons/Logo.svg',
+            '/icons/Logo_with_name.svg',      //Icons
+            '/icons/Logo.svg',
+            '/modules/shareURL.js',
             // Add other assets to cache here
           ]);
         })

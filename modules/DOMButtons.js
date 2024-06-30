@@ -4,7 +4,7 @@ export function limpiar(){
     campoBusqueda.focus();
     }
     
-export function showHideSectionResultados(DOMElement) {
+export function showHideDOMElement(DOMElement) {
     console.log(DOMElement)
     if (DOMElement.style.display=="none") {
         DOMElement.style.display="block";

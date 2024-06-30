@@ -71,7 +71,12 @@ article{
   width: 90%;
   max-width: 500px;
 }
-
+h3{
+  margin: 0;
+}
+p{
+  margin: 0;
+}
 /* Enfasis*/
 #pop em{
   background-color: rgba(0, 0, 0, 0.25);
@@ -303,6 +308,22 @@ button:hover{
   padding:2px 10px;
 }
 
+/* Ventana flotante */
+#float_windows{
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  border: 1px solid var(--Focus_color);
+  width: 80%;
+  height: fit-content;
+  background-color: var(--Platium);
+  border-radius: var(--Standard_border_radius);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: var(--Standard-padding);
+}
+#float_windows_content{
+  padding: var(--Standard-padding);
+}
 
 
 /*Resultados*/
@@ -315,6 +336,7 @@ button:hover{
 }
 #resultado_info{
   text-align: justify;
+  margin: var(--Standard-padding) 0;
 }
 .titulo_resultadoTasasConvertidas,.titulo_resultadoTasasConvertidas:hover{
   background-color: var(--Platium);
@@ -350,6 +372,20 @@ button:hover{
 #resultado section button{
   width: 100%;
 }
+#filter_results{
+  position: absolute;
+  border: 1px solid var(--Focus_color);
+  height: fit-content;
+  background-color: var(--Platium);
+  border-radius: var(--Standard_border_radius);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: var(--Standard-padding);
+}
+#filter_results :is(ul,li) {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 
 /*Footer*/
@@ -372,6 +408,9 @@ footer{
 }
 
 /*CHECKBOX Anticpada*/
+label{
+  padding: 0 !important;
+}
 .cw_check{
   display: none;
 }
@@ -395,11 +434,11 @@ footer{
   border-radius: 100px;
   transition: 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-#anticipadaCheck:checked~ .cw_label{
+.cw_check:checked~ .cw_label{
   background-color: var(--Focus_color);
   border-color: var(--Platium);
 }
-#anticipadaCheck:checked~ .cw_label::after{
+.cw_check:checked~ .cw_label::after{
   background: var(--Platium);
   transform: translateY(3px) translateX(15px);
 }

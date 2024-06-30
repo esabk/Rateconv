@@ -22,8 +22,8 @@
         <div class="button_container">
             <button class="button_selected">Conversor</button>
             <button class="button_disabled">Tablas</button>
-            <button >Guardado</button>
-            <button >Historial</button>
+            <button onclick="showSaved()">Guardado</button>
+            <button onclick="showHistory()">Historial</button>
         </div>
 
     </div>
@@ -78,7 +78,7 @@
             <h2 id="resultado_titulo"></h2>
             <div class="config_container">
                 <button>Guardar</button>
-                <button>Compartir</button>
+                <button onclick="share()">Compartir</button>
             </div>
         </div>
         <p id="resultado_info"></p>
@@ -87,12 +87,53 @@
         <div class="elements_container">
 
             <div class="config_containe">
-                <a >Mostar</a>
-                <button >Todos</button>
+                <button onclick="showFilter()" >Filtro : Ninguno</button>
+                <div id="filter_results">
+                    <ul>
+                        
+                        <li ><label id="anticipada_label">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="cw_check" id="ea_Check" value="" />
+                                <label class="cw_label" for="ea_Check"></label>
+                            </div>
+                            Tasa Efectiva
+                        </label></li>
+                        <li ><label id="anticipada_label">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="cw_check" id="tp_check" value="" />
+                                <label class="cw_label" for="tp_check"></label>
+                            </div>
+                            Tasa periodicas
+                        </label></li>
+                        <li ><label id="anticipada_label">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="cw_check" id="tpa_check" value="" />
+                                <label class="cw_label" for="tpa_check"></label>
+                            </div>
+                            Tasa  periodicas anticipadas
+                        </label></li>
+                        <li ><label id="anticipada_label">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="cw_check" id="tn_check" value="" />
+                                <label class="cw_label" for="tn_check"></label>
+                            </div>
+                            Tasa Nominales
+                        </label></li>
+                        <li ><label id="anticipada_label">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="cw_check" id="tna_check" value="" />
+                                <label class="cw_label" for="tna_check"></label>
+                            </div>
+                            Tasa Nominales Anticipadas
+                        </label></li>
+                    </ul>
+                    <br>
+                    <button onclick="showFilter()" class="button_primary">Aplicar</button>
+                </div>
             </div>
 
             <div class="config_container">
-                <a>Decimales  </a>
+                <p>Decimales  </p>
                 <input type="number" id="decimal_config" min="0" max="10" value="2"></input>
             </div>
             
@@ -130,6 +171,17 @@
         
     </section>
 
+    <section id="float_windows">
+        <div class="elements_container">
+            <h3 id="float_windows_title">Rateconv</h3>
+            <button id="close_float_windows" class="button_primary">Cerrar</button>
+        </div>
+        <div id="float_windows_content">
+            Cargando app... Espera por favor.
+        </div>
+
+    </section>
+
 
     <script type="module" src="/main.js"></script>
 
@@ -139,7 +191,7 @@
     <p id="pop">Hola, empieza gratis, rápido y sin anuncios.</p>
     <div class="footer_links">
         <div>
-            <button >Configuración</button>
+            <button onclick="showPreferences()" >Configuración</button>
             <button href="./pages/ayuda.html">Ayuda</button>
             <button href="">Privacidad</button>
             <button href="./pages/Acerca_de.html">Acerca de</button>
