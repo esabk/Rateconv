@@ -9,7 +9,7 @@ export function getVariableFromURL(UrlVariable){
 //Esta función crea una URL con la conversión actual
 export function shareRateConvertion(rateValue,rateType,rateAnticipated) {
 
-    const SHARE_URL = new URL(window.location.href);
+    const SHARE_URL = new URL(window.location.href.split('?')[0]);
     SHARE_URL.searchParams.append('rateValue',rateValue);
     SHARE_URL.searchParams.append('rateType', rateType);
     SHARE_URL.searchParams.append('rateAnticipated', rateAnticipated);

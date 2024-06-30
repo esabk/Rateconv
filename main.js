@@ -26,8 +26,8 @@ navigator.serviceWorker.register('sw.js');
  const FLOAT_WINDOWS_CONTENT = document.getElementById("float_windows_content");
 
 //DOM Elementos resultado
-  const resultado = document.getElementById("resultado");
-  const resultadoTasasConvertidas=document.getElementById("resultadoTasasConvertidas");
+  const RESULTADO = document.getElementById("resultado");
+  const RESULTADO_TASAS_CONVERTIDAS=document.getElementById("resultadoTasasConvertidas");
 
 //DOM Pop Alerta
 const pop=document.getElementById("pop");
@@ -96,10 +96,10 @@ function mostrarResultados(){
 
   //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
   if (Number(CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,""))>0) {
-    resultado.style.display="block";
+    RESULTADO.style.display="block";
     CAMPO_BUSQUEDA.value = VALUE_CAMPO_BUSQUEDA + "%";
   }else{
-    resultado.style.display="none";
+    RESULTADO.style.display="none";
   }
   //ID del boton (titulo) y ul (resultados) de cada seccion sin el ultimo numero
   const TITULO_SeccionesResultados_id ="titulo_seccion_resultadoTasasConvertidas_";
@@ -247,20 +247,30 @@ window.share = function share(){
 window.showSaved = function showSaved() {
   FLOAT_WINDOWS_TITLE.textContent = "Guardado";
   FLOAT_WINDOWS_CONTENT.innerHTML = "No se ha guardado conversiones";
-  showHideDOMElement(FLOAT_WINDOWS);
+  floatWindowsUse()
 }
 //Historial
 window.showHistory = function showHistory() {
   FLOAT_WINDOWS_TITLE.textContent = "Historial";
   FLOAT_WINDOWS_CONTENT.innerHTML = "No hay historial";
+  
+  floatWindowsUse()
+}
+
+//Desactivar elementos detras de la ventana flotante
+function floatWindowsUse() {
   showHideDOMElement(FLOAT_WINDOWS);
+  PRINCIPAL.classList.toggle("elementDisable");
+  RESULTADO.classList.toggle("elementDisable");
+  document.getElementById("header_tittle").classList.toggle("elementDisable");
+  document.getElementById("config_button").classList.toggle("elementDisable");
 }
 
 //Configuración
 window.showPreferences = function showPreferences() {
   FLOAT_WINDOWS_TITLE.textContent = "Configuración";
   FLOAT_WINDOWS_CONTENT.innerHTML = "No hay opciones disponibles";
-  showHideDOMElement(FLOAT_WINDOWS);
+  floatWindowsUse()
 }
 
 //Filtro de resultados
@@ -272,8 +282,8 @@ window.showFilter = function showFilter() {
 showFilter();    //Oculta el filtro de resulatados al iniciar la app
 
 //Agregar funcionalidad a botones del DOM
-document.getElementById("resultado_config_apply").onclick=function() {mostrarResultados()};
-document.getElementById("close_float_windows").onclick=function() {showHideDOMElement(FLOAT_WINDOWS)};
+document.getElementById("resultado_config_apply").onclick=function() { mostrarResultados()};
+document.getElementById("close_float_windows").onclick=function() { floatWindowsUse() };
 
 
 

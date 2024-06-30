@@ -324,6 +324,11 @@ button:hover{
 #float_windows_content{
   padding: var(--Standard-padding);
 }
+.elementDisable{
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.25;
+}
 
 
 /*Resultados*/
