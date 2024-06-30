@@ -4,6 +4,7 @@ import { newElement,popAlerta,sugerencias} from "/modules/DOMControler.js";
 import { rateConverter} from "/modules/rateConverter.js";
 import { limpiar,showHideSectionResultados } from "/modules/DOMButtons.js";
 import { Tasa } from "/class/Tasa.js";
+import {getVariableFromURL} from "/modules/shareURL.js";
 
 //Registrar Service Worker
 navigator.serviceWorker.register('sw.js');
@@ -11,6 +12,7 @@ navigator.serviceWorker.register('sw.js');
   window.addEventListener('online', () => {
     console.log('¡Conexión restaurada!');
   });
+
 // DOM elementos cuadro de busqueda
   const principal = document.getElementById('principal');
   const campoBusqueda = document.getElementById('campoBusqueda');
@@ -223,9 +225,27 @@ document.addEventListener("keyup", ({key}) => {
   }
 })
 
+//
 document.getElementById("resultado_config_apply").onclick=function() {mostrarResultados()};
+
 
 
 
 //EJECUCION INICIAL
 popAlerta(pop,`Rateconv 1.1 : Nueva Ui, nuevas funciones <button> Ver novedades</button>`,10000,"#342E37");
+
+/*Verifica si hay valores en la URL
+Obtener valores de variables en la Url " ?rateValue=1.2%&rateType=Mensual&rateAnticipated=true " */
+let URL_rateValue  = getVariableFromURL('rateValue');
+let URL_rateType = getVariableFromURL('rateType');
+let URL_rateAnticipated = getVariableFromURL('rateAnticipated')
+
+if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) {
+  campoBusqueda.value = URL_rateValue;
+  tasas_seleccion.value = URL_rateType;
+  URL_rateAnticipated=="true" ? anticipadaCheck.checked = true : anticipadaCheck.checked =false;
+  mostrarResultados();
+  console.log(`Se han cargado los valores de la URL ... ${URL_rateValue} ... ${URL_rateType}  ...  ${URL_rateAnticipated}`)
+}else(
+  console.log("Sin valores en URL")
+)
