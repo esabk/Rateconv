@@ -5,7 +5,12 @@ import { rateConverter} from "/modules/rateConverter.js";
 import { limpiar,showHideSectionResultados } from "/modules/DOMButtons.js";
 import { Tasa } from "/class/Tasa.js";
 
-
+//Registrar Service Worker
+navigator.serviceWorker.register('sw.js');
+  //Avisa si ya hay conexión a internet
+  window.addEventListener('online', () => {
+    console.log('¡Conexión restaurada!');
+  });
 // DOM elementos cuadro de busqueda
   const principal = document.getElementById('principal');
   const campoBusqueda = document.getElementById('campoBusqueda');
