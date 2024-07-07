@@ -181,10 +181,20 @@ button:hover{
   background-color: var(--Contrast_color);
   color: var(--Primary_Acc_color);
 }
-.button_deco_link{
+.button_deco_link::after{
+  content: "»";
+  position: relative;
   display: inline-block;
   justify-self: center;
   transform: translateY(-5px) rotate(-30deg);
+}
+.button_deco_link:hover:after{
+  content: "→";
+  color: var(--Primary_Acc_color);
+  position: relative;
+  display: inline-block;
+  justify-self: center;
+  transform: translateY(-5px) rotate(-390deg);
 }
 
 
