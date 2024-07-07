@@ -181,7 +181,7 @@ button:hover{
   background-color: var(--Contrast_color);
   color: var(--Primary_Acc_color);
 }
-.button_deco_link::after{
+.button_deco_link::after{     /*Botones con enlace*/
   content: "»";
   position: relative;
   display: inline-block;
@@ -196,7 +196,25 @@ button:hover{
   justify-self: center;
   transform: translateY(-5px) rotate(-390deg);
 }
-
+.button_list{
+  width: 225px!important;
+  text-align: left;
+  font-size: 1rem;
+}
+.button_list::after{     /*Botones similar a lsita*/
+  content: "▶";
+  position: relative;
+  display: inline-block;
+  justify-self: right;
+  transform: translateX(20px) rotate(-30deg);
+}
+.button_list:hover::after{     /*Botones similar a lsita*/
+  content: "▶";
+  position: relative;
+  display: inline-block;
+  justify-self: right;
+  transform: translateX(90px) rotate(-30deg);
+}
 
 /*Campo de ingresar tasa*/
   #principal{
