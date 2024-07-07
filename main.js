@@ -88,7 +88,7 @@ PRINCIPAL.onclick = function(e) {
   };
 
 //Funcion para ejecutar la conversion de tasas y mouestra los resultados
-function mostrarResultados(){
+window.mostrarResultados = function mostrarResultados(){
   
   const VALUE_CAMPO_BUSQUEDA = CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
   const TASA_CAMPO_BUSQUEDA  = TASAS_SELECCION.value;
@@ -203,6 +203,9 @@ function infoRateInput(value,tasa,anticipated) {
   
 }
 
+// Value es el valor que se copia al portapapeles
+// ValueCustom en lugar de mostarr el valor copiado, muestras un mensaje personalizado.
+// message es elmensaje que se colocal al lado del valor.
 function copyToClipboard(value,valueCustom,message) {
   //Copia value en textbox (Portapapeles) 
   Portapapeles.value=value;
@@ -262,6 +265,7 @@ function floatWindowsUse() {
   showHideDOMElement(FLOAT_WINDOWS);
   PRINCIPAL.classList.toggle("elementDisable");
   RESULTADO.classList.toggle("elementDisable");
+  document.getElementById("nombre").classList.toggle("elementDisable");
   document.getElementById("header_tittle").classList.toggle("elementDisable");
   document.getElementById("config_button").classList.toggle("elementDisable");
 }
@@ -282,7 +286,6 @@ window.showFilter = function showFilter() {
 showFilter();    //Oculta el filtro de resulatados al iniciar la app
 
 //Agregar funcionalidad a botones del DOM
-document.getElementById("resultado_config_apply").onclick=function() { mostrarResultados()};
 document.getElementById("close_float_windows").onclick=function() { floatWindowsUse() };
 
 

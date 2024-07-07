@@ -44,16 +44,38 @@
             </div>
             
             <div class="elements_container">
+                <div >
+                    <button onclick="showFilter()" >Efectiva Anual</button>
+                    <div id="filter_results">
+                        <div class="config_container">
+                            <button id="resultado_config_apply" class="button_border" >Todas</button>
+                            <button id="resultado_config_apply" class="button_border" >Más usadas</button>
+                            <button id="resultado_config_apply" class="button_border" >Periodicas</button>
+                            <button id="resultado_config_apply" class="button_border" >Nominales</button>
+                        </div> 
+                        <ul>
+                            <li >Efectiva Anual</li>
+                            <li >Mes</li>
+                            <li >Trimestre</li>
+                            <li >Semestre</li>
+                            <li >Diaria</li>
+                            <li >Mensual</li>
+                            <li >Trimestral</li>
+                            <li >Semestral</li>
+                        </ul>
+                    </div>
+                </div>
                 <select name="tasas_selecion" id="tasas_selecion">
                     <option value="ea">Efectiva anual</option>
                     <option value="mv">Mes</option>
                     <option value="tv">Trimestre</option>
                     <option value="sv">Semestre</option>
+                    <option value="diaria">Diaria</option>
                     <option value="mensual">Mensual</option>
                     <option value="trimestral">Trimestral</option>
                     <option value="semestral">Semestral</option>
                 </select>
-                <div>
+                <div class="elements_container">
                     <label id="anticipada_label">
                         <div class="checkbox-wrapper">
                             <input type="checkbox" class="cw_check" id="anticipadaCheck" value="" />
@@ -84,60 +106,25 @@
         <p id="resultado_info"></p>
         
         <br>
+        
+        <div class="elements_container">
+            <div class="config_container">
+                <p>Mostar: </p>
+                <button id="" class="button_border" >Todas</button>
+                <button id="" class="button_border" >Más usadas</button>
+                <button id="" class="button_border" >Periodicas</button>
+                <button id="" class="button_border" >Nominales</button>
+            </div>    
+            
+        </div>
+        <br>
         <div class="elements_container">
 
-            <div class="config_containe">
-                <button onclick="showFilter()" >Filtro : Ninguno</button>
-                <div id="filter_results">
-                    <ul>
-                        
-                        <li ><label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="ea_Check" value="" />
-                                <label class="cw_label" for="ea_Check"></label>
-                            </div>
-                            Tasa Efectiva
-                        </label></li>
-                        <li ><label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="tp_check" value="" />
-                                <label class="cw_label" for="tp_check"></label>
-                            </div>
-                            Tasa periodicas
-                        </label></li>
-                        <li ><label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="tpa_check" value="" />
-                                <label class="cw_label" for="tpa_check"></label>
-                            </div>
-                            Tasa  periodicas anticipadas
-                        </label></li>
-                        <li ><label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="tn_check" value="" />
-                                <label class="cw_label" for="tn_check"></label>
-                            </div>
-                            Tasa Nominales
-                        </label></li>
-                        <li ><label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="tna_check" value="" />
-                                <label class="cw_label" for="tna_check"></label>
-                            </div>
-                            Tasa Nominales Anticipadas
-                        </label></li>
-                    </ul>
-                    <br>
-                    <button onclick="showFilter()" class="button_primary">Aplicar</button>
-                </div>
-            </div>
-
             <div class="config_container">
-                <p>Decimales  </p>
+                <p>Decimales del resultado </p>
                 <input type="number" id="decimal_config" min="0" max="10" value="2"></input>
+                <button onclick="mostrarResultados()" class="button_primary" >Aplicar</button>
             </div>
-            
-            <button id="resultado_config_apply" class="button_primary" >Aplicar</button>
         </div>
         <br>
 
@@ -184,6 +171,7 @@
 
 
     <script type="module" src="/main.js"></script>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aee63b3b0f22405e94eeb14ad2d0d317"}'></script><!-- End Cloudflare Web Analytics -->
 
 
 </body>
@@ -192,9 +180,9 @@
     <div class="footer_links">
         <div>
             <button id="config_button" onclick="showPreferences()" >Configuración</button>
-            <button href="./pages/ayuda.html">Ayuda</button>
-            <button href="">Privacidad</button>
-            <button href="./pages/Acerca_de.html">Acerca de</button>
+            <button href="./pages/ayuda.html">Ayuda <div class="button_deco_link">»</div></button>
+            <button href="">Privacidad <div class="button_deco_link">»</div></button>
+            <button href="./pages/Acerca_de.html">Acerca de <div class="button_deco_link">»</div></button>
         </div>
         <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
     </div>

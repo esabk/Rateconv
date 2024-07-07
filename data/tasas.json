@@ -24,6 +24,12 @@
       "periodos": 2
     },
     {
+      "nombre": "Diaria",
+      "definicion": "Se refiere al porcentaje de dinero que se debe pagar sobre el monto total de un préstamo solicitado y recibido. Esta tasa es comúnmente utilizada en operaciones financieras como préstamos y rige para los depósitos que las personas hacen en instituciones financieras como los bancos.",
+      "tipo": "periodicas",
+      "periodos": 360
+    },
+    {
       "nombre": "Mensual",
       "definicion": "Se refiere al porcentaje de dinero que se debe pagar sobre el monto total de un préstamo solicitado y recibido. Esta tasa es comúnmente utilizada en operaciones financieras como préstamos y rige para los depósitos que las personas hacen en instituciones financieras como los bancos.",
       "tipo": "periodicas",

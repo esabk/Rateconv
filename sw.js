@@ -23,10 +23,18 @@ if ('serviceWorker' in navigator) {
             '/modules/DOMControler.js',
             '/modules/getData.js',
             '/modules/rateConverter.js',
+            '/modules/shareURL.js',
             '/data/tasas.json',              //Data
             '/icons/Logo_with_name.svg',      //Icons
             '/icons/Logo.svg',
-            '/modules/shareURL.js',
+            'android-chrome-192x192.png',
+            'android-chrome-512x512.png',
+            'apple-touch-icon.png',
+            'browserconfig.xml',
+            'favicon-16x16.png',
+            'favicon-32x32.png',
+            'favicon.ico',
+            'site.webmanifest',
             // Add other assets to cache here
           ]);
         })
