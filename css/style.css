@@ -196,24 +196,37 @@ button:hover{
   justify-self: center;
   transform: translateY(-5px) rotate(-390deg);
 }
-.button_list{
+.button_list{   /*Botones similar a lsita*/
   width: 225px!important;
   text-align: left;
   font-size: 1rem;
 }
-.button_list::after{     /*Botones similar a lsita*/
+.button_list::after{     
   content: "▶";
   position: relative;
   display: inline-block;
   justify-self: right;
   transform: translateX(20px) rotate(-30deg);
 }
-.button_list:hover::after{     /*Botones similar a lsita*/
+.button_list:hover::after{     
   content: "▶";
   position: relative;
   display: inline-block;
   justify-self: right;
-  transform: translateX(90px) rotate(-30deg);
+  transform: translateX(120px) rotate(-30deg);
+}
+.button_list_open{   /*Cambia icono miestras se abre la lista */
+  width: 225px!important;
+  text-align: left;
+  font-size: 1rem;
+  background-color: var(--Focus_color);
+}
+.button_list_open::after{ 
+  content: "▶";
+  position: relative;
+  display: inline-block;
+  justify-self: right;
+  transform: translateX(120px) rotate(-90deg);
 }
 
 /*Campo de ingresar tasa*/

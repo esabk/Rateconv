@@ -94,6 +94,8 @@ window.mostrarResultados = function mostrarResultados(){
   const TASA_CAMPO_BUSQUEDA  = TASAS_SELECCION.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
 
+  document.getElementById("button_list_rates_types").textContent = TASAS_SELECCION.value;
+
   //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
   if (Number(CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,""))>0) {
     RESULTADO.style.display="block";
@@ -280,10 +282,14 @@ window.showPreferences = function showPreferences() {
 //Filtro de resultados
 const FILTER_RESULT = document.getElementById("filter_results");
 
-window.showFilter = function showFilter() {
+//Mostrar tipos de tasas
+window.showRateTypes = function showRateTypes() {
   showHideDOMElement(FILTER_RESULT);
+  document.getElementById("button_list_rates_types").classList.toggle("button_list_open");
+  document.getElementById("button_list_rates_types").classList.toggle("button_list");
 }
-showFilter();    //Oculta el filtro de resulatados al iniciar la app
+
+showRateTypes();    //Oculta el filtro de resulatados al iniciar la app
 
 //Agregar funcionalidad a botones del DOM
 document.getElementById("close_float_windows").onclick=function() { floatWindowsUse() };
