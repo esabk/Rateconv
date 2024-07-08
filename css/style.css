@@ -58,8 +58,10 @@ header{
 }
 
 /*General tags */
-body{
+*{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -197,36 +199,39 @@ button:hover{
   transform: translateY(-5px) rotate(-390deg);
 }
 .button_list{   /*Botones similar a lsita*/
+  border: 1px solid var(--Contrast_color);
   width: 225px!important;
   text-align: left;
   font-size: 1rem;
+  padding: 1px var(--Standard-padding);
 }
 .button_list::after{     
   content: "▶";
   position: relative;
   display: inline-block;
   justify-self: right;
-  transform: translateX(20px) rotate(-30deg);
+  transform:translateY(-2px) translateX(120px) rotate(-30deg);
 }
 .button_list:hover::after{     
   content: "▶";
   position: relative;
   display: inline-block;
   justify-self: right;
-  transform: translateX(120px) rotate(-30deg);
 }
 .button_list_open{   /*Cambia icono miestras se abre la lista */
   width: 225px!important;
   text-align: left;
   font-size: 1rem;
   background-color: var(--Focus_color);
+  font-size: 1rem;
+  padding: 1px var(--Standard-padding);
 }
 .button_list_open::after{ 
   content: "▶";
   position: relative;
   display: inline-block;
   justify-self: right;
-  transform: translateX(120px) rotate(-90deg);
+  transform:translateY(0px) translateX(120px) rotate(-90deg);
 }
 
 /*Campo de ingresar tasa*/
@@ -408,7 +413,8 @@ button:hover{
   
 }
 .li_resultado{
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
   justify-content: space-around;
   align-items: center;
   margin-bottom: var(--Standard-padding);
@@ -419,12 +425,12 @@ button:hover{
   margin: 0;
 }
 .value_resultado{
-  width: fit-content !important;
+  width: 80px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 8px var(--Mid-padding);
   letter-spacing: 0.5px;
-}
-.btn_copiar_tasa_convertida{
-  width: fit-content !important;
 }
 
 
@@ -440,6 +446,7 @@ button:hover{
   border-radius: var(--Standard_border_radius);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: var(--Standard-padding);
+  transform: translateY(5px);
 }
 #filter_results :is(ul,li) {
   list-style: none;
