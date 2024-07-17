@@ -1,6 +1,8 @@
 :root{
-  --Focus_color:#ff8c69 ;
+  --Focus_color:#ff8c69;
+  --Focus_color_shadow:#ffa68b;
   --Primary_Acc_color:#EFF2EF;
+  --Primary_Acc_color_shadow:#e4e4e4;
   --Primary_Acc_top_color:#ffffff;
   --Not_Ok_color:#FF5A5F;
   --Primary_color:#f9f9f9;
@@ -14,6 +16,8 @@
 }
 *{
   transition: all 100ms ease-in;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 
@@ -55,6 +59,7 @@ header{
   padding: var(--Mid-padding) var(--Standard-padding);
   margin-block:0;
   margin-bottom: var(--Mid-padding);
+  border-radius: var(--Mid-border_radius);
 }
 
 /*General tags */
@@ -140,8 +145,8 @@ button{
   height: fit-content;
 }
 button:hover{
-  background-color: var(--Contrast_color);
-  color:var(--Primary_color);
+  background-color: var(--Primary_Acc_color_shadow);
+  color: var(--Contrast_color);
   cursor: pointer;
 }
 
@@ -192,46 +197,39 @@ button:hover{
 }
 .button_deco_link:hover:after{
   content: "→";
-  color: var(--Primary_Acc_color);
   position: relative;
   display: inline-block;
   justify-self: center;
   transform: translateY(-5px) rotate(-390deg);
 }
-.button_list{   /*Botones similar a lsita*/
-  border: 1px solid var(--Contrast_color);
+.button_list{   /*Botones similar a lista*/
+  background-color: var(--Primary_color);
   width: 225px!important;
   text-align: left;
   font-size: 1rem;
   padding: 1px var(--Standard-padding);
+}
+.button_list:hover{
+  background-color: var(--Primary_Acc_color_shadow);
+  color: var(--Contrast_color);
 }
 .button_list::after{     
   content: "▶";
   position: relative;
   display: inline-block;
-  justify-self: right;
-  transform:translateY(-2px) translateX(120px) rotate(-30deg);
+  float: right;
+  transform:translateY(-2px) rotate(-30deg);
+  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-.button_list:hover::after{     
-  content: "▶";
-  position: relative;
-  display: inline-block;
-  justify-self: right;
-}
-.button_list_open{   /*Cambia icono miestras se abre la lista */
-  width: 225px!important;
-  text-align: left;
-  font-size: 1rem;
+.button_list.active{
   background-color: var(--Focus_color);
-  font-size: 1rem;
-  padding: 1px var(--Standard-padding);
+  color: var(--Contrast_color);
 }
-.button_list_open::after{ 
-  content: "▶";
-  position: relative;
-  display: inline-block;
-  justify-self: right;
-  transform:translateY(0px) translateX(120px) rotate(-90deg);
+.button_list.active::after{
+  transform:translateY(0px) rotate(-90deg);
+}
+.button_list.active:hover{
+  background-color: var(--Focus_color_shadow);
 }
 
 /*Campo de ingresar tasa*/
@@ -399,18 +397,43 @@ button:hover{
   min-width: 128px;
   margin-bottom: 2rem;
 }
+
 #resultado_info{
   text-align: justify;
   margin: var(--Standard-padding) 0;
 }
-.titulo_resultadoTasasConvertidas,.titulo_resultadoTasasConvertidas:hover{
+.resultados_resultadoTasasConvertidas{
+  padding-inline: var(--Standard-padding);
+}
+#resultadoTasasConvertidas{
   background-color: var(--Primary_color);
+}
+.seccion_resultadoTasasConvertidas{
+  margin-top: 1rem;
+}
+.titulo_resultadoTasasConvertidas{
+  background-color: var(--Primary_Acc_color);
   color: var(--Contrast_color);
   font-size: 1.2rem;
   text-align: left;
-  border-bottom: 1px solid gray;
-  border-radius: 0;
-  
+  font-weight:600;
+}
+
+
+.titulo_resultadoTasasConvertidas::after{
+ content: "-";
+ font-size: 1.5rem;
+ float: right;
+ background-color: var(--Primary_Acc_color);
+ width: 32px;
+ text-align: center;
+ border-radius: var(--Mid-border_radius);
+ transform: rotate(0deg);
+ transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.titulo_resultadoTasasConvertidas.active::after{
+  content: "+";
+  transform: rotate(360deg);
 }
 .li_resultado{
   display: grid;

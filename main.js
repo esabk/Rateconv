@@ -108,6 +108,10 @@ window.mostrarResultados = function mostrarResultados(){
   const RESULTADO_SeccionesResultados_id ="resultados_seccion_resultadoTasasConvertidas_";
   const ANTICIPATED ="anticipada";
 
+  //Habilita el boton de guardar
+  document.getElementById("save").classList.remove("elementDisable");
+  document.getElementById("save").textContent="Guardar";
+
   // 1. Muestra la definicion de la tasa ingresada
   infoRateInput(VALUE_CAMPO_BUSQUEDA,TASA_CAMPO_BUSQUEDA,ANTICIPATED_CAMPO_BUSQUEDA);
 
@@ -136,7 +140,7 @@ window.mostrarResultados = function mostrarResultados(){
     
     //Asigna titulos a la pagina
     TITULO_SECCION_RESULTADO.textContent=titulosSeccionesResultados[i];   //Titulo de esta seccion
-    TITULO_SECCION_RESULTADO.onclick = function() {showHideDOMElement(SECCION_RESULTADOS)};
+    TITULO_SECCION_RESULTADO.onclick = function() {showHideDOMElement(SECCION_RESULTADOS); toggleActive(TITULO_SECCION_RESULTADO)};
 
     sectionRateOutput = titulosSeccionesResultados[i].toLowerCase();
     sectionRateOutputAncicipated = sectionRateOutput.includes(ANTICIPATED);
@@ -254,6 +258,14 @@ window.showSaved = function showSaved() {
   FLOAT_WINDOWS_CONTENT.innerHTML = "No se ha guardado conversiones";
   floatWindowsUse()
 }
+
+//Guardar
+window.save =function save() {
+  const SAVE = document.getElementById("save");
+  SAVE.classList.toggle("elementDisable");
+  SAVE.textContent="Guardado";
+  
+}
 //Historial
 window.showHistory = function showHistory() {
   FLOAT_WINDOWS_TITLE.textContent = "Historial";
@@ -285,10 +297,12 @@ const FILTER_RESULT = document.getElementById("filter_results");
 //Mostrar tipos de tasas
 window.showRateTypes = function showRateTypes() {
   showHideDOMElement(FILTER_RESULT);
-  document.getElementById("button_list_rates_types").classList.toggle("button_list_open");
-  document.getElementById("button_list_rates_types").classList.toggle("button_list");
+  toggleActive(document.getElementById("button_list_rates_types"));
 }
-
+window.toggleActive = function toggleActive(DOMElement) {
+  DOMElement.classList.toggle("active");
+  console.log(DOMElement);
+}
 showRateTypes();    //Oculta el filtro de resulatados al iniciar la app
 
 //Agregar funcionalidad a botones del DOM
@@ -312,7 +326,12 @@ let URL_rateAnticipated = getVariableFromURL('rateAnticipated')
 if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) {
   CAMPO_BUSQUEDA.value = URL_rateValue;
   TASAS_SELECCION.value = URL_rateType;
-  URL_rateAnticipated=="true" ? anticipadaCheck.checked = true : anticipadaCheck.checked =false;
+  if (TASAS_SELECCION.value=="Efectiva anual") {
+    anticipadaCheck.checked =false;
+  } else {
+    URL_rateAnticipated=="true" ? anticipadaCheck.checked = true : anticipadaCheck.checked =false;
+  }
+  
   mostrarResultados();
   console.log(`Se han cargado los valores de la URL ... ${URL_rateValue} ... ${URL_rateType}  ...  ${URL_rateAnticipated}`)
 }else(

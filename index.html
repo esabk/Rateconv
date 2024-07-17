@@ -45,7 +45,7 @@
             
             <div class="elements_container">
                 <div >
-                    <button id="button_list_rates_types" class="button_list_open" onclick="showRateTypes()" >Efectiva Anual</button>
+                    <button id="button_list_rates_types" class="button_list active" onclick="showRateTypes()" >Efectiva Anual</button>
                     <div id="filter_results">
                         <div class="config_container">
                             <button id="resultado_config_apply" class="button_border" >Todas</button>
@@ -91,15 +91,17 @@
         <div class="config_container">
             <h2 id="resultado_titulo"></h2>
             <div class="config_container">
-                <button>Guardar</button>
+                <button id="save" onclick="save()">Guardar</button>
                 <button onclick="share()">Compartir</button>
             </div>
         </div>
-        <p id="resultado_info"></p>
+        <!-- Siguiente elemento oculto -->
+        <p id="resultado_info" style="display: none;"></p>  
         
         <br>
         
-        <div class="elements_container">
+        <!-- Siguiente elemento oculto -->
+        <div class="elements_container" style="display: none;">
             <div class="config_container">
                 <p>Mostar: </p>
                 <button id="" class="button_border" >Todas</button>
