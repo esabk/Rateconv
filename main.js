@@ -5,7 +5,7 @@ import { rateConverter} from "/modules/rateConverter.js";
 import { limpiar,showHideDOMElement } from "/modules/DOMButtons.js";
 import { Tasa } from "/class/Tasa.js";
 import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.js";
-import { saveLocalStorage, getLocalStorage}  from "/modules/localStorageManager.js";
+import { saveLocalStorage, getLocalStorage, verifyLocalStorage}  from "/modules/localStorageManager.js";
 
 //Registrar Service Worker
 navigator.serviceWorker.register('sw.js');
@@ -37,7 +37,8 @@ const pop=document.getElementById("pop");
 let tasasJSON = await ratesFromJSON();
 
 //Variables de guardado e historial
-let history =[];
+let history = verifyLocalStorage("history",[]);
+let saved = verifyLocalStorage("saved",[]);
 
 //Expresion regular para solo dejar numeros y puntos en el campo de busqueda
 const EXPRESION_REGULAR = /[^0-9.]/g;
@@ -215,7 +216,17 @@ function infoRateInput(value,tasa,anticipated) {
   }
 
   RESULTADO_INFO.textContent = INFO_TASA.definicion + INFO_TASA_EQUIVALE;
-  AddToHistory(value,tasa,anticipated);
+
+  AddRateTo("history",history,value,tasa,anticipated)
+  //Guardar
+  const SAVE = document.getElementById("save");
+  
+  SAVE.onclick = function () {
+    SAVE.classList.toggle("elementDisable");
+    SAVE.textContent="Guardado";
+    AddRateTo("saved",saved,value,tasa,anticipated)
+  
+  }
   
 }
 
@@ -264,55 +275,56 @@ window.share = function share(){
   copyToClipboard(shareUrl,"Enlace copiado"," ");
 }
 
-//Guardado
-window.showSaved = function showSaved() {
-  FLOAT_WINDOWS_TITLE.textContent = "Guardado";
-  FLOAT_WINDOWS_CONTENT.innerHTML = "No se ha guardado conversiones";
-  floatWindowsUse()
-}
-
-//Guardar
-window.save =function save() {
-  const SAVE = document.getElementById("save");
-  SAVE.classList.toggle("elementDisable");
-  SAVE.textContent="Guardado";
-  
-}
 //Historial
-window.showHistory = function showHistory() {
-  FLOAT_WINDOWS_TITLE.textContent = "Historial";
+window.floatWindowsLista = function floatWindowsLista(title,lista) {
+  FLOAT_WINDOWS_TITLE.textContent = title;
   FLOAT_WINDOWS_CONTENT.innerHTML = "";
 
-  let liHistory = newElement("li","","li_history");
-  
-  history.forEach(element => {
-    if(element.value>0){
-      let button_history = newElement("button",`${element.value}% ${element.type} Anticipada: ${element.anticipated}`,"button_history");
-      button_history.onclick = function(){
-        CAMPO_BUSQUEDA.value = element.value;
-        TASAS_SELECCION.value = element.type;
-        anticipadaCheck.checked =element.anticipated;
-        mostrarResultados();
-        showHistory();
-      };
-      liHistory.appendChild(button_history);
-      FLOAT_WINDOWS_CONTENT.appendChild(liHistory);
-    }
-  });
+  let listaFloat = getLocalStorage(lista);
 
+  for (let i = listaFloat.length-1; i >=0; i--) {
+  
+    if(listaFloat[i].value > 0){
+      
+      let button_float_lista = newElement("button",`${listaFloat[i].value}% ${listaFloat[i].type}`,"button_float_lista");
+      let button_float_delete = newElement("button",`x`,"button_float_delete");
+      let li_float_windows = newElement("li","","li_float_windows");
+      li_float_windows.appendChild(button_float_lista);             //Agrega cada boton a cada lista
+      li_float_windows.appendChild(button_float_delete);             //Agrega cada boton de borrar a cada lista
+      FLOAT_WINDOWS_CONTENT.appendChild(li_float_windows);          //Agrega cada elemento li al contenido de la ventana flotante
+
+      button_float_lista.onclick = function(){          //Agrga funcion a cads boton
+        CAMPO_BUSQUEDA.value = listaFloat[i].value;
+        TASAS_SELECCION.value = listaFloat[i].type;
+        anticipadaCheck.checked =listaFloat[i].anticipated;
+        mostrarResultados();
+        floatWindowsUse()
+      };
+
+      button_float_delete.onclick = function(){          //Agrega funcion a cads boton
+        FLOAT_WINDOWS_CONTENT.removeChild(li_float_windows);
+        listaFloat.splice(i, 1);
+        saveLocalStorage(lista,listaFloat);
+      };
+
+    }  
+  }
+  
   floatWindowsUse()
 }
-//Historial
-function AddToHistory(value,type,anticipated){
-  let tasa ={
-    value : value,
-    type : type,
-    anticipated : anticipated
-  }
-  history = getLocalStorage("history");
-  history.push(tasa);
-  saveLocalStorage("history",history);
+  
+function AddRateTo(variableName,variable,value,type,anticipated){
+    let tasa ={
+      value : value,
+      type : type,
+      anticipated : anticipated
+    }
+    variable = getLocalStorage(variableName);
+    variable.push(tasa);
+    saveLocalStorage(variableName,variable);
 }
+
+
 
 //Desactivar elementos detras de la ventana flotante
 function floatWindowsUse() {
@@ -339,6 +351,11 @@ window.showRateTypes = function showRateTypes() {
   showHideDOMElement(FILTER_RESULT);
   toggleActive(document.getElementById("button_list_rates_types"));
 }
+window.btnSelectTasa=function btnSelectTasa(txt){
+    TASAS_SELECCION.value=txt.textContent;
+    showRateTypes()
+}
+
 window.toggleActive = function toggleActive(DOMElement) {
   DOMElement.classList.toggle("active");
 }
@@ -376,12 +393,3 @@ if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) 
 }else(
   console.log("Sin valores en URL")
 )
-
-//Crea el historial en LocalStorage
-if (!Array.isArray(getLocalStorage("history"))) {
-  saveLocalStorage("history",[]);
-}else{
-  history=getLocalStorage("history");
-}
-
-

@@ -39,6 +39,12 @@ header{
 }
 
 /*Principal */
+.view_port{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #nombre{
   text-align:center;
   margin-top: 5rem;
@@ -72,7 +78,6 @@ body{
   align-items: center;
   background-color: var(--Primary_color);
   color: var(--Contrast_color);
-  min-height: 500px;
 }
 article{
   margin-top: 5rem;
@@ -116,7 +121,7 @@ p{
 }
 .elements_container{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 8px;
   background-color: var(--Primary_Acc_color);
   padding:var(--Mid-padding) var(--Standard-padding);
@@ -232,11 +237,13 @@ button:hover{
   background-color: var(--Focus_color_shadow);
 }
 
+
 /*Campo de ingresar tasa*/
   #principal{
     width: 90%;
     max-width: 500px;
-    min-width: 128px;   
+    min-width: 128px;
+    margin-top: var(--Standard-padding);   
   }
   #busqueda{
     padding: 2px 5px;
@@ -246,6 +253,7 @@ button:hover{
     background-color: var(--Primary_Acc_color);
     color: var(--Contrast_color);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+    width: 450px;
   }
   #busqueda:hover{
     box-shadow: rgba(0, 0, 0, 0.50) 0px 1px 4px;
@@ -319,6 +327,7 @@ button:hover{
     gap: var(--Mid-padding); 
     grid-template-areas:". .";
     font-size: 1rem;
+    width: 160px;
   }
   .checkbox{
     width: 40px;
@@ -343,6 +352,7 @@ button:hover{
     .sugerencia-item {
       padding: 5px;
       cursor: pointer;
+      font-size: 1rem;
     }
     .sugerencia-item:hover {
       background-color: var(--Primary_color);
@@ -378,17 +388,23 @@ button:hover{
   border-radius: var(--Standard_border_radius);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: var(--Standard-padding);
+  z-index: 20;
 }
 #float_windows_content{
   padding: var(--Standard-padding);
-}
-.li_history{
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  height: 50vh;
-  width: 100%;
   overflow-y: scroll;
+  max-height: 60vh;
+}
+
+.li_float_windows{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width:inherit;
+  background-color: var(--Primary_Acc_color);
+  margin-bottom: var(--Mid-padding);
+  padding: var(--Mid-padding);
+  border-radius: var(--Mid-border_radius);
 }
 .elementDisable{
   pointer-events: none;
@@ -478,6 +494,9 @@ button:hover{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: var(--Standard-padding);
   transform: translateY(5px);
+  display: flex;
+  max-width: 400px;
+  z-index: 20;
 }
 #filter_results :is(ul,li) {
   list-style: none;
@@ -539,4 +558,46 @@ label{
 .cw_check:checked~ .cw_label::after{
   background: var(--Primary_color);
   transform: translateY(3px) translateX(15px);
+}
+
+/* Media query para pantallas menores a 600px */
+@media only screen and (max-width: 600px) {
+  #busqueda .elements_container{
+    flex-direction: column;
+    align-items: center;
+  }
+  header{
+    position: inherit;
+  }
+  #header_tittle{
+    flex-direction: column;
+    gap: var(--Standard-padding);
+  }
+  /*Footer*/
+  footer{
+    position: inherit;
+  }
+  .footer_links{
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .footer_links div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #busqueda{
+    width: inherit;
+  }
+  #pop{
+    position: fixed;
+    top: var(--Standard-padding);
+    top: 0;
+    left: 0;
+    width: inherit;
+    z-index: 21;
+    border-radius: 0;
+  }
+
 }
