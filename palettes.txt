@@ -1,6 +1,0 @@
-  --Focus_color:#ff8c69 ;
-  --Primary_Acc_color:#EFF2EF;
-  --Not_Ok_color:#FF5A5F;
-  --Primary_color:#f9f9f9;
-  --Ok_color:#1B998B;
-  --Contrast_color:#342E37;

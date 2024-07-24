@@ -5,6 +5,7 @@ import { rateConverter} from "/modules/rateConverter.js";
 import { limpiar,showHideDOMElement } from "/modules/DOMButtons.js";
 import { Tasa } from "/class/Tasa.js";
 import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.js";
+import { saveLocalStorage, getLocalStorage}  from "/modules/localStorageManager.js";
 
 //Registrar Service Worker
 navigator.serviceWorker.register('sw.js');
@@ -34,6 +35,9 @@ const pop=document.getElementById("pop");
 
 //Cargar datos de tasas desde "Data"
 let tasasJSON = await ratesFromJSON();
+
+//Variables de guardado e historial
+let history =[];
 
 //Expresion regular para solo dejar numeros y puntos en el campo de busqueda
 const EXPRESION_REGULAR = /[^0-9.]/g;
@@ -93,6 +97,7 @@ window.mostrarResultados = function mostrarResultados(){
   const VALUE_CAMPO_BUSQUEDA = CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
   const TASA_CAMPO_BUSQUEDA  = TASAS_SELECCION.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
+
 
   document.getElementById("button_list_rates_types").textContent = TASAS_SELECCION.value;
 
@@ -185,11 +190,15 @@ window.mostrarResultados = function mostrarResultados(){
           document.getElementById(RESULTADO_SeccionesResultados_id+i).appendChild(li_Resultado);
           
       }
+
+      
     }); 
     
   }
  
 };
+
+
 
 //Muestar información de la tasa ingresada
 function infoRateInput(value,tasa,anticipated) {
@@ -206,12 +215,15 @@ function infoRateInput(value,tasa,anticipated) {
   }
 
   RESULTADO_INFO.textContent = INFO_TASA.definicion + INFO_TASA_EQUIVALE;
+  AddToHistory(value,tasa,anticipated);
   
 }
 
+
+
 // Value es el valor que se copia al portapapeles
 // ValueCustom en lugar de mostarr el valor copiado, muestras un mensaje personalizado.
-// message es elmensaje que se colocal al lado del valor.
+// message es el mensaje que se coloca al lado del valor.
 function copyToClipboard(value,valueCustom,message) {
   //Copia value en textbox (Portapapeles) 
   Portapapeles.value=value;
@@ -269,9 +281,37 @@ window.save =function save() {
 //Historial
 window.showHistory = function showHistory() {
   FLOAT_WINDOWS_TITLE.textContent = "Historial";
-  FLOAT_WINDOWS_CONTENT.innerHTML = "No hay historial";
+  FLOAT_WINDOWS_CONTENT.innerHTML = "";
+
+  let liHistory = newElement("li","","li_history");
   
+  history.forEach(element => {
+    if(element.value>0){
+      let button_history = newElement("button",`${element.value}% ${element.type} Anticipada: ${element.anticipated}`,"button_history");
+      button_history.onclick = function(){
+        CAMPO_BUSQUEDA.value = element.value;
+        TASAS_SELECCION.value = element.type;
+        anticipadaCheck.checked =element.anticipated;
+        mostrarResultados();
+        showHistory();
+      };
+      liHistory.appendChild(button_history);
+      FLOAT_WINDOWS_CONTENT.appendChild(liHistory);
+    }
+  });
+
   floatWindowsUse()
+}
+//Historial
+function AddToHistory(value,type,anticipated){
+  let tasa ={
+    value : value,
+    type : type,
+    anticipated : anticipated
+  }
+  history = getLocalStorage("history");
+  history.push(tasa);
+  saveLocalStorage("history",history);
 }
 
 //Desactivar elementos detras de la ventana flotante
@@ -301,7 +341,6 @@ window.showRateTypes = function showRateTypes() {
 }
 window.toggleActive = function toggleActive(DOMElement) {
   DOMElement.classList.toggle("active");
-  console.log(DOMElement);
 }
 showRateTypes();    //Oculta el filtro de resulatados al iniciar la app
 
@@ -337,4 +376,12 @@ if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) 
 }else(
   console.log("Sin valores en URL")
 )
+
+//Crea el historial en LocalStorage
+if (!Array.isArray(getLocalStorage("history"))) {
+  saveLocalStorage("history",[]);
+}else{
+  history=getLocalStorage("history");
+}
+
 

@@ -382,6 +382,14 @@ button:hover{
 #float_windows_content{
   padding: var(--Standard-padding);
 }
+.li_history{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  height: 50vh;
+  width: 100%;
+  overflow-y: scroll;
+}
 .elementDisable{
   pointer-events: none;
   user-select: none;
