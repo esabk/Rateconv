@@ -24,6 +24,7 @@ if ('serviceWorker' in navigator) {
             '/modules/getData.js',
             '/modules/rateConverter.js',
             '/modules/shareURL.js',
+            'modules/localStorageManager.js',
             '/data/tasas.json',              //Data
             '/icons/Logo_with_name.svg',      //Icons
             '/icons/Logo.svg',
