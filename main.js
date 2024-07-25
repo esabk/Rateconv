@@ -1,11 +1,11 @@
 //Import local modules
-import { ratesFromJSON } from "/modules/getData.js";  //Procesa la petición para obtener las tasas
-import { newElement,popAlerta,sugerencias} from "/modules/DOMControler.js";
-import { rateConverter} from "/modules/rateConverter.js";
-import { limpiar,showHideDOMElement } from "/modules/DOMButtons.js";
-import { Tasa } from "/class/Tasa.js";
-import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.js";
-import { saveLocalStorage, getLocalStorage, verifyLocalStorage}  from "/modules/localStorageManager.js";
+import { ratesFromJSON } from "/modules/getData.js?v=1.1";  //Procesa la petición para obtener las tasas
+import { newElement,popAlerta,sugerencias} from "/modules/DOMControler.js?v=1.1";
+import { rateConverter} from "/modules/rateConverter.js?v=1.1";
+import { limpiar,showHideDOMElement } from "/modules/DOMButtons.js?v=1.1";
+import { Tasa } from "/class/Tasa.js?v=1.1";
+import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.js?v=1.1";
+import { saveLocalStorage, getLocalStorage, verifyLocalStorage}  from "/modules/localStorageManager.js?v=1.1";
 
 //Registrar Service Worker
 navigator.serviceWorker.register('sw.js');
