@@ -13,7 +13,7 @@
   --Standard_border_radius:16px;
   --Mid-border_radius:8px;
   font-size: 16px;
-
+}
 *{
   transition: all 100ms ease-in;
   user-select: none;
@@ -46,6 +46,7 @@ header{
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 600px;
 }
 .view_port > *{
   width: 90%;
@@ -199,7 +200,7 @@ button:hover{
   background-color: var(--Primary_color);
   text-align: left;
   font-size: 1rem;
-  width: 225px;
+  width: 300px;
 }
 .button_list:hover{
   background-color: var(--Primary_Acc_color_shadow);
@@ -548,6 +549,9 @@ label{
 
 /* Media query para pantallas menores a 600px */
 @media only screen and (max-width: 600px) {
+  .view_port{
+    min-width: 128px;
+  }
   #busqueda .elements_container{
     flex-direction: column;
     align-items: center;
