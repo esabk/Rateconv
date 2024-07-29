@@ -12,12 +12,15 @@
   --Mid-padding:8px;
   --Standard_border_radius:16px;
   --Mid-border_radius:8px;
+  font-size: 16px;
 
-}
 *{
   transition: all 100ms ease-in;
   user-select: none;
   -webkit-user-drag: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
@@ -25,7 +28,6 @@
 header{
   position: fixed;
   top:0;
-  left:0;
   width: 100%;
   padding: var(--Standard-padding);
   background-color: var(--Primary_color);
@@ -45,6 +47,9 @@ header{
   flex-direction: column;
   align-items: center;
 }
+.view_port > *{
+  width: 90%;
+}
 #nombre{
   text-align:center;
   margin-top: 5rem;
@@ -52,6 +57,7 @@ header{
 }
 #main_logo{
   min-height: 150px;
+  width: 100%;
   border-radius: 1rem;
 }
 #pop{
@@ -69,20 +75,11 @@ header{
 }
 
 /*General tags */
-*{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
 body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--Primary_color);
   color: var(--Contrast_color);
-}
-article{
-  margin-top: 5rem;
-  width: 90%;
-  max-width: 500px;
 }
 h3{
   margin: 0;
@@ -95,13 +92,6 @@ p{
   background-color: rgba(0, 0, 0, 0.25);
   padding: 1px var(--Standard-padding);
   border-radius: var(--Mid-border_radius);
-  font-style: normal;
-}
-#resultado_titulo{
-  margin: 0;
-}
-#resultado_titulo em{
-  color: var(--Focus_color);
   font-style: normal;
 }
 
@@ -117,7 +107,7 @@ p{
   display: flex;
   gap: 8px;
   justify-content:space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 .elements_container{
   display: flex;
@@ -127,7 +117,7 @@ p{
   padding:var(--Mid-padding) var(--Standard-padding);
   border-radius:var(--Mid-border_radius);
 }
-.elements_container:nth-child()
+
 .elements_container a{
   padding-left: var(--Standard-padding);
   padding-right: var(--Mid-padding);
@@ -146,8 +136,6 @@ button{
   border:none;
   border-radius: var(--Mid-border_radius);
   padding: var(--Mid-padding);
-  width: fit-content;
-  height: fit-content;
 }
 button:hover{
   background-color: var(--Primary_Acc_color_shadow);
@@ -209,10 +197,9 @@ button:hover{
 }
 .button_list{   /*Botones similar a lista*/
   background-color: var(--Primary_color);
-  width: 225px!important;
   text-align: left;
   font-size: 1rem;
-  padding: 1px var(--Standard-padding);
+  width: 225px;
 }
 .button_list:hover{
   background-color: var(--Primary_Acc_color_shadow);
@@ -240,20 +227,16 @@ button:hover{
 
 /*Campo de ingresar tasa*/
   #principal{
-    width: 90%;
-    max-width: 500px;
-    min-width: 128px;
     margin-top: var(--Standard-padding);   
   }
   #busqueda{
-    padding: 2px 5px;
+    padding: var(--Mid-padding);
     font-size: 1.5rem;
     border: 1px solid var(--Primary_color);
-    border-radius: 0.5rem;
+    border-radius: var(--Standard_border_radius);
     background-color: var(--Primary_Acc_color);
     color: var(--Contrast_color);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
-    width: 450px;
   }
   #busqueda:hover{
     box-shadow: rgba(0, 0, 0, 0.50) 0px 1px 4px;
@@ -268,7 +251,7 @@ button:hover{
     grid-template-areas:". .";
     justify-items: center;
     background-color: var(--Primary_Acc_top_color);
-    border-radius: 0.5rem;
+    border-radius: var(--Mid-border_radius);
     padding: 2px;
     transition: all 0ms;
   }
@@ -285,7 +268,7 @@ button:hover{
     padding: 10px;
     width:95%;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: var(--Mid-border_radius);
     background-color: transparent;
   }
   :is(#campoBusqueda,#tasas_selecion):focus-visible{
@@ -293,7 +276,7 @@ button:hover{
     background-color: transparent;
   }
 
-  /*Lista desplegable para seleccionar tasa a convertor*/
+  /*Lista desplegable para seleccionar tasa a convertir*/
   #tasas_selecion{
     border-radius: var(--Mid-border_radius) ;
     padding: 2px;
@@ -380,9 +363,9 @@ button:hover{
 #float_windows{
   position: fixed;
   top: 10%;
-  left: 10%;
+  right:5%;
   border: 1px solid var(--Focus_color);
-  width: 80%;
+  width:fit-content;
   height: fit-content;
   background-color: var(--Primary_color);
   border-radius: var(--Standard_border_radius);
@@ -392,6 +375,7 @@ button:hover{
 }
 #float_windows_content{
   padding: var(--Standard-padding);
+  margin-top: var(--Standard-padding);
   overflow-y: scroll;
   max-height: 60vh;
 }
@@ -416,25 +400,28 @@ button:hover{
 /*Resultados*/
 #resultado{
   display: none;
-  width: 90%;
-  max-width: 500px;
-  min-width: 128px;
-  margin-bottom: 2rem;
+  margin-bottom: 48px;
+}
+#resultado_titulo{
+  margin: 0;
+}
+#resultado_titulo em{
+  color: var(--Focus_color);
+  font-style: normal;
 }
 
 #resultado_info{
   text-align: justify;
   margin: var(--Standard-padding) 0;
 }
-.resultados_resultadoTasasConvertidas{
-  padding-inline: var(--Standard-padding);
-}
-#resultadoTasasConvertidas{
-  background-color: var(--Primary_color);
-}
 .seccion_resultadoTasasConvertidas{
-  margin-top: 1rem;
+  margin-bottom: var(--Standard-padding);
 }
+.resultados_resultadoTasasConvertidas{
+  padding-top: var(--Standard-padding);
+  margin-bottom:32px;
+}
+
 .titulo_resultadoTasasConvertidas{
   background-color: var(--Primary_Acc_color);
   color: var(--Contrast_color);
@@ -488,14 +475,14 @@ button:hover{
 #filter_results{
   position: absolute;
   border: 1px solid var(--Focus_color);
-  height: fit-content;
   background-color: var(--Primary_color);
   border-radius: var(--Standard_border_radius);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: var(--Standard-padding);
-  transform: translateY(5px);
+  transform: translateY(48px);
+  width: 82%;
+  max-width: 250px;
   display: flex;
-  max-width: 400px;
   z-index: 20;
 }
 #filter_results :is(ul,li) {
@@ -508,7 +495,6 @@ button:hover{
 /*Footer*/
 footer{
   position: fixed;
-  left: 0;
   bottom: 0;
   width: 100%;
   height: fit-content;
@@ -565,13 +551,17 @@ label{
   #busqueda .elements_container{
     flex-direction: column;
     align-items: center;
+    
   }
   header{
     position: inherit;
+    width: 100%;
+    padding: 0;
   }
   #header_tittle{
     flex-direction: column;
     gap: var(--Standard-padding);
+    padding-top: var(--Standard-padding);
   }
   /*Footer*/
   footer{
@@ -587,17 +577,17 @@ label{
     flex-direction: column;
     align-items: center;
   }
-  #busqueda{
-    width: inherit;
-  }
   #pop{
     position: fixed;
-    top: var(--Standard-padding);
-    top: 0;
     left: 0;
-    width: inherit;
-    z-index: 21;
+    bottom: 0;
     border-radius: 0;
+    width: 100%;
+    height: fit-content;
+    margin: 0;
+    z-index: 21;
   }
-
+  .button_list{
+    width: 319.5px;
+  }
 }

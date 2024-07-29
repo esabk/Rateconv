@@ -4,7 +4,7 @@
     <title>RateConv - Convierte tasas de interes con un click</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/style.css?v=1.1">
+    <link rel="stylesheet" href="/css/style.css?v=1.1.2">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <!-- Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -49,16 +49,6 @@
                 <div class="elements_container">
                     <div >
                         <button id="button_list_rates_types" class="button_list active" onclick="showRateTypes()" >Efectiva Anual</button>
-                        <div id="filter_results">
-                                <button onclick="btnSelectTasa(this)">Efectiva anual</button>
-                                <button onclick="btnSelectTasa(this)">Mes</button>
-                                <button onclick="btnSelectTasa(this)">Trimestre</button>
-                                <button onclick="btnSelectTasa(this)">Semestre</button>
-                                <button onclick="btnSelectTasa(this)">Diaria</button>
-                                <button onclick="btnSelectTasa(this)">Mensual</button>
-                                <button onclick="btnSelectTasa(this)">Trimestral</button>
-                                <button onclick="btnSelectTasa(this)">Semestral</button>
-                        </div>
                     </div>
                     <select name="tasas_selecion" id="tasas_selecion">
                         <option value="ea">Efectiva anual</option>
@@ -79,6 +69,16 @@
                             Tasa Anticipada
                         </label>
                     </div>
+                    <div id="filter_results">
+                        <button onclick="btnSelectTasa(this)">Efectiva anual</button>
+                        <button onclick="btnSelectTasa(this)">Mes</button>
+                        <button onclick="btnSelectTasa(this)">Trimestre</button>
+                        <button onclick="btnSelectTasa(this)">Semestre</button>
+                        <button onclick="btnSelectTasa(this)">Diaria</button>
+                        <button onclick="btnSelectTasa(this)">Mensual</button>
+                        <button onclick="btnSelectTasa(this)">Trimestral</button>
+                        <button onclick="btnSelectTasa(this)">Semestral</button>
+                </div>
                 </div>  
                 <p id="alerta"></p>
             </div>
@@ -165,7 +165,7 @@
     </section>
 
 
-    <script type="module" src="/main.js?v=1.1.1"></script>
+    <script type="module" src="/main.js?v=1.1.2"></script>
 
 
 </body>
