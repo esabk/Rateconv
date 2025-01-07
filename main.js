@@ -393,3 +393,7 @@ if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) 
 }else(
   console.log("Sin valores en URL")
 )
+
+CAMPO_BUSQUEDA.addEventListener("click", function() {
+  CAMPO_BUSQUEDA.scrollIntoView({ behavior: 'smooth', block: 'end' });
+})
