@@ -518,7 +518,7 @@ footer{
 a{
   color: var(--Focus_color);
 }
-#description h1{
+#description :is(h1,h2){
   font-size: 1rem;
 }
 .footer_links{
