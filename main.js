@@ -211,8 +211,10 @@ function infoRateInput(value,tasa,anticipated) {
 
   if (anticipated) {
     RESULTADO_TITULO.innerHTML = `${value}% ${tasa} <em> anticipada <em>`;
+    document.title=`${value}% ${tasa} anticipada`;
   }else{
     RESULTADO_TITULO.textContent = `${value}% ${tasa}`;
+    document.title=`${value}% ${tasa}`;
   }
 
   RESULTADO_INFO.textContent = INFO_TASA.definicion + INFO_TASA_EQUIVALE;
