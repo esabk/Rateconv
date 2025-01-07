@@ -597,19 +597,8 @@ label{
   }
   /*Footer*/
   footer{
-    position: inherit;
-  }
-  .footer_links{
     flex-direction: column;
-    align-items: center;
-    gap: 0;
   }
-  .footer_links div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .button_list{
-    width: 319.5px;
-  }
+  
+
 }
