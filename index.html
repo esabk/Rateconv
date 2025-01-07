@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="95aU2sw5bAzvpoFd+dHe5A" async></script>
-    <title>RateConv - Convierte tasas de interes con un click</title>
+    <title>RateConv.com - Conversor de tasas de interes</title>
+    <meta name="description" content="Convierte tasas de interes con facilidad">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css?v=1.1.2">
@@ -33,11 +34,15 @@
     
 </header>
 
+<div id="notifications">
+    <p id="pop"></p>
+</div>
+
 <body>
     <div class="view_port">
         <section  id="nombre">
-            <img id="main_logo" src="./icons/Logo.svg" alt="Rateconv" height="150px" width="375px">
-            <p>Convierte tasas de interes con facilidad</p>
+            <img id="main_logo" src="./icons/Logo_with_name_and_subtitle.svg" alt="Rateconv" height="150px" width="375px">
+            <p></p>
         </section>
     
         <section id="principal">
@@ -171,16 +176,30 @@
 
 </body>
 <footer>
-    <p id="pop">Hola, empieza gratis, rápido y sin anuncios.</p>
-    <div class="footer_links">
+    <article id="description">
+        <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/Logo_with_name_and_subtitle.svg" alt="Rateconv" height="70px"></a>
         <div>
+            <h1>Convierte tasas de interés fácilmente con nuestra aplicación intuitiva y rápida. </h1>
+            <p>Perfecta para profesionales financieros y estudiantes, nuestra herramienta optimiza tus cálculos financieros al instante.</p>
+            <br>
+            <p>Este sitio web fue creado basado en las notas de clase de gerencia financiera, con el objetivo de facilitar la conversión de tasas de interés, siendo el paso inicial para la toma de decisiones sobre elección de servicios financieros.</p>
+            <br>
+            <p>Puedes enviar tus comentarios a <a href="mailto:support@rateconv.com">support@rateconv.com</a> y puedes seguir las actualizaciones en <a href="https://www.instagram.com/eddysantaigoab/">@eddysantaigoab</a></p>
+            <br>
+            <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
+        </div>
+
+    </article>
+
+    <div class="footer_links">
+        
             <button id="config_button" onclick="showPreferences()" >Configuración</button>
             <button class="button_deco_link" href="./pages/ayuda.html">Ayuda </button>
             <button class="button_deco_link" href="">Privacidad </button>
             <button class="button_deco_link" href="./pages/Acerca_de.html">Acerca de</button>
-        </div>
+        
     
-        <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
+        
     </div>
 </footer>
 </html>

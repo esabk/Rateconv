@@ -30,7 +30,8 @@ header{
   top:0;
   width: 100%;
   padding: var(--Standard-padding);
-  z-index: 20;
+  background-color: var(--Primary_Acc_top_color);
+  z-index: 10;
 }
 #header_tittle{
   display: flex;
@@ -56,9 +57,14 @@ header{
   margin-bottom: 1rem;
 }
 #main_logo{
-  min-height: 150px;
-  width: 100%;
+  min-height: 50px;
+  width: 70%;
   border-radius: 1rem;
+}
+#notifications{
+  position:fixed;
+  padding-top: 16px;
+  z-index: 30;
 }
 #pop{
   text-align: center;
@@ -72,6 +78,7 @@ header{
   margin-block:0;
   margin-bottom: var(--Mid-padding);
   border-radius: var(--Mid-border_radius);
+  
 }
 
 /*General tags */
@@ -492,20 +499,42 @@ button:hover{
 
 /*Footer*/
 footer{
-  position: fixed;
   bottom: 0;
   width: 100%;
   height: fit-content;
   padding: var(--Mid-padding) 0;
   background-color: var(--Primary_Acc_color);
+  display: flex;
+  padding-top: 32px;
+}
+#description{
+  padding-left: 16px;
+  margin-bottom: 32px;
+  width: 50%;
+}
+#description div{
+  margin-left: 70px;
+}
+a{
+  color: var(--Focus_color);
+}
+#description h1{
+  font-size: 1rem;
 }
 .footer_links{
+  padding: 70px;
+  width: 50%;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  justify-content:start;
+  align-items:end;
 }
-.footer_links p{
-  margin:0;
+.footer_links button{
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+
+  margin-bottom: 16px;
 }
 
 /*CHECKBOX Anticpada*/
@@ -558,6 +587,8 @@ label{
     position: inherit;
     width: 100%;
     padding: 0;
+    
+  
   }
   #header_tittle{
     flex-direction: column;
@@ -577,16 +608,6 @@ label{
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  #pop{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    border-radius: 0;
-    width: 100%;
-    height: fit-content;
-    margin: 0;
-    z-index: 21;
   }
   .button_list{
     width: 319.5px;
