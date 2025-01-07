@@ -369,7 +369,7 @@ document.getElementById("close_float_windows").onclick=function() { floatWindows
 
 //EJECUCION INICIAL
   //Muestra una pop Alerta al iniciar.
-popAlerta(pop,`Rateconv 1.1 : Nueva Ui, nuevas funciones <button> Ver novedades</button>`,10000,"#342E37");
+popAlerta(pop,`Rateconv 1.3 : Diseño más amigable   <button> Ver novedades</button>`,10000,"#342E37");
   //Oculta la ventan flotante por defecto.
 showHideDOMElement(FLOAT_WINDOWS);
 
