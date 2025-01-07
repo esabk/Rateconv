@@ -518,8 +518,13 @@ footer{
 a{
   color: var(--Focus_color);
 }
-#description :is(h1,h2){
+#description h1{
   font-size: 1rem;
+}
+#description h2{
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: normal;
 }
 .footer_links{
   padding: 70px;
