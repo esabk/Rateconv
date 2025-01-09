@@ -114,7 +114,7 @@ p{
   display: flex;
   gap: 8px;
   justify-content:space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 .elements_container{
   display: flex;
