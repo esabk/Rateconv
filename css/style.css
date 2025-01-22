@@ -121,7 +121,7 @@ p{
   justify-content: space-between;
   gap: 8px;
   background-color: var(--Primary_Acc_color);
-  padding:var(--Mid-padding) var(--Standard-padding);
+  padding:var(--Mid-padding) 0;
   border-radius:var(--Mid-border_radius);
 }
 
@@ -192,7 +192,7 @@ button:hover{
   content: "»";
   position: relative;
   display: inline-block;
-  justify-self: center;
+  justify-self: b;
   transform: translateY(-5px) rotate(-30deg);
 }
 .button_deco_link:hover:after{
@@ -326,18 +326,14 @@ button:hover{
 
   /*Cuadro de sugerencias*/
   #sugerencias {
+    margin-top: 1px;
     position: relative;
-    left: 0;
-    top: 0.5rem;
     padding: 5px;
     border: 1px solid var(--Primary_color);
-    border-radius: 0.5rem;
-    background-color: var(--Primary_Acc_color);
+    background-color: var(--Primary_Acc_top_color);
     display: none;
-    border-radius: 1rem;
-    width: 98%;
-    max-width: 500px;
-    min-width: 128px; 
+    border-radius: 0 0px 8px 8px;
+    
   }
     .sugerencia-item {
       padding: 5px;
@@ -346,7 +342,7 @@ button:hover{
     }
     .sugerencia-item:hover {
       background-color: var(--Primary_color);
-      border-radius: 0.5rem;
+      border-radius: 4px;
     }
 #portapapeles{
   height: 0px;

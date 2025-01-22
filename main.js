@@ -396,6 +396,10 @@ if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) 
   console.log("Sin valores en URL")
 )
 
+
+//Eleva el campo de busqueda al hacer click en un didpositivo movil
 CAMPO_BUSQUEDA.addEventListener("click", function() {
-  CAMPO_BUSQUEDA.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    CAMPO_BUSQUEDA.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 })
