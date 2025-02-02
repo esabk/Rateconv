@@ -58,7 +58,7 @@ const TASA_INPUT = new Tasa(0,0,"efectiva",1,false);
 const TASA_OUTPUT = new Tasa(0,0,"efectiva",1,false);
 
 //Se usa para los titulos de las secciones en los resultados
-let titulosSeccionesResultados = ["Efectiva anual","Tasas periodicas","Tasas periodicas anticipadas","Tasas nominales","Tasas nominales anticipadas"];
+let titulosSeccionesResultados = ["Efectiva Anual","Tasas periodicas","Tasas periodicas anticipadas","Tasas nominales","Tasas nominales anticipadas"];
 
 //Proporciona sugerencias basadas en las opciones en html
 for (var i = 0; i < TASAS_SELECCION.options.length; i++){
@@ -82,8 +82,8 @@ CAMPO_BUSQUEDA.oninput= function() {
 //Refresca resultados al hacer click 
 PRINCIPAL.onclick = function(e) {
 
-  //Evita que haya una tasa"Efectiva anual anticipada" porque esto no existe
-  if (TASAS_SELECCION.value=="Efectiva anual") {   anticipadaCheck.checked = false;  }
+  //Evita que haya una tasa"Efectiva Anual anticipada" porque esto no existe
+  if (TASAS_SELECCION.value=="Efectiva Anual") {   anticipadaCheck.checked = false;  }
 
     //Muestra sugerencias solo si el campo de busqueda es el target
     if (e.target !== CAMPO_BUSQUEDA || e.target !== TASAS_SELECCION) { 
@@ -384,7 +384,7 @@ let URL_rateAnticipated = getVariableFromURL('rateAnticipated')
 if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) {
   CAMPO_BUSQUEDA.value = URL_rateValue;
   TASAS_SELECCION.value = URL_rateType;
-  if (TASAS_SELECCION.value=="Efectiva anual") {
+  if (TASAS_SELECCION.value=="Efectiva Anual") {
     anticipadaCheck.checked =false;
   } else {
     URL_rateAnticipated=="true" ? anticipadaCheck.checked = true : anticipadaCheck.checked =false;

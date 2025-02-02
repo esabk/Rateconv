@@ -42,11 +42,14 @@ export function popAlerta(element,txtContent,duration,color){
 
     //Reproduce animación
     const animacionIn = element.animate(keyframesIn, options);
-
     
+    element.addEventListener("click", () => {
+      const animacionOut = element.animate(keyframesOut, options);
+    });
+
+    // Quita la alerta después del tiempo de duración
     setTimeout(function() {
       const animacionOut = element.animate(keyframesOut, options);
-      
     }, popDuration);
 
     
