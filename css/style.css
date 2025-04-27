@@ -59,6 +59,9 @@ header{
   margin-top: 10rem;
   margin-bottom: 1rem;
 }
+#hero p{
+  line-height: 2rem;
+}
 #notifications{
   position:fixed;
   padding-top: 16px;
@@ -671,6 +674,7 @@ Media query para pantallas menores a 830px */
     font-size: 1.2rem;
     line-height: 1.5rem;
   }
+
   .hero_emphasis{
     font-size: 1.8rem;
   }
