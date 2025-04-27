@@ -22,15 +22,30 @@
     <div id="header_tittle">
         <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/Logo_with_name.svg" alt="Rateconv" height="30px"></a>
         <div class="button_container">
-            <button class="button_selected">Conversor</button>
-            <button class="button_disabled"></button>
             <!-- Estos botones abren la ventana flotante con el primer parametro Titulo y el segunto el nokmbre de la lista (Array) almacenada en localstorage. -->
-            <button onclick="floatWindowsLista('Guardado','saved')">Guardado</button> 
-            <button onclick="floatWindowsLista('Historial','history')">Historial</button>
+            <button onclick="floatWindowsLista('Guardado','saved')">
+                <img src="./icons/bookmark-empty.svg" alt="guardado" width="16px" height="16px">
+                 Guardado</button> 
+            <button onclick="floatWindowsLista('Historial','history')">
+                <img src="./icons/clock-outline.svg" alt="historial" width="16px" height="16px">
+                 Historial</button>
+
+                 <section id="float_windows">
+                    <div class="elements_container">
+                        <h3 id="float_windows_title">Rateconv</h3>
+                        <button id="close_float_windows" class="button_primary">Cerrar</button>
+                    </div>
+                    <div id="float_windows_content">
+                        Cargando app... Espera por favor.
+                    </div>
+            
+                </section>
+    
 
         </div>
 
     </div>
+    
     
 </header>
 
@@ -40,11 +55,20 @@
 
 <body>
     <div class="view_port">
-        <section  id="nombre">
-            <img id="main_logo" src="./icons/Logo_with_name_and_subtitle.svg" alt="Rateconv" height="150px" width="375px">
-            <p></p>
+        <section  id="hero">
+            <img id="main_logo" src="./icons/Logo_with_name.svg" alt="Rateconv" height="40px" width="150px">
+            <h1>Convierte tasas de interés  <br> <i class="hero_emphasis">EN SEGUNDOS</i></h1>
+            <p><i>¿Cansado de perder tiempo haciendo cálculos de tasas efectivas, nominales o anticipadas?</i>
+                Rateconv es tu herramienta rápida, intuitiva y confiable para transformar tasas de interés fácilmente.
+                Ideal para estudiantes, profesionales financieros o cualquier persona que necesite tomar decisiones más inteligentes y precisas.</p>
+            <br>
+            <div class="emphasis_container"> Rápido ·  Sin registro ·  Siempre disponible</div>
+            <br>
+            <img class="icon_opacity" src="/icons/arrow-down.svg" alt="señala la app" height="50px" width="50px">
+
         </section>
     
+     <article id="main_app">
         <section  id="principal">
             <div id="busqueda">
                 <div id="busqueda_cuadro">
@@ -159,18 +183,24 @@
             <textarea name="portapapeles" id="portapapeles" ></textarea>
             
         </section>
+     </article>
+
+     <div class="center_flex">
+        <br>
+        <br>
+        <img class="icon_opacity" src="/icons/arrow-up.svg" alt="señala la app" height="50px" width="50px">
+        <h2><i>100% GRATIS Y DE CÓDIGO LIBRE</i></h2>
+        <p>El sitio web fué diseñado a partir de notas de clase de gerencia financiera, con el objetivo de facilitar la conversión de tasas de interés y apoyar la toma de decisiones sobre la elección de servicios financieros.</p>
+
+     </div>
+
+
     </div>
 
-    <section id="float_windows">
-        <div class="elements_container">
-            <h3 id="float_windows_title">Rateconv</h3>
-            <button id="close_float_windows" class="button_primary">Cerrar</button>
-        </div>
-        <div id="float_windows_content">
-            Cargando app... Espera por favor.
-        </div>
+    
 
-    </section>
+
+
 
 
     <script type="module" src="/main.js?v=1.2"></script>
@@ -181,14 +211,12 @@
     <article id="description">
         <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/Logo_with_name_and_subtitle.svg" alt="Rateconv" height="70px"></a>
         <div>
-            <h1>Convierte tasas de interés fácilmente con nuestra aplicación rápida e intuitiva </h1>
             <h2>Nuestra herramienta es perfecta para profesionales financieros y estudiantes que buscan optimizar sus cálculos financieros de manera instantánea.</h2>
             <br>
-            <p>El sitio web fué diseñado a partir de notas de clase de gerencia financiera, con el objetivo de facilitar la conversión de tasas de interés y apoyar la toma de decisiones sobre la elección de servicios financieros.</p>
             <br>
-            <p>Envía tus comentarios a <a href="mailto:support@rateconv.com">support@rateconv.com</a> y sigue nuestras actualizaciones en <a href="https://www.instagram.com/eddysantiagoab/">@eddysantiagoab</a></p>
+            <p>Envía tus comentarios a <a href="mailto:support@rateconv.com">support@rateconv.com</a> y sigue nuevas actualizaciones en <a href="https://www.instagram.com/eddysantiagoab/">@eddysantiagoab</a></p>
             <br>
-            <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
+            <p> <img src="/icons/Logo.svg" height="16px" alt="logo de la app"> Rateconv.com, creado por <a href="https:eddysantiagoab.com"><img target="_blank" src="/icons/eddysantiagoab_dark.svg" alt="eddysantiago AB" height="12px"></a></p>
         </div>
 
     </article>
@@ -197,11 +225,10 @@
         
             <button id="config_button" onclick="showPreferences()" >Configuración</button>
             <button class="button_deco_link" href="./pages/ayuda.html">Ayuda </button>
+            <button class="button_deco_link" href="./pages/ayuda.html">Github</button>
             <button class="button_deco_link" href="">Privacidad </button>
             <button class="button_deco_link" href="./pages/Acerca_de.html">Acerca de</button>
-        
-    
-        
+
     </div>
 </footer>
 </html>

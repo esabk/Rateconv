@@ -8,10 +8,13 @@
   --Primary_color:#f9f9f9;
   --Ok_color:#1B998B;
   --Contrast_color:#342E37;
-  --Standard-padding:16px;
-  --Mid-padding:8px;
-  --Standard_border_radius:16px;
-  --Mid-border_radius:8px;
+
+  --small-padding:8px;
+  --medium-padding:16px;
+  --large_padding:32px;
+
+  --small-border_radius:8px;
+  --medium_border_radius:16px;
   font-size: 16px;
 }
 *{
@@ -29,9 +32,10 @@ header{
   position: fixed;
   top:0;
   width: 100%;
-  padding: var(--Standard-padding);
+  padding: var(--medium-padding);
   background-color: var(--Primary_Acc_top_color);
   z-index: 10;
+  box-shadow: rgba(61, 65, 68, 0.096) 0px 4px 16px;
 }
 #header_tittle{
   display: flex;
@@ -42,24 +46,18 @@ header{
 
 /*Principal */
 .view_port{
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 600px;
+  max-width: 720px;
 }
 .view_port > *{
-  width: 90%;
+  width: 100%;
 }
-#nombre{
+#hero{
   text-align:center;
-  margin-top: 5rem;
+  margin-top: 10rem;
   margin-bottom: 1rem;
-}
-#main_logo{
-  min-height: 50px;
-  width: 70%;
-  border-radius: 1rem;
 }
 #notifications{
   position:fixed;
@@ -74,10 +72,10 @@ header{
   width: auto;
   background-color: var(--Contrast_color);
   color: white;
-  padding: var(--Mid-padding) var(--Standard-padding);
+  padding: var(--small-padding) var(--medium-padding);
   margin-block:0;
-  margin-bottom: var(--Mid-padding);
-  border-radius: var(--Mid-border_radius);
+  margin-bottom: var(--small-padding);
+  border-radius: var(--small-border_radius);
   
 }
 
@@ -87,6 +85,7 @@ body{
   flex-direction: column;
   align-items: center;
   color: var(--Contrast_color);
+  background-color: var(--Primary_Acc_color);
 }
 h3{
   margin: 0;
@@ -97,8 +96,8 @@ p{
 /* Enfasis*/
 #pop em{
   background-color: rgba(0, 0, 0, 0.25);
-  padding: 1px var(--Standard-padding);
-  border-radius: var(--Mid-border_radius);
+  padding: 1px var(--medium-padding);
+  border-radius: var(--small-border_radius);
   font-style: normal;
 }
 
@@ -107,42 +106,34 @@ p{
   justify-content: space-around;
   background-color: var(--Primary_Acc_color);
   width: fit-content;
-  padding:var(--Mid-padding) var(--Standard-padding);
-  border-radius:var(--Mid-border_radius);
+  padding:var(--small-padding) var(--medium-padding);
+  border-radius:var(--small-border_radius);
 }
 .config_container{
   display: flex;
   gap: 8px;
   justify-content:space-between;
   align-items: center;
+  padding-left: 8px;
 }
 .elements_container{
   display: flex;
   justify-content: space-between;
-  gap: 8px;
-  background-color: var(--Primary_Acc_color);
-  padding:var(--Mid-padding) 0;
-  border-radius:var(--Mid-border_radius);
+  gap: var(--medium-padding);
+}
+#busqueda .elements_container > * {
+  width: 50%;
 }
 
-.elements_container a{
-  padding-left: var(--Standard-padding);
-  padding-right: var(--Mid-padding);
-}
-.elements_container input{
-  padding: var(--Mid-padding);
-  border: none;
-  border-radius: var(--Mid-border_radius);
-  width: 48px !important;
-  margin-right: var(--Standard-padding);
-}
+
 /*Buttons design  */
 
 
 button{
   border:none;
-  border-radius: var(--Mid-border_radius);
-  padding: var(--Mid-padding);
+  border-radius: var(--small-border_radius);
+  padding:var(--small-padding) var(--medium-padding);
+  font-size: 1rem;
 }
 button:hover{
   background-color: var(--Primary_Acc_color_shadow);
@@ -202,11 +193,12 @@ button:hover{
   justify-self: center;
   transform: translateY(-5px) rotate(-390deg);
 }
-.button_list{   /*Botones similar a lista*/
+.button_list {   /*Botones similar a lista*/
   background-color: var(--Primary_color);
   text-align: left;
   font-size: 1rem;
-  width: 300px;
+  display: inline-block;
+  width: 100%;
 }
 .button_list:hover{
   background-color: var(--Primary_Acc_color_shadow);
@@ -230,17 +222,22 @@ button:hover{
 .button_list.active:hover{
   background-color: var(--Focus_color_shadow);
 }
-
+article{
+  padding: var(--large_padding);
+  border-radius: var(--small-border_radius);
+  background-color: var(--Primary_color);
+  box-shadow: rgba(61, 65, 68, 0.2) 0px 4px 8px;
+}
 
 /*Campo de ingresar tasa*/
   #principal{
-    margin-top: var(--Standard-padding);   
+    margin-top: var(--medium-padding);   
   }
   #busqueda{
-    padding: var(--Mid-padding);
+    padding: var(--small-padding);
     font-size: 1.5rem;
     border: 1px solid var(--Primary_color);
-    border-radius: var(--Standard_border_radius);
+    border-radius: var(--medium_border_radius);
     background-color: var(--Primary_Acc_color);
     color: var(--Contrast_color);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
@@ -249,6 +246,17 @@ button:hover{
     box-shadow: rgba(0, 0, 0, 0.50) 0px 1px 4px;
   }
   /*Este elemento integra los elementos de busqueda con un solo estilo  */
+  input{
+    background-color: var(--Primary_Acc_color);
+    border: 1px solid var(--Primary_Acc_color);
+    border-radius: var(--small-border_radius);
+    font-size: 1rem;
+    padding:var(--small-padding) var(--medium-padding);
+  }
+  input:is(:focus,:hover){
+    outline: 1px solid var(--Focus_color);
+    background-color: var(--Primary_Acc_color);
+  }
   #busqueda_cuadro{ 
     /*Grid layout*/
     display: grid; 
@@ -258,13 +266,18 @@ button:hover{
     grid-template-areas:". .";
     justify-items: center;
     background-color: var(--Primary_Acc_top_color);
-    border-radius: var(--Mid-border_radius);
+    border-radius: var(--small-border_radius);
     padding: 2px;
     transition: all 0ms;
+    margin-bottom: var(--medium-padding);
+    width: 100%;
   }
   #busqueda_cuadro:hover{
     border: 1px solid var(--Focus_color);
     padding: 1px;
+  }
+  #busqueda_cuadro input:hover{
+    outline: none;
   }
   #busqueda_cuadro:hover  #limpiar_btn{
     opacity: 1;
@@ -275,7 +288,7 @@ button:hover{
     padding: 10px;
     width:95%;
     border: none;
-    border-radius: var(--Mid-border_radius);
+    border-radius: var(--small-border_radius);
     background-color: transparent;
   }
   :is(#campoBusqueda,#tasas_selecion):focus-visible{
@@ -285,7 +298,7 @@ button:hover{
 
   /*Lista desplegable para seleccionar tasa a convertir*/
   #tasas_selecion{
-    border-radius: var(--Mid-border_radius) ;
+    border-radius: var(--small-border_radius) ;
     padding: 2px;
     border: none;
     background-color: transparent;
@@ -312,9 +325,10 @@ button:hover{
     background: var(--Primary_color);
   }
   #anticipada_label{
-    padding-left: var(--Standard-padding);
+    padding-left: var(--medium-padding);
     display: flex; 
-    gap: var(--Mid-padding); 
+    align-items: center;
+    gap: var(--small-padding); 
     grid-template-areas:". .";
     font-size: 1rem;
     width: 160px;
@@ -364,23 +378,24 @@ button:hover{
 
 /* Ventana flotante */
 #float_windows{
-  position: fixed;
-  top: 10%;
-  right:5%;
+  position:fixed;
   border: 1px solid var(--Focus_color);
-  width:fit-content;
+  width:max-content;
   height: fit-content;
   background-color: var(--Primary_color);
-  border-radius: var(--Standard_border_radius);
+  border-radius: var(--medium_border_radius);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: var(--Standard-padding);
+  padding: var(--medium-padding);
   z-index: 20;
+  height: 50%;
+  overflow: hidden;
+  
 }
 #float_windows_content{
-  padding: var(--Standard-padding);
-  margin-top: var(--Standard-padding);
+  padding: var(--medium-padding);
+  margin-top: var(--medium-padding);
   overflow-y: scroll;
-  max-height: 60vh;
+  max-height: 80%;
 }
 
 .li_float_windows{
@@ -389,9 +404,9 @@ button:hover{
   gap: 10px;
   width:inherit;
   background-color: var(--Primary_Acc_color);
-  margin-bottom: var(--Mid-padding);
-  padding: var(--Mid-padding);
-  border-radius: var(--Mid-border_radius);
+  margin-bottom: var(--small-padding);
+  padding: var(--small-padding);
+  border-radius: var(--small-border_radius);
 }
 .elementDisable{
   pointer-events: none;
@@ -403,7 +418,6 @@ button:hover{
 /*Resultados*/
 #resultado{
   display: none;
-  margin-bottom: 48px;
 }
 #resultado_titulo{
   margin: 0;
@@ -415,33 +429,36 @@ button:hover{
 
 #resultado_info{
   text-align: justify;
-  margin: var(--Standard-padding) 0;
+  margin: var(--medium-padding) 0;
 }
 .seccion_resultadoTasasConvertidas{
-  margin-bottom: var(--Standard-padding);
+  margin-bottom: var(--medium-padding);
 }
 .resultados_resultadoTasasConvertidas{
-  padding-top: var(--Standard-padding);
+  padding-top: var(--medium-padding);
   margin-bottom:32px;
 }
 
 .titulo_resultadoTasasConvertidas{
-  background-color: var(--Primary_Acc_color);
-  color: var(--Contrast_color);
+  background-color: var(--Focus_color);
+  color: var(--Primary_Acc_color);
   font-size: 1.2rem;
   text-align: left;
   font-weight:600;
 }
-
+.titulo_resultadoTasasConvertidas:hover{
+  background-color: var(--Focus_color_shadow);
+  color: var(--Primary_Acc_color);
+}
 
 .titulo_resultadoTasasConvertidas::after{
  content: "-";
  font-size: 1.5rem;
  float: right;
- background-color: var(--Primary_Acc_color);
+ background-color: none;
  width: 32px;
  text-align: center;
- border-radius: var(--Mid-border_radius);
+ border-radius: var(--small-border_radius);
  transform: rotate(0deg);
  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -454,11 +471,10 @@ button:hover{
   grid-template-columns: 1fr 5fr 1fr;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: var(--Standard-padding);
+  margin-bottom: var(--medium-padding);
 }
 .li_resultado p{
-  width: 80%;
-  padding: 0 var(--Standard-padding);
+  padding: 0 var(--medium-padding);
   margin: 0;
 }
 .value_resultado{
@@ -466,7 +482,7 @@ button:hover{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 8px var(--Mid-padding);
+  padding: 8px var(--small-padding);
   letter-spacing: 0.5px;
 }
 
@@ -478,45 +494,104 @@ button:hover{
 #filter_results{
   position: absolute;
   display: flex;
+  flex-direction: column;
   border: 1px solid var(--Focus_color);
   background-color: var(--Primary_color);
-  border-radius: var(--Standard_border_radius);
+  border-radius: var(--medium_border_radius);
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: var(--Standard-padding);
+  padding: var(--medium-padding);
   transform: translateY(48px);
-  width: 82%;
+  width: 100%;
   max-width: 250px;
   z-index: 20;
 }
 #filter_results > * {
+  width: 100%;
   margin: 4px 0px;
+  font-size: 1rem;
+  text-align: left;
 }
 
 
 /*Footer*/
 footer{
   bottom: 0;
-  width: 100%;
   height: fit-content;
-  padding: var(--Mid-padding) 0;
+  padding: var(--small-padding);
   background-color: var(--Primary_Acc_color);
   display: flex;
-  padding-top: 32px;
+  padding: var(--medium-padding);
+  margin-top: var(--large_padding);
 }
 #description{
-  padding-left: 16px;
-  margin-bottom: 32px;
   width: 50%;
+  margin-left: var(--medium-padding);
 }
 #description div{
   margin-left: 70px;
 }
+
 a{
   color: var(--Focus_color);
 }
-#description h1{
-  font-size: 1rem;
+
+#hero{
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+#hero h1{
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  opacity: 0.9;
+}
+.emphasis_container{
+  background-color: var(--Focus_color);
+  color: var(--Primary_Acc_color);
+  border-radius: var(--small-border_radius);
+  padding:var(--small-padding) var(--medium-padding);
+  font-weight: bolder;
+}
+
+#main_app::before{
+  content: " ¡Convierte tu primera tasa en menos de un segundo!";
+  font-size: 1rem;
+  background-color: var(--Contrast_color);
+  color: var(--Primary_Acc_color);
+  border-radius: var(--small-border_radius);
+  width: fit-content;
+  padding:var(--small-padding) var(--medium-padding);
+  position: relative;
+  top: -2rem;
+  left: -3rem;
+
+}
+.center_flex{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.icon_opacity{
+  opacity: 0.5;
+}
+.hero_emphasis{
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: bolder !important;
+  color: var(--Focus_color) !important;
+}
+i{
+  font-weight: bolder !important;
+  color: var(--Focus_color) !important;
+}
+#main_logo{
+  opacity: 0.5;
+}
+
 #description h2{
   font-size: 1rem;
   font-style: italic;
@@ -546,14 +621,15 @@ label{
   display: none;
 }
 .cw_label{
-  display: inline-block;
+  display: flex;
   width: 35px;
   height: 20px;
   background-color: var(--Primary_color);
-  border-radius: var(--Standard_border_radius);
+  border-radius: var(--medium_border_radius);
   cursor: pointer;
   border: 1px solid var(--Contrast_color);
   scale: 0.9;
+  margin-bottom: -2px;
 }
 .cw_label::after{
   position: absolute;
@@ -576,32 +652,34 @@ label{
 
 /* Media query para pantallas menores a 600px */
 @media only screen and (max-width: 600px) {
-  .view_port{
-    min-width: 128px;
+  body{
+    padding: 16px;
+    background-color: var(#1B998B);
+  }
+  article{
+  padding: var(--small-padding);
+  }
+  #main_app::before{
+    left: -1rem;
   }
   #busqueda .elements_container{
     flex-direction: column;
-    align-items: center;
-    
+    align-items: center;  
+  }
+  #busqueda .elements_container > * {
+    width: 100%;
   }
   header{
-    position: inherit;
-    width: 100%;
-    padding: 0;
-    
-  
-  }
-  #header_tittle{
-    flex-direction: column;
-    gap: var(--Standard-padding);
-    padding-top: var(--Standard-padding);
+    background-color: var(--Primary_Acc_color);
   }
   /*Footer*/
   footer{
     flex-direction: column;
+    padding: var(--medium-padding);
   }
-  #description div{
-    width: 100%;
+  #description{
+    width: fit-content;
+    margin-left: 0;
   }
   
 
