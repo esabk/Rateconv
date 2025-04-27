@@ -63,6 +63,7 @@ header{
   position:fixed;
   padding-top: 16px;
   z-index: 30;
+  bottom: 0;
 }
 #pop{
   text-align: center;
@@ -76,7 +77,7 @@ header{
   margin-block:0;
   margin-bottom: var(--small-padding);
   border-radius: var(--small-border_radius);
-  
+  rgba(61, 65, 68, 0.2) 0px 4px 8px
 }
 
 /*General tags */
@@ -388,8 +389,7 @@ article{
   padding: var(--medium-padding);
   z-index: 20;
   height: 50%;
-  overflow: hidden;
-  
+  overflow: hidden; 
 }
 #float_windows_content{
   padding: var(--medium-padding);
