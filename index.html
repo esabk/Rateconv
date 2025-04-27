@@ -1,185 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <title>RateConv - Convierte tasas de interes con un click</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/style.css?v=1.1.2">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <!-- Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2b2b2b;
+        }
+    </style>
 </head>
-
-<header>
-
-    <div id="header_tittle">
-        <a id="rateconv_logo_page" href="./index.html"><img   src="./icons/Logo_with_name.svg" alt="Rateconv" height="30px"></a>
-        <div class="button_container">
-            <button class="button_selected">Conversor</button>
-            <button class="button_disabled">Tablas</button>
-            <!-- Estos botones abren la ventana flotante con el primer parametro Titulo y el segunto el nokmbre de la lista (Array) almacenada en localstorage. -->
-            <button onclick="floatWindowsLista('Guardado','saved')">Guardado</button> 
-            <button onclick="floatWindowsLista('Historial','history')">Historial</button>
-
-        </div>
-
-    </div>
-    
-</header>
-
 <body>
-    <div class="view_port">
-        <section  id="nombre">
-            <img id="main_logo" src="./icons/Logo.svg" alt="Rateconv" height="150px" width="375px">
-            <p>Convierte tasas de interes con facilidad</p>
-        </section>
-    
-        <section id="principal">
-            <div id="busqueda">
-                <div id="busqueda_cuadro">
-                    <input maxlength="16"  type="text" id="campoBusqueda" placeholder="Ingrese tasa a convertir" autofocus autocomplete="off">
-                    <button id="limpiar_btn" onclick="limpiar()">x</button>
-                </div>
-                
-                <div class="elements_container">
-                    <div >
-                        <button id="button_list_rates_types" class="button_list active" onclick="showRateTypes()" >Efectiva Anual</button>
-                    </div>
-                    <select name="tasas_selecion" id="tasas_selecion">
-                        <option value="ea">Efectiva anual</option>
-                        <option value="mv">Mes</option>
-                        <option value="tv">Trimestre</option>
-                        <option value="sv">Semestre</option>
-                        <option value="diaria">Diaria</option>
-                        <option value="mensual">Mensual</option>
-                        <option value="trimestral">Trimestral</option>
-                        <option value="semestral">Semestral</option>
-                    </select>
-                    <div class="elements_container">
-                        <label id="anticipada_label">
-                            <div class="checkbox-wrapper">
-                                <input type="checkbox" class="cw_check" id="anticipadaCheck" value="" />
-                                <label class="cw_label" for="anticipadaCheck"></label>
-                            </div>
-                            Tasa Anticipada
-                        </label>
-                    </div>
-                    <div id="filter_results">
-                        <button onclick="btnSelectTasa(this)">Efectiva anual</button>
-                        <button onclick="btnSelectTasa(this)">Mes</button>
-                        <button onclick="btnSelectTasa(this)">Trimestre</button>
-                        <button onclick="btnSelectTasa(this)">Semestre</button>
-                        <button onclick="btnSelectTasa(this)">Diaria</button>
-                        <button onclick="btnSelectTasa(this)">Mensual</button>
-                        <button onclick="btnSelectTasa(this)">Trimestral</button>
-                        <button onclick="btnSelectTasa(this)">Semestral</button>
-                </div>
-                </div>  
-                <p id="alerta"></p>
-            </div>
-            <div id="sugerencias"></div>
-        </section>
-    
-         <br><br>
-        <section id="resultado">
-            
-            <div class="config_container">
-                <h2 id="resultado_titulo"></h2>
-                <div class="config_container">
-                    <button id="save">Guardar</button>
-                    <button onclick="share()">Compartir</button>
-                </div>
-            </div>
-            <!-- Siguiente elemento oculto -->
-            <p id="resultado_info" style="display: none;"></p>  
-            
-            <br>
-            
-            <!-- Siguiente elemento oculto -->
-            <div class="elements_container" style="display: none;">
-                <div class="config_container">
-                    <p>Mostar: </p>
-                    <button id="" class="button_border" >Todas</button>
-                    <button id="" class="button_border" >Más usadas</button>
-                    <button id="" class="button_border" >Periodicas</button>
-                    <button id="" class="button_border" >Nominales</button>
-                </div>    
-                
-            </div>
-            <br>
-            <div class="elements_container">
-    
-                <div class="config_container">
-                    <p>Decimales del resultado </p>
-                    <input type="number" id="decimal_config" min="0" max="10" value="2"></input>
-                    <button onclick="mostrarResultados()" class="button_primary" >Aplicar</button>
-                </div>
-            </div>
-            <br>
-    
-            <div id="resultadoTasasConvertidas"> 
-                <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_0">
-                    <button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_0"></button>
-                    <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_0"></ul>
-                </section>
-    
-                <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_1">
-                    <button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_1"></button>
-                    <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_1"></ul>
-                </section>
-    
-                <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_2">
-                    <button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_2"></button>
-                    <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_2"></ul>
-                </section>
-    
-                <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_3">
-                    <button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_3"></button>
-                    <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_3"></ul>
-                </section>
-    
-                <section class="seccion_resultadoTasasConvertidas"   id="seccion_resultadoTasasConvertidas_4">
-                    <button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_4"></button>
-                    <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_4"></ul>
-                </section>
-            </div>
-            <textarea name="portapapeles" id="portapapeles" ></textarea>
-            
-        </section>
-    </div>
-
-    <section id="float_windows">
-        <div class="elements_container">
-            <h3 id="float_windows_title">Rateconv</h3>
-            <button id="close_float_windows" class="button_primary">Cerrar</button>
-        </div>
-        <div id="float_windows_content">
-            Cargando app... Espera por favor.
-        </div>
-
-    </section>
-
-
-    <script type="module" src="/main.js?v=1.1.2"></script>
-
-
+    <h1>No beta available</h1>
+    <button onclick='window.location.href="https://www.rateconv.com"'>Go to <b>www.rateconv.com</b></button>
 </body>
-<footer>
-    <p id="pop">Hola, empieza gratis, rápido y sin anuncios.</p>
-    <div class="footer_links">
-        <div>
-            <button id="config_button" onclick="showPreferences()" >Configuración</button>
-            <button class="button_deco_link" href="./pages/ayuda.html">Ayuda </button>
-            <button class="button_deco_link" href="">Privacidad </button>
-            <button class="button_deco_link" href="./pages/Acerca_de.html">Acerca de</button>
-        </div>
-    
-        <p><img src="/icons/Logo.svg" height="16px" alt="%"> Rateconv.com</p>
-    </div>
-</footer>
 </html>
