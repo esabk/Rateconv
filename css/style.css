@@ -658,8 +658,8 @@ label{
 For moviles
 
 
-Media query para pantallas menores a 600px */
-@media only screen and (max-width: 600px) {
+Media query para pantallas menores a 830px */
+@media only screen and (max-width: 830px) {
   body{
     padding: 16px;
     background-color: var(#1B998B);
