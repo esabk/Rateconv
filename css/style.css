@@ -564,6 +564,9 @@ a{
   padding:var(--small-padding) var(--medium-padding);
   font-weight: bolder;
 }
+#main_app{
+  margin-bottom: 50px;
+}
 
 #main_app::before{
   content: " ¡Convierte tu primera tasa en menos de un segundo!";
