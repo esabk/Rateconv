@@ -288,18 +288,22 @@ article{
   }
   
 #campoBusqueda{
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 10px;
     width:95%;
     border: none;
     border-radius: var(--small-border_radius);
     background-color: transparent;
+    font-weight: 700;
+    color: var(--Contrast_color);
   }
   :is(#campoBusqueda,#tasas_selecion):focus-visible{
     outline: none !important;
     background-color: transparent;
   }
-
+#campoBusqueda::placeholder{
+  color: var(--Primary_Acc_color_shadow);
+}
   /*Lista desplegable para seleccionar tasa a convertir*/
   #tasas_selecion{
     border-radius: var(--small-border_radius) ;
@@ -323,6 +327,8 @@ article{
     border-radius:50%;
     color: var(--Contrast_color);
     width: 90%;
+    aspect-ratio: 1/1;
+    font-weight: 700;
   }
   #limpiar_btn:hover{
     cursor: pointer;
@@ -524,7 +530,7 @@ footer{
   background-color: var(--Primary_Acc_color);
   display: flex;
   padding: var(--medium-padding);
-  margin-top: var(--large_padding);
+  margin-top: 100px;
 }
 #description{
   width: 50%;
@@ -720,10 +726,8 @@ Media query para pantallas menores a 830px */
     padding: var(--medium-padding);
   }
   #description{
-    background-color: var(--Primary_Acc_color);
     width: fit-content;
     margin-left: 0;
-    box-shadow: none;
   }
   .footer_links{
     width: 100%;
