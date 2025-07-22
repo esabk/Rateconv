@@ -209,12 +209,14 @@ function infoRateInput(value,tasa,anticipated) {
   const INFO_TASA_EQUIVALE =" Esta tasa equivale a:"
 
 
-  if (anticipated) {
+  if (value && anticipated) {
     RESULTADO_TITULO.innerHTML = `${value}% ${tasa} <em> anticipada <em>`;
     document.title=`${value}% ${tasa} anticipada`;
-  }else{
+  }else if(value){
     RESULTADO_TITULO.textContent = `${value}% ${tasa}`;
     document.title=`${value}% ${tasa}`;
+  }else{
+    document.title="Convierte tasas de interes gratis";
   }
 
   RESULTADO_INFO.textContent = INFO_TASA.definicion + INFO_TASA_EQUIVALE;
