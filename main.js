@@ -402,6 +402,20 @@ if (URL_rateValue != null & URL_rateType != null & URL_rateAnticipated!= null ) 
 //Eleva el campo de busqueda al hacer click en un didpositivo movil
 CAMPO_BUSQUEDA.addEventListener("click", function() {
   if (/Mobi|Android/i.test(navigator.userAgent)) {
-    PRINCIPAL.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const offset = 80; // Ajusta este valor según el margen que desees
+    const top = PRINCIPAL.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
   }
 })
+
+//Mostrar en moviles el boton de limpiar si hay valores ingresados
+//Mostrar en moviles el boton de limpiar si hay valores ingresados
+CAMPO_BUSQUEDA.addEventListener("input", function() {
+  const limpiarBtn = document.getElementById("limpiar_btn");
+  // Solo mostrar en móviles y si hay valor
+  if ((/Mobi|Android/i.test(navigator.userAgent)) && CAMPO_BUSQUEDA.value.trim() !== "") {
+    limpiarBtn.classList.add("show");
+  } else {
+    limpiarBtn.classList.remove("show");
+  }
+});

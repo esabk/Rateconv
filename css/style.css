@@ -294,7 +294,7 @@ article{
   #busqueda_cuadro input:hover{
     outline: none;
   }
-  #busqueda_cuadro:hover  #limpiar_btn{
+  #busqueda_cuadro:hover  #limpiar_btn, #limpiar_btn.show{
     opacity: 1;
   }
   
@@ -745,6 +745,9 @@ Media query para pantallas menores a 830px */
   }
   #busqueda .elements_container > * {
     width: 100%;
+  }
+  #campoBusqueda{
+    font-size: 1.2rem;
   }
   header{
     background-color: var(--Primary_Acc_color);
