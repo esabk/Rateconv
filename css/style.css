@@ -124,6 +124,11 @@ p{
   display: flex;
   justify-content: space-between;
   gap: var(--medium-padding);
+  overflow: scroll;
+  
+}
+::-webkit-scrollbar {
+    display: none;
 }
 #busqueda .elements_container > * {
   width: 50%;
@@ -182,6 +187,12 @@ button:hover{
 .button_border:focus{
   background-color: var(--Contrast_color);
   color: var(--Primary_Acc_color);
+}
+.button_deco_link{
+  background-color: var(--Primary_Acc_color_shadow);
+}
+.button_deco_link:hover{
+  background-color: var(--Focus_color_shadow);
 }
 .button_deco_link::after{     /*Botones con enlace*/
   content: "»";
@@ -295,14 +306,14 @@ article{
     border-radius: var(--small-border_radius);
     background-color: transparent;
     font-weight: 700;
-    color: var(--Contrast_color);
+    color: var(--Focus_color_shadow);
   }
   :is(#campoBusqueda,#tasas_selecion):focus-visible{
     outline: none !important;
     background-color: transparent;
   }
 #campoBusqueda::placeholder{
-  color: var(--Primary_Acc_color_shadow);
+  color: var(--Focus_color_shadow);
 }
   /*Lista desplegable para seleccionar tasa a convertir*/
   #tasas_selecion{
@@ -521,6 +532,14 @@ article{
   text-align: left;
 }
 
+.card{
+  background-color: var(--Primary_color);
+  color:var(--Contrast_color);
+  padding: 16px 32px;
+  font-weight: 400;
+  min-width: 200px !important;
+  border-radius: var(--medium_border_radius) ;
+}
 
 /*Footer*/
 footer{
@@ -549,6 +568,9 @@ a{
   display: flex;
   flex-direction: column;
   align-items: center;
+}h2{
+  text-align: center;
+  padding: 16px;
 }
 
 #hero h1{
@@ -625,6 +647,11 @@ i{
   margin-bottom: 16px;
 }
 
+.special-icon{
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
 /*CHECKBOX Anticpada*/
 label{
   padding: 0 !important;
@@ -682,6 +709,9 @@ Media query para pantallas menores a 830px */
   article{
   padding: var(--small-padding);
   }
+  .elements_container{
+    max-width: 90dvw;
+  }
   #hero h1{
     font-size: 1.2rem;
     line-height: 1.5rem;
@@ -725,7 +755,7 @@ Media query para pantallas menores a 830px */
   }
   /*Footer*/
   footer{
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding: var(--medium-padding);
   }
   #description{
