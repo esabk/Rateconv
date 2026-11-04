@@ -6,12 +6,12 @@ import { newElement,
   listRateTypes,
   filterResults,
   posicionarElementoFlotante,
-} from "/modules/DOMControler.mjs?v=1.1.1";
-import { rateConverter} from "/modules/rateConverter.mjs?v=1.1.1";
-import { limpiar,showHideDOMElement } from "/modules/DOMButtons.mjs?v=1.1.1";
-import { Tasa } from "/class/Tasa.mjs?v=1.1.1";
-import {getVariableFromURL,shareRateConvertion} from "/modules/shareURL.mjs?v=1.1.1";
-import { saveLocalStorage, getLocalStorage, verifyLocalStorage}  from "/modules/localStorageManager.mjs?v=1.1.1";
+} from "./modules/DOMControler.mjs?v=1.1.1";
+import { rateConverter} from "./modules/rateConverter.mjs?v=1.1.1";
+import { limpiar,showHideDOMElement } from "./modules/DOMButtons.mjs?v=1.1.1";
+import { Tasa } from "./class/Tasa.mjs?v=1.1.1";
+import {getVariableFromURL,shareRateConvertion} from "./modules/shareURL.mjs?v=1.1.1";
+import { saveLocalStorage, getLocalStorage, verifyLocalStorage}  from "./modules/localStorageManager.mjs?v=1.1.1";
 
 
 
