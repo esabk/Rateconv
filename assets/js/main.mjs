@@ -1,5 +1,5 @@
 //Import local modules
-import { ratesFromJSON } from "/modules/getData.mjs?v=1.1";  //Procesa la petición para obtener las tasas
+import { ratesFromJSON } from "/modules/getData.mjs";  //Procesa la petición para obtener las tasas
 import { newElement,
   popAlerta,
   sugerencias,
