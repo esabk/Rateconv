@@ -1,35 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-bs-theme="light" lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f9;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Convierte tasas de interes gratis</title>
+    <link rel="canonical" href="https://rateconv.com/">
+    <meta property="og:url" content="https://rateconv.com/">
+    <meta name="description" content="Convierte tasas de interes con facilidad">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="ontent=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot;>">
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Rateconv",
+            "url": "https://rateconv.com"
         }
-        h1 {
-            color: #333;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #000000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #2b2b2b;
-        }
-    </style>
+    </script>
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg">
+    <link rel="icon" type="image/svg+xml" sizes="150x150" href="assets/img/Logo.svg">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    <h1>No beta available</h1>
-    <button onclick='window.location.href="https://www.rateconv.com"'>Go to <b>www.rateconv.com</b></button>
+    <header>
+        <div id="header_tittle"><a id="rateconv_logo_page" href="./index.html"><img src="assets/img/Logo_with_name.svg" alt="Rateconv" height="30px"></a>
+            <div class="button_container menu_header"><button onclick="floatWindowsLista(&#39;Guardado&#39;,&#39;saved&#39;)"><img src="assets/img/bookmark-empty.svg" alt="guardado" width="16px" height="16px"> Guardado</button><button onclick="floatWindowsLista(&#39;Historial&#39;,&#39;history&#39;)"><img src="assets/img/clock-outline.svg" alt="historial" width="16px" height="16px"> Historial</button>
+                <section id="float_windows">
+                    <div class="elements_container">
+                        <h3 id="float_windows_title">Rateconv</h3><button id="close_float_windows" class="button_secondary"><img class="img-fluid" width="24" height="24" src="assets/img/close.svg"></button>
+                    </div>
+                    <div id="float_windows_content"><span> Cargando app... Espera por favor. </span></div>
+                </section>
+            </div>
+        </div>
+    </header>
+    <div id="notifications">
+        <p id="pop"></p>
+    </div>
+    <div class="view_port">
+        <section id="hero"><img id="main_logo" src="assets/img/Logo_with_name.svg" alt="Rateconv" height="40px" width="150px">
+            <h1>Convierte tasas de interés <br><i class="hero_emphasis">EN SEGUNDOS</i></h1>
+            <p>Sé más ágil con conversiones automáticas</p>
+            <div class="emphasis_container"><span> Rápido · Sin registro · Siempre disponible</span></div><img class="icon_opacity" src="assets/img//arrow-down.svg" alt="señala la app" height="50px" width="50px">
+        </section>
+        <article id="main_app">
+            <section id="principal">
+                <div class="config_container">
+                    <div class="elements_container">
+                        <div class="config_container_extra"></div>
+                    </div>
+                    <div class="config_container_extra"><button id="save"><img class="img-fluid" width="24" height="24" id="save_icon" src="assets/img/bookmark-empty.svg"></button><button onclick="share()"><img class="img-fluid" width="24" height="24" src="assets/img/share.svg"></button></div>
+                </div>
+                <div id="busqueda">
+                    <div id="busqueda_cuadro"><input type="text" autocomplete="off" autofocus="" id="campoBusqueda" maxlength="16" placeholder="Ingrese tasa a convertir"><button id="limpiar_btn" onclick="limpiar()">x</button>
+                        <h2 id="resultado_titulo"></h2>
+                    </div>
+                    <div id="sugerencias"></div>
+                    <div id="converter_settings">
+                        <div id="filter_results"><button onclick="btnSelectTasa(this)">Efectiva anual</button><button onclick="btnSelectTasa(this)">Mes</button><button onclick="btnSelectTasa(this)">Trimestre</button><button onclick="btnSelectTasa(this)">Semestre</button><button onclick="btnSelectTasa(this)">Diaria</button><button onclick="btnSelectTasa(this)">Mensual</button><button onclick="btnSelectTasa(this)">Trimestral</button><button onclick="btnSelectTasa(this)">Semestral</button></div>
+                        <div><button class="active button_list" id="button_list_rates_types" onclick="showRateTypes()">Efectiva anual</button></div><select id="tasas_selecion" name="tasas_selecion">
+                            <option value="ea">Efectiva anual</option>
+                            <option value="mv">Mes</option>
+                            <option value="tv">Trimestre</option>
+                            <option value="sv">Semestre</option>
+                            <option value="diaria">Diaria</option>
+                            <option value="mensual">Mensual</option>
+                            <option value="trimestral">Trimestral</option>
+                            <option value="semestral">Semestral</option>
+                        </select>
+                        <div class="elements_container"><label id="anticipada_label"><div class="checkbox-wrapper"><input class="cw_check" id="anticipadaCheck" type="checkbox" value=""><label class="cw_label" for="anticipadaCheck"></label></div> Tasa Anticipada </label></div>
+                    </div>
+                    <p id="alerta"></p>
+                </div>
+            </section>
+            <section id="resultado">
+                <p id="resultado_info" style="display:none;"></p>
+                <div style="margin-top: 2rem;">
+                    <p>Decimales del resultado </p><input type="number" id="decimal_config" max="10" min="0" value="2" style="margin-right:16px;"><button class="button_primary" onclick="mostrarResultados()">Aplicar</button>
+                </div><br>
+                <div class="elements_container" style="display:none;">
+                    <div class="config_container">
+                        <p>Mostar: </p><button class="button_border">Todas</button><button class="button_border">Más usadas</button><button class="button_border">Periodicas</button><button class="button_border">Nominales</button>
+                    </div>
+                </div><br><br>
+                <div id="resultadoTasasConvertidas">
+                    <section id="seccion_resultadoTasasConvertidas_0" class="seccion_resultadoTasasConvertidas"><button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_0"></button>
+                        <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_0"></ul>
+                    </section>
+                    <section id="seccion_resultadoTasasConvertidas_1" class="seccion_resultadoTasasConvertidas"><button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_1"></button>
+                        <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_1"></ul>
+                    </section>
+                    <section id="seccion_resultadoTasasConvertidas_2" class="seccion_resultadoTasasConvertidas"><button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_2"></button>
+                        <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_2"></ul>
+                    </section>
+                    <section id="seccion_resultadoTasasConvertidas_3" class="seccion_resultadoTasasConvertidas"><button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_3"></button>
+                        <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_3"></ul>
+                    </section>
+                    <section id="seccion_resultadoTasasConvertidas_4" class="seccion_resultadoTasasConvertidas"><button class="titulo_resultadoTasasConvertidas" id="titulo_seccion_resultadoTasasConvertidas_4"></button>
+                        <ul class="resultados_resultadoTasasConvertidas" id="resultados_seccion_resultadoTasasConvertidas_4"></ul>
+                    </section>
+                </div><textarea id="portapapeles" name="portapapeles"></textarea>
+            </section>
+        </article>
+        <div class="center_flex"><br><br><img class="icon_opacity" src="assets/img//arrow-up.svg" alt="señala la app" height="50px" width="50px">
+            <h2><i>¿Harto de hacer cálculos financieros manuales?</i></h2>
+            <p> Convierte tasas de interés rápido y sin complicaciones: efectivas, nominales, anticipadas... todo en segundos. </p><br>
+            <div class="elements_container carrusel">
+                <h2><i><span class="special-icon">→</span><br> Ideal para </i></h2>
+                <div class="card">
+                    <p>Estudiantes que se enfrentan a ejercicios de matemáticas financieras.</p>
+                </div>
+                <div class="card">
+                    <p>Profesionales que necesitan agilidad en cálculos sin depender de hojas de cálculo complejas.</p>
+                </div>
+                <div class="card">
+                    <p>Personas curiosas que buscan entender mejor sus préstamos, inversiones o ahorros.</p>
+                </div>
+            </div>
+            <h2><i>100% GRATIS, 100% LIBRE</i></h2>
+            <p>Una herramienta sin restricciones pensada para estudiantes, expertos financieros y mentes curiosas. ¡Explora, personaliza y aporta! </p><br><button class="button_deco_link">Aporta en Github</button>
+        </div>
+    </div>
+    <footer>
+        <div id="description"><a id="rateconv_logo_page" href="./index.html"><img src="assets/img/Logo_with_name_and_subtitle.svg" alt="Rateconv" height="70px"></a>
+            <div>
+                <p>Rateconv.com nació en 12 de mayo de 2024 basado en apuntes de clase de gerencia financiera, con el objetivo de simplificar decisiones financieras y fomentar el acceso libre al conocimiento.</p><br><br>
+                <p>Envía tus comentarios a <a href="mailto:support@rateconv.com">support@rateconv.com</a> y sigue nuevas actualizaciones en <a href="https://www.instagram.com/eddysantiagoab/">@eddysantiagoab</a></p><br>
+                <p><img src="assets/img//Logo.svg" height="16px" alt="logo de la app"> Rateconv.com, creado por <img target="_blank" src="assets/img//eddysantiagoab_dark.svg" alt="eddysantiago AB" height="12px"></p>
+            </div>
+            <div id="icons_app" style="opacity:0;"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em" fill="currentColor" class="copy_icon" data-bss-id="133">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+                </svg></div>
+        </div>
+        <div class="footer_links"><button id="config_button" onclick="showPreferences()">Configuración</button><button class="button_deco_link" onclick="window.location.href=&#39;https://docs.rateconv.com/help&#39;">Ayuda </button><button class="button_deco_link" onclick="window.location.href=&#39;https://github.com/esabk/RatecovJS&#39;">Github</button><button class="button_deco_link" onclick="window.location.href=&#39;https://beta.rateconv.com&#39;">Beta</button><button class="button_deco_link" onclick="window.location.href=&#39;https://docs.rateconv.com/privacy&#39;">Privacidad </button><button class="button_deco_link" onclick="window.location.href=&#39;https://docs.rateconv.com/about&#39;">Acerca de</button></div>
+    </footer>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/modules/DOMButtons.mjs" type="module"></script>
+    <script src="assets/js/modules/DOMControler.mjs" type="module"></script>
+    <script src="assets/js/modules/getData.mjs" type="module"></script>
+    <script src="assets/js/modules/localStorageManager.mjs" type="module"></script>
+    <script src="assets/js/modules/shareURL.mjs" type="module"></script>
+    <script src="assets/js/modules/rateConverter.mjs" type="module"></script>
+    <script src="assets/js/class/Tasa.mjs" type="module"></script>
+    <script src="assets/js/main.mjs" type="module"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/service-worker.js"></script>
 </body>
+
 </html>
