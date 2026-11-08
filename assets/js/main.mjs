@@ -319,7 +319,7 @@ window.floatWindowsLista = function floatWindowsLista(title,lista) {
       let anticipatedLabel = listaFloat[i].anticipated ? " anticipada" : "";
       let button_float_lista = newElement("button",`${listaFloat[i].value}% ${listaFloat[i].type}${anticipatedLabel}`,"button_float_lista");
 
-            let iconDelete = "/delete.svg";
+            let iconDelete = new URL("../img/delete.svg", import.meta.url).href;
 
       // 1. Creamos el botón vacío
       let button_float_delete = newElement("button", "", "button_float_delete");
