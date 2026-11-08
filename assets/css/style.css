@@ -652,6 +652,14 @@ input:is(:focus, :hover) {
   border-radius: var(--medium_border_radius);
 }
 
+#link_simulator_container {
+  text-decoration: none;
+  background-color: var(--Primary_Acc_color);
+  color: var(--Contrast_color)!important;
+  border-radius: var(--small-border_radius);
+  padding: var(--small-padding) var(--medium-padding);
+}
+
 /* Footer */
 
 footer {

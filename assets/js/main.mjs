@@ -38,13 +38,18 @@ const pop=document.getElementById("pop");
 
 //Cargar datos de tasas desde "Data"
 let tasasJSON = await ratesFromJSON();
+window.resultEaRate = "";
 
 //Variables de guardado e historial
 let history = verifyLocalStorage("history",[]);
 let saved = verifyLocalStorage("saved",[]);
 
-//Expresion regular para solo dejar numeros y puntos en el campo de busqueda
-const EXPRESION_REGULAR = /[^0-9.]/g;
+//Expresion regular para solo dejar numeros y separadores decimales en el campo de busqueda
+const EXPRESION_REGULAR = /[^0-9.,]/g;
+
+function normalizarValorTasa(value) {
+  return value.replace(EXPRESION_REGULAR, "").replace(",", ".");
+}
 
 //Funciones  ejecutadas desde botones
 window.limpiar = limpiar;
@@ -71,34 +76,31 @@ for (var i = 0; i < TASAS_SELECCION.options.length; i++){
 
 //Muestra sugerencia cuando se escribe en el campo de busqueda
 CAMPO_BUSQUEDA.oninput= function() {
-  let campoBusquedaOnlyNumber= CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
+  let campoBusquedaOnlyNumber= normalizarValorTasa(CAMPO_BUSQUEDA.value);
 
   if((campoBusquedaOnlyNumber/1) >0 ){
     //Reinicia las sugerencias
     SUGERENCIAS_BOX.innerHTML = '';
 
     //Verifica si se esta escribiendo en el campo de busqueda
-    sugerencias(SUGERENCIAS_BOX,CAMPO_BUSQUEDA,campoBusquedaOnlyNumber,tasas,"",TASAS_SELECCION);
+    sugerencias(SUGERENCIAS_BOX,CAMPO_BUSQUEDA,campoBusquedaOnlyNumber.replace(".", ","),tasas,"",TASAS_SELECCION);
 }
 }
 
 //Refresca resultados al hacer click 
 PRINCIPAL.onclick = function(e) {
 
-  //Evita que haya una tasa"Efectiva Anual anticipada" porque esto no existe
-  if (TASAS_SELECCION.value=="Efectiva Anual") {   anticipadaCheck.checked = false;  }
-
     //Muestra sugerencias solo si el campo de busqueda es el target
-    if (e.target !== CAMPO_BUSQUEDA || e.target !== TASAS_SELECCION) { 
+    if (e.target !== CAMPO_BUSQUEDA && e.target !== TASAS_SELECCION) { 
       SUGERENCIAS_BOX.style.display = 'none';
     }
-    mostrarResultados();
   };
 
 //Funcion para ejecutar la conversion de tasas y mouestra los resultados
 window.mostrarResultados = function mostrarResultados(){
   
-  const VALUE_CAMPO_BUSQUEDA = CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,"");
+  const VALUE_CAMPO_BUSQUEDA = normalizarValorTasa(CAMPO_BUSQUEDA.value);
+  const VALUE_CAMPO_BUSQUEDA_DISPLAY = VALUE_CAMPO_BUSQUEDA.replace(".", ",");
   const TASA_CAMPO_BUSQUEDA  = TASAS_SELECCION.value;
   const ANTICIPATED_CAMPO_BUSQUEDA = document.getElementById("anticipadaCheck").checked;
   let realtimeUrl;
@@ -107,10 +109,10 @@ window.mostrarResultados = function mostrarResultados(){
   document.getElementById("button_list_rates_types").textContent = TASAS_SELECCION.value;
 
   //Muestra u oculta la sección de resultado dependiendo si hay o no valores en el cuadro de busqueda
-  if (Number(CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR,""))>0) {
+  if (Number(VALUE_CAMPO_BUSQUEDA)>0) {
     RESULTADO.style.display="block";
-    CAMPO_BUSQUEDA.value = VALUE_CAMPO_BUSQUEDA + "%";
-    document.getElementById("save").classList.toggle("elementDisable");
+    CAMPO_BUSQUEDA.value = VALUE_CAMPO_BUSQUEDA_DISPLAY + "%";
+    document.getElementById("save").classList.remove("elementDisable");
 
     realtimeUrl = shareRateConvertion(CAMPO_BUSQUEDA.value,TASAS_SELECCION.value,anticipadaCheck.checked)
     window.history.replaceState(null, "", realtimeUrl);
@@ -126,6 +128,12 @@ window.mostrarResultados = function mostrarResultados(){
   const TITULO_SeccionesResultados_id ="titulo_seccion_resultadoTasasConvertidas_";
   const RESULTADO_SeccionesResultados_id ="resultados_seccion_resultadoTasasConvertidas_";
   const ANTICIPATED ="anticipada";
+
+  window.resultEaRate = "";
+  const EA_RATE = document.getElementById("ea_rate");
+  const LINK_SIMULATOR = document.getElementById("link_simulator");
+  EA_RATE.textContent = "0";
+  LINK_SIMULATOR.href = `https://www.ahorrar.com.co/simulador-abono-a-capital?utm_source=rateconv.com`;
 
   //Habilita el boton de guardar
   
@@ -182,6 +190,12 @@ window.mostrarResultados = function mostrarResultados(){
 
         value = rateConverter(VALUE_CAMPO_BUSQUEDA,fromTasa,toTasa,periodsInput,periodsOutput,DECIMALS_CONFIG);
 
+        if (i === 0) {
+          window.resultEaRate = `${value}%`;
+          EA_RATE.textContent = window.resultEaRate;
+          LINK_SIMULATOR.href = `https://www.ahorrar.com.co/simulador-abono-a-capital?utm_source=rateconv.com&saldo=1000000&cuotas=12&abono=0&tasa=${window.resultEaRate}`;
+        }
+
          //Crea cada bonton con el resultado y su nombre
          let button_Resultado;
          let p_Resultado;
@@ -222,16 +236,17 @@ function infoRateInput(value,tasa,anticipated) {
   const RESULTADO_INFO=document.getElementById("resultado_info");
   const INFO_TASA = tasasJSON.find(element => element.nombre == tasa );
   const INFO_TASA_EQUIVALE =" Esta tasa equivale a:"
+  const DISPLAY_VALUE = String(value).replace(".", ",");
 
 
   if (value && anticipated) {
-    RESULTADO_TITULO.innerHTML = `${value}% ${tasa} <em> anticipada <em>`;
-    document.title=`${value}% ${tasa} anticipada`;
+    RESULTADO_TITULO.innerHTML = `${DISPLAY_VALUE}% ${tasa} <em> anticipada <em>`;
+    document.title=`${DISPLAY_VALUE}% ${tasa} anticipada`;
 
 
   }else if(value){
-    RESULTADO_TITULO.textContent = `${value}% ${tasa}`;
-    document.title=`${value}% ${tasa}`;
+    RESULTADO_TITULO.textContent = `${DISPLAY_VALUE}% ${tasa}`;
+    document.title=`${DISPLAY_VALUE}% ${tasa}`;
 
 
   }else{
@@ -310,14 +325,15 @@ window.floatWindowsLista = function floatWindowsLista(title,lista) {
 
   for (let i = listaFloat.length-1; i >=0; i--) {
   
-    if(listaFloat[i].value > 0){
+    if(Number(normalizarValorTasa(String(listaFloat[i].value))) > 0){
         
 
 
 
       
       let anticipatedLabel = listaFloat[i].anticipated ? " anticipada" : "";
-      let button_float_lista = newElement("button",`${listaFloat[i].value}% ${listaFloat[i].type}${anticipatedLabel}`,"button_float_lista");
+      let displayValue = String(listaFloat[i].value).replace(".", ",");
+      let button_float_lista = newElement("button",`${displayValue}% ${listaFloat[i].type}${anticipatedLabel}`,"button_float_lista");
 
             let iconDelete = new URL("../img/delete.svg", import.meta.url).href;
 
@@ -369,8 +385,8 @@ function AddRateTo(variableName,variable,value,type,anticipated){
 
     if (variableName === "history") {
       const previousRate = variable[variable.length - 1];
-      if (previousRate &&
-          previousRate.value === tasa.value &&
+        if (previousRate &&
+          Number(normalizarValorTasa(String(previousRate.value))) === Number(normalizarValorTasa(String(tasa.value))) &&
           previousRate.type === tasa.type &&
           previousRate.anticipated === tasa.anticipated) {
         return;
@@ -408,7 +424,9 @@ window.showRateTypes = function showRateTypes() {
 }
 window.btnSelectTasa=function btnSelectTasa(txt){
     TASAS_SELECCION.value=txt.textContent;
+  if (TASAS_SELECCION.value==="Efectiva Anual") { anticipadaCheck.checked = false; }
     showRateTypes()
+  mostrarResultados();
 }
 
 window.toggleActive = function toggleActive(DOMElement) {
@@ -474,7 +492,8 @@ CAMPO_BUSQUEDA.addEventListener("input", function() {
 // Nueva función para actualizar exclusivamente los títulos en tiempo real
 // Exponer la función al objeto global window para que DOMControler pueda acceder a ella
 window.actualizarTitulosEnTiempoReal = function actualizarTitulosEnTiempoReal(l) {
-  const VALUE_CAMPO_BUSQUEDA = CAMPO_BUSQUEDA.value.replace(EXPRESION_REGULAR, "");
+  const VALUE_CAMPO_BUSQUEDA = normalizarValorTasa(CAMPO_BUSQUEDA.value);
+  const VALUE_CAMPO_BUSQUEDA_DISPLAY = VALUE_CAMPO_BUSQUEDA.replace(".", ",");
   
   // Si viene del teclado usa tasaAlternativa; si no, usa el select nativo
   let tasasSeleccionFocus=document.querySelector(".sugerencia-item-active");
@@ -488,14 +507,14 @@ window.actualizarTitulosEnTiempoReal = function actualizarTitulosEnTiempoReal(l)
 
   if (VALUE_CAMPO_BUSQUEDA > 0) {
     if (ANTICIPATED_CAMPO_BUSQUEDA) {
-      RESULTADO_TITULO.innerHTML = `${VALUE_CAMPO_BUSQUEDA}% ${TASA_CAMPO_BUSQUEDA} <em> anticipada </em>`;
-      document.title = `${VALUE_CAMPO_BUSQUEDA}% ${TASA_CAMPO_BUSQUEDA} anticipada`;
+      RESULTADO_TITULO.innerHTML = `${VALUE_CAMPO_BUSQUEDA_DISPLAY}% ${TASA_CAMPO_BUSQUEDA} <em> anticipada </em>`;
+      document.title = `${VALUE_CAMPO_BUSQUEDA_DISPLAY}% ${TASA_CAMPO_BUSQUEDA} anticipada`;
      
       
 
     } else {
-      RESULTADO_TITULO.textContent = `${VALUE_CAMPO_BUSQUEDA}% ${TASA_CAMPO_BUSQUEDA}`;
-      document.title = `${VALUE_CAMPO_BUSQUEDA}% ${TASA_CAMPO_BUSQUEDA}`;
+      RESULTADO_TITULO.textContent = `${VALUE_CAMPO_BUSQUEDA_DISPLAY}% ${TASA_CAMPO_BUSQUEDA}`;
+      document.title = `${VALUE_CAMPO_BUSQUEDA_DISPLAY}% ${TASA_CAMPO_BUSQUEDA}`;
     
     }
     
@@ -512,8 +531,13 @@ CAMPO_BUSQUEDA.addEventListener('input', () => {
   actualizarTitulosEnTiempoReal();
 });
 
+CAMPO_BUSQUEDA.addEventListener('change', () => {
+  mostrarResultados();
+});
+
 // 2. Escuchar cuando el usuario cambia el tipo de tasa en el select nativo
 TASAS_SELECCION.addEventListener('change', () => {
+  if (TASAS_SELECCION.value==="Efectiva Anual") { anticipadaCheck.checked = false; }
   actualizarTitulosEnTiempoReal();
   mostrarResultados(); // Mantiene sincronizado también el cálculo del DOM
 });
