@@ -129,7 +129,7 @@ window.mostrarResultados = function mostrarResultados(){
 
   //Habilita el boton de guardar
   
-  document.getElementById("save_icon").src="bookmark-empty.svg";   //boton guardar
+  document.getElementById("save_icon").src="/bookmark-empty.svg";   //boton guardar
 
   // 1. Muestra la definicion de la tasa ingresada
   infoRateInput(VALUE_CAMPO_BUSQUEDA,TASA_CAMPO_BUSQUEDA,ANTICIPATED_CAMPO_BUSQUEDA);
@@ -240,12 +240,16 @@ function infoRateInput(value,tasa,anticipated) {
 
   RESULTADO_INFO.textContent = INFO_TASA.definicion + INFO_TASA_EQUIVALE;
 
+
+
+  //history
   AddRateTo("history",history,value,tasa,anticipated)
+
   //Guardar
   const SAVE = document.getElementById("save");
   
   SAVE.onclick = function () {
-    document.getElementById("save_icon").src="bookmark_check.svg";   //boton guardar : estado guardado
+    document.getElementById("save_icon").src="/bookmark_check.svg";   //boton guardar : estado guardado
     AddRateTo("saved",saved,value,tasa,anticipated)
   
   }
@@ -312,9 +316,10 @@ window.floatWindowsLista = function floatWindowsLista(title,lista) {
 
 
       
-      let button_float_lista = newElement("button",`${listaFloat[i].value}% ${listaFloat[i].type}`,"button_float_lista");
+      let anticipatedLabel = listaFloat[i].anticipated ? " anticipada" : "";
+      let button_float_lista = newElement("button",`${listaFloat[i].value}% ${listaFloat[i].type}${anticipatedLabel}`,"button_float_lista");
 
-            let iconDelete = "delete.svg";
+            let iconDelete = "/delete.svg";
 
       // 1. Creamos el botón vacío
       let button_float_delete = newElement("button", "", "button_float_delete");
@@ -361,6 +366,17 @@ function AddRateTo(variableName,variable,value,type,anticipated){
       anticipated : anticipated
     }
     variable = getLocalStorage(variableName);
+
+    if (variableName === "history") {
+      const previousRate = variable[variable.length - 1];
+      if (previousRate &&
+          previousRate.value === tasa.value &&
+          previousRate.type === tasa.type &&
+          previousRate.anticipated === tasa.anticipated) {
+        return;
+      }
+    }
+
     variable.push(tasa);
     saveLocalStorage(variableName,variable);
 }
@@ -408,7 +424,7 @@ document.getElementById("close_float_windows").onclick=function() { floatWindows
 
 //EJECUCION INICIAL
   //Muestra una pop Alerta al iniciar.
-popAlerta(pop,`Rateconv 1.3 : Diseño más amigable   <button> Ver novedades</button>`,10000,"#342E37");
+popAlerta(pop,`Rateconv 1.4 : Rediseño ui y correcion de errores`,10000,"#342E37");
   //Oculta la ventan flotante por defecto.
 showHideDOMElement(FLOAT_WINDOWS);
 

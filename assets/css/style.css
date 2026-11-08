@@ -456,7 +456,7 @@ input:is(:focus, :hover) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
   gap: 1rem;
   align-items: center;
