@@ -129,7 +129,7 @@ window.mostrarResultados = function mostrarResultados(){
 
   //Habilita el boton de guardar
   
-  document.getElementById("save_icon").src="/bookmark-empty.svg";   //boton guardar
+  document.getElementById("save_icon").src = new URL("../img/bookmark-empty.svg", import.meta.url).href;   //boton guardar
 
   // 1. Muestra la definicion de la tasa ingresada
   infoRateInput(VALUE_CAMPO_BUSQUEDA,TASA_CAMPO_BUSQUEDA,ANTICIPATED_CAMPO_BUSQUEDA);
@@ -249,7 +249,7 @@ function infoRateInput(value,tasa,anticipated) {
   const SAVE = document.getElementById("save");
   
   SAVE.onclick = function () {
-    document.getElementById("save_icon").src="/bookmark_check.svg";   //boton guardar : estado guardado
+    document.getElementById("save_icon").src = new URL("../img/bookmark_check.svg", import.meta.url).href;   //boton guardar : estado guardado
     AddRateTo("saved",saved,value,tasa,anticipated)
   
   }
