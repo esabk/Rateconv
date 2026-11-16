@@ -356,7 +356,7 @@ input:is(:focus, :hover) {
   border-radius: var(--small-border_radius);
   background-color: transparent;
   font-weight: 700;
-  color: var(--Primary_Acc_top_color);
+  color: var(--Contrast_color);
 }
 
 :is(#campoBusqueda, #tasas_selecion):focus-visible {
@@ -952,5 +952,9 @@ Media query para pantallas menores a 830px */
   display: flex;
   justify-content: space-between;
   gap: 16px;
+}
+
+#campoBusqueda::selection {
+  background: var(--Focus_color);
 }
 
